@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E74F1636-2AF9-4CAC-B624-6F73D123449C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FestivalBusiness</RootNamespace>
+    <AssemblyName>FestivalBusiness</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FesAuthGroupBusiness.cs" />
+    <Compile Include="FesAuthGroupQuery.cs" />
+    <Compile Include="FesAuthorityQuery.cs" />
+    <Compile Include="FesExecuteBusiness.cs" />
+    <Compile Include="FesExecuteQuery.cs" />
+    <Compile Include="FesChapterAddDeleBusiness.cs" />
+    <Compile Include="FesChapterAddDeleQuery.cs" />
+    <Compile Include="FesChapterInputSongNumberBusiness.cs" />
+    <Compile Include="FesDiskCapacityBusiness.cs" />
+    <Compile Include="FesDiskCapacityQuery.cs" />
+    <Compile Include="FesSongAddDeleteBusiness.cs" />
+    <Compile Include="FesSongAddDeleteQuery.cs" />
+    <Compile Include="FesUserBusiness.cs" />
+    <Compile Include="FesUserQuery.cs" />
+    <Compile Include="FesFunctionBusiness.cs" />
+    <Compile Include="FesFunctionQuery.cs" />
+    <Compile Include="FesAuthorityBusiness.cs" />
+    <Compile Include="BusinessBase.cs" />
+    <Compile Include="CommonBusiness.cs" />
+    <Compile Include="CommonSqlQuery.cs" />
+    <Compile Include="CreateSqlQueryString.cs" />
+    <Compile Include="FesVideoDiscBusiness.cs" />
+    <Compile Include="FesVideoDiscQuery.cs" />
+    <Compile Include="FesSongWithDiscBusiness.cs" />
+    <Compile Include="FesSongWithDiscImportBusiness.cs" />
+    <Compile Include="FesSongWithDiscImportQuery.cs" />
+    <Compile Include="FesSongWithDiscInputSongNumberBusiness.cs" />
+    <Compile Include="FesSongWithDiscInputSongNumberQuery.cs" />
+    <Compile Include="FesSongWithDiscQuery.cs" />
+    <Compile Include="FesTsvExportBussiness.cs" />
+    <Compile Include="FesContentQuery.cs" />
+    <Compile Include="FesContentBusiness.cs" />
+    <Compile Include="FesVideoAssigmentBusiness.cs" />
+    <Compile Include="FesVideoAssigmentImportBusiness.cs" />
+    <Compile Include="FesVideoAssigmentImportQuery.cs" />
+    <Compile Include="FesVideoAssigmentInputSongNumberBusiness.cs" />
+    <Compile Include="FesVideoAssigmentInputSongNumberQuery.cs" />
+    <Compile Include="FesVideoAssigmentQuery.cs" />
+    <Compile Include="ImportRankingBusiness.cs" />
+    <Compile Include="FesVideoAddDeleteBusiness.cs" />
+    <Compile Include="FesVideoAddDeleteInputSongNumberBusiness.cs" />
+    <Compile Include="FesVideoAddDeleteQuery.cs" />
+    <Compile Include="FesPackageBusiness.cs" />
+    <Compile Include="FesPackageQuery.cs" />
+    <Compile Include="RecommendProgramBusiness.cs" />
+    <Compile Include="RecommendProgramQuery.cs" />
+    <Compile Include="FesProjectBusiness.cs" />
+    <Compile Include="FesProjectQuery.cs" />
+    <Compile Include="RecommendSongImportBusiness.cs" />
+    <Compile Include="ImportRecommendSongQuery.cs" />
+    <Compile Include="Interface\ICommonBusiness.cs" />
+    <Compile Include="RecommendSongBusiness.cs" />
+    <Compile Include="RecommendSongQuery.cs" />
+    <Compile Include="SearchFestivalContentBusiness.cs" />
+    <Compile Include="GetConnection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SingerIdChangeManagementBusiness.cs" />
+    <Compile Include="SingerIdChangeManagementQuery.cs" />
+    <Compile Include="SingerManagementBusiness.cs" />
+    <Compile Include="SingerManagementQuery.cs" />
+    <Compile Include="SqlHelpers.cs" />
+    <Compile Include="TieupConfirmQuery.cs" />
+    <Compile Include="TieupDuplicateBusiness.cs" />
+    <Compile Include="TieupDuplicateQuery.cs" />
+    <Compile Include="TsvImportRankingBusiness.cs" />
+    <Compile Include="TsvImportRecommendSongBusiness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FestivalCommon\FestivalCommon.csproj">
+      <Project>{83c95895-03d0-43a3-8c9c-c0cb47c0240e}</Project>
+      <Name>FestivalCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FestivalObjects\FestivalObjects.csproj">
+      <Project>{21d35110-e30a-481e-a8fd-315cf3d74722}</Project>
+      <Name>FestivalObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\FestivalUtilities.csproj">
+      <Project>{38E3A8E0-1BD6-46A9-90EB-7832956007DF}</Project>
+      <Name>FestivalUtilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="TieupConfirmBusiness.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

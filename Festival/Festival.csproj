@@ -1,0 +1,758 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CCFDF08E-D86C-405A-9249-A71F0907DE49}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Festival</RootNamespace>
+    <AssemblyName>Festival</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FS48x48.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.Keyboard, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.14, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.Instrumentation, Version=14.1.0.0, Culture=neutral, PublicKeyToken=f90dc37c26666a67" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WinFormAnimation">
+      <HintPath>Lib\WinFormAnimation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\ColumnUpdateEntity.cs" />
+    <Compile Include="Base\DataGridViewColumnCustom\ColumnDisplayDataCollection.cs" />
+    <Compile Include="Base\DataGridViewColumnCustom\ConvertToDataTable.cs" />
+    <Compile Include="Base\DataGridViewColumnCustom\DataGridViewUtils.cs" />
+    <Compile Include="Base\DataGridViewColumnCustom\FilterDataGridViewColumnHeader.cs" />
+    <Compile Include="Base\DataGridViewColumnCustom\NumericInputCellControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\DataGridViewFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\DataGridViewFilter.Designer.cs">
+      <DependentUpon>DataGridViewFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\RowAddNewObject.cs" />
+    <Compile Include="Common\EditModeEnum.cs" />
+    <Compile Include="Base\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\IFesCommonFunction.cs" />
+    <Compile Include="Base\MenuMainCollection.cs" />
+    <Compile Include="Base\TextBoxInputNumeric.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Base\TextBoxInputNumeric.Designer.cs">
+      <DependentUpon>TextBoxInputNumeric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\UserControlBaseAdvance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\UserControlBaseAdvance.Designer.cs">
+      <DependentUpon>UserControlBaseAdvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\WaitingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\WaitingForm.Designer.cs">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CommonInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\CommonInput.Designer.cs">
+      <DependentUpon>CommonInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\CheckItem.cs" />
+    <Compile Include="Common\ComboxColumnInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ComboxColumnInput.Designer.cs">
+      <DependentUpon>ComboxColumnInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\DataGridViewColumnCustom\NavDataGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\DataGridViewColumnCustom\NavDataGridView.Designer.cs">
+      <DependentUpon>NavDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\DataGridViewColumnCustom\DataGridViewNumericColumn.cs" />
+    <Compile Include="Base\DataGridViewColumnCustom\DataGridViewNumericCell.cs" />
+    <Compile Include="Common\ExportSearchingFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\ExportSearchingFile.Designer.cs">
+      <DependentUpon>ExportSearchingFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\FestivalEvents.cs" />
+    <Compile Include="Common\GetParameterUtils.cs" />
+    <Compile Include="Common\LayoutCollection.cs" />
+    <Compile Include="Common\InputFileSearchingCondition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\InputFileSearchingCondition.Designer.cs">
+      <DependentUpon>InputFileSearchingCondition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ActiveMenuCollection.cs" />
+    <Compile Include="DBTab\FesContent\InputSongNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\FesContent\InputSongNumber.Designer.cs">
+      <DependentUpon>InputSongNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LoadColumnHideCommon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\LoadColumnHideCommon.Designer.cs">
+      <DependentUpon>LoadColumnHideCommon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\FesModeOpen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\FesModeOpen.Designer.cs">
+      <DependentUpon>FesModeOpen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\ExportTsv\ExportFesContants.cs" />
+    <Compile Include="DBTab\FesContent\FesContentSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\FesContent\FesContentSearch.Designer.cs">
+      <DependentUpon>FesContentSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\SearchConditionsCommon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\SearchConditionsCommon.Designer.cs">
+      <DependentUpon>SearchConditionsCommon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\FesContent\FesContentMainAdvance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBTab\FesContent\FesContentMainAdvance.Designer.cs">
+      <DependentUpon>FesContentMainAdvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\ExportTsv\FesTSVExportMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\ExportTsv\FesTSVExportMain.Designer.cs">
+      <DependentUpon>FesTSVExportMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\ExportTsv\FesTsvImportRanking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\ExportTsv\FesTsvImportRanking.Designer.cs">
+      <DependentUpon>FesTsvImportRanking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\FesContent\FesContentImportList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\FesContent\FesContentImportList.Designer.cs">
+      <DependentUpon>FesContentImportList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\ExportTsv\TsvExportCollection.cs" />
+    <Compile Include="DBTab\RecommendProgramManagement\RecommendProgramMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\RecommendProgramManagement\RecommendProgramMain.Designer.cs">
+      <DependentUpon>RecommendProgramMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\RecommendProgramManagement\RecommendProgramRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\RecommendProgramManagement\RecommendProgramRegister.Designer.cs">
+      <DependentUpon>RecommendProgramRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\RecommendSong\FesRecommendSongImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\RecommendSong\FesRecommendSongImport.Designer.cs">
+      <DependentUpon>FesRecommendSongImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\TieupConfirm\TieupConfirmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\TieupConfirm\TieupConfirmMain.Designer.cs">
+      <DependentUpon>TieupConfirmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\TieupDuplicate\TieupDuplicateMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\TieupDuplicate\TieupDuplicateMain.Designer.cs">
+      <DependentUpon>TieupDuplicateMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesChapterAddDelete\FesChapterAddDeleteMainAdvance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesChapterAddDelete\FesChapterAddDeleteMainAdvance.Designer.cs">
+      <DependentUpon>FesChapterAddDeleteMainAdvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesChapterAddDelete\FesChapterAddDeleteSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesChapterAddDelete\FesChapterAddDeleteSearch.Designer.cs">
+      <DependentUpon>FesChapterAddDeleteSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesChapterAddDelete\FesChapterInputSongNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesChapterAddDelete\FesChapterInputSongNumber.Designer.cs">
+      <DependentUpon>FesChapterInputSongNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesDiskCapacity\DiskCapacityManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesDiskCapacity\DiskCapacityManagement.Designer.cs">
+      <DependentUpon>DiskCapacityManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesIndiVidualVideoDisc\FesVideoDiscDisplay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesIndiVidualVideoDisc\FesVideoDiscDisplay.Designer.cs">
+      <DependentUpon>FesVideoDiscDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongAddDelete\FesSongAddDeleteMainAdvance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongAddDelete\FesSongAddDeleteMainAdvance.Designer.cs">
+      <DependentUpon>FesSongAddDeleteMainAdvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongAddDelete\FesSongAddDeleteSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongAddDelete\FesSongAddDeleteSearch.Designer.cs">
+      <DependentUpon>FesSongAddDeleteSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongAddDelete\FesSongImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongAddDelete\FesSongImport.Designer.cs">
+      <DependentUpon>FesSongImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongAddDelete\FesSongInputSongNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongAddDelete\FesSongInputSongNumber.Designer.cs">
+      <DependentUpon>FesSongInputSongNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscImport.Designer.cs">
+      <DependentUpon>FesSongWithDiscImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscMainAdvance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscMainAdvance.Designer.cs">
+      <DependentUpon>FesSongWithDiscMainAdvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscSearch.Designer.cs">
+      <DependentUpon>FesSongWithDiscSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscInputSongNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscInputSongNumber.Designer.cs">
+      <DependentUpon>FesSongWithDiscInputSongNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAddDelete\FesVideoInputSongNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAddDelete\FesVideoInputSongNumber.Designer.cs">
+      <DependentUpon>FesVideoInputSongNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAddDelete\FesVideoImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAddDelete\FesVideoImport.Designer.cs">
+      <DependentUpon>FesVideoImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentImport.Designer.cs">
+      <DependentUpon>FesVideoAssigmentImport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentMainAdvance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentMainAdvance.Designer.cs">
+      <DependentUpon>FesVideoAssigmentMainAdvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentSearch.Designer.cs">
+      <DependentUpon>FesVideoAssigmentSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\SingerIdChangeManagement\SingerIdChangeManagementMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\SingerIdChangeManagement\SingerIdChangeManagementMain.Designer.cs">
+      <DependentUpon>SingerIdChangeManagementMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\SingerIdChangeManagement\SingerIdChangeRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\SingerIdChangeManagement\SingerIdChangeRegister.Designer.cs">
+      <DependentUpon>SingerIdChangeRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\SingerManagement\SingerRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\SingerManagement\SingerRegister.Designer.cs">
+      <DependentUpon>SingerRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\SingerManagement\SingerManagementMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DBTab\SingerManagement\SingerManagementMain.Designer.cs">
+      <DependentUpon>SingerManagementMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentInputSongNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentInputSongNumber.Designer.cs">
+      <DependentUpon>FesVideoAssigmentInputSongNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAddDelete\FesVideoAddDeleteSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAddDelete\FesVideoAddDeleteSearch.Designer.cs">
+      <DependentUpon>FesVideoAddDeleteSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAddDelete\FesVideoAddDeleteMainAdvance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoAddDelete\FesVideoAddDeleteMainAdvance.Designer.cs">
+      <DependentUpon>FesVideoAddDeleteMainAdvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\PackageIDInfo\PackageIDMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\PackageIDInfo\PackageIDMain.Designer.cs">
+      <DependentUpon>PackageIDMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FestivalMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FestivalMain.Designer.cs">
+      <DependentUpon>FestivalMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBTab\RecommendSong\RecommendSongMainAdvance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBTab\RecommendSong\RecommendSongMainAdvance.Designer.cs">
+      <DependentUpon>RecommendSongMainAdvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementTab\AuthGroup\AuthGroupMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagementTab\AuthGroup\AuthGroupMain.Designer.cs">
+      <DependentUpon>AuthGroupMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementTab\ExecuteManagement\ExecuteMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagementTab\ExecuteManagement\ExecuteMain.Designer.cs">
+      <DependentUpon>ExecuteMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementTab\FunctionID\FunctionIDMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagementTab\FunctionID\FunctionIDMain.Designer.cs">
+      <DependentUpon>FunctionIDMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementTab\Authority\AuthorityMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagementTab\Authority\AuthorityMain.Designer.cs">
+      <DependentUpon>AuthorityMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementTab\ProjectID\ProjectIDMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagementTab\ProjectID\ProjectIDMain.Designer.cs">
+      <DependentUpon>ProjectIDMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementTab\User\UserMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagementTab\User\UserMain.Designer.cs">
+      <DependentUpon>UserMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\FesDisplayCommon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\FesDisplayCommon.Designer.cs">
+      <DependentUpon>FesDisplayCommon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCSearchWiiProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCSearchWiiProduct.Designer.cs">
+      <DependentUpon>UCSearchWiiProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\FesDisplayCommonMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Common\FesDisplayCommonMain.Designer.cs">
+      <DependentUpon>FesDisplayCommonMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\CircularProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DBTab\MenuDBTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBTab\MenuDBTab.Designer.cs">
+      <DependentUpon>MenuDBTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\TabMenuDiscVideo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\TabMenuDiscVideo.Designer.cs">
+      <DependentUpon>TabMenuDiscVideo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementTab\MenuManagementTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ManagementTab\MenuManagementTab.Designer.cs">
+      <DependentUpon>MenuManagementTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UCSqlConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC\UCSqlConnection.Designer.cs">
+      <DependentUpon>UCSqlConnection.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Base\DataGridViewFilter.resx">
+      <DependentUpon>DataGridViewFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\UserControlBaseAdvance.resx">
+      <DependentUpon>UserControlBaseAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\WaitingForm.resx">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\CommonInput.resx">
+      <DependentUpon>CommonInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ComboxColumnInput.resx">
+      <DependentUpon>ComboxColumnInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\DataGridViewColumnCustom\NavDataGridView.resx">
+      <DependentUpon>NavDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\ExportSearchingFile.resx">
+      <DependentUpon>ExportSearchingFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\InputFileSearchingCondition.resx">
+      <DependentUpon>InputFileSearchingCondition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\FesContent\InputSongNumber.resx">
+      <DependentUpon>InputSongNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\FesModeOpen.resx">
+      <DependentUpon>FesModeOpen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\FesContent\FesContentSearch.resx">
+      <DependentUpon>FesContentSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\LoadColumnHideCommon.resx">
+      <DependentUpon>LoadColumnHideCommon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\SearchConditionsCommon.resx">
+      <DependentUpon>SearchConditionsCommon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\FesContent\FesContentMainAdvance.resx">
+      <DependentUpon>FesContentMainAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\ExportTsv\FesTSVExportMain.resx">
+      <DependentUpon>FesTSVExportMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\FesContent\FesContentImportList.resx">
+      <DependentUpon>FesContentImportList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\ExportTsv\FesTsvImportRanking.resx">
+      <DependentUpon>FesTsvImportRanking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\RecommendProgramManagement\RecommendProgramMain.resx">
+      <DependentUpon>RecommendProgramMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\RecommendProgramManagement\RecommendProgramRegister.resx">
+      <DependentUpon>RecommendProgramRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\RecommendSong\FesRecommendSongImport.resx">
+      <DependentUpon>FesRecommendSongImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\TieupConfirm\TieupConfirmMain.resx">
+      <DependentUpon>TieupConfirmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\TieupDuplicate\TieupDuplicateMain.resx">
+      <DependentUpon>TieupDuplicateMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesChapterAddDelete\FesChapterAddDeleteMainAdvance.resx">
+      <DependentUpon>FesChapterAddDeleteMainAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesChapterAddDelete\FesChapterAddDeleteSearch.resx">
+      <DependentUpon>FesChapterAddDeleteSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesChapterAddDelete\FesChapterInputSongNumber.resx">
+      <DependentUpon>FesChapterInputSongNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesDiskCapacity\DiskCapacityManagement.resx">
+      <DependentUpon>DiskCapacityManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesIndiVidualVideoDisc\FesVideoDiscDisplay.resx">
+      <DependentUpon>FesVideoDiscDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesSongAddDelete\FesSongAddDeleteMainAdvance.resx">
+      <DependentUpon>FesSongAddDeleteMainAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesSongAddDelete\FesSongAddDeleteSearch.resx">
+      <DependentUpon>FesSongAddDeleteSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesSongAddDelete\FesSongImport.resx">
+      <DependentUpon>FesSongImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesSongAddDelete\FesSongInputSongNumber.resx">
+      <DependentUpon>FesSongInputSongNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscImport.resx">
+      <DependentUpon>FesSongWithDiscImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscMainAdvance.resx">
+      <DependentUpon>FesSongWithDiscMainAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscSearch.resx">
+      <DependentUpon>FesSongWithDiscSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesSongWithDisc\FesSongWithDiscInputSongNumber.resx">
+      <DependentUpon>FesSongWithDiscInputSongNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoAddDelete\FesVideoInputSongNumber.resx">
+      <DependentUpon>FesVideoInputSongNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoAddDelete\FesVideoImport.resx">
+      <DependentUpon>FesVideoImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentImport.resx">
+      <DependentUpon>FesVideoAssigmentImport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentMainAdvance.resx">
+      <DependentUpon>FesVideoAssigmentMainAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentSearch.resx">
+      <DependentUpon>FesVideoAssigmentSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\SingerIdChangeManagement\SingerIdChangeManagementMain.resx">
+      <DependentUpon>SingerIdChangeManagementMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\SingerIdChangeManagement\SingerIdChangeRegister.resx">
+      <DependentUpon>SingerIdChangeRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\SingerManagement\SingerRegister.resx">
+      <DependentUpon>SingerRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\SingerManagement\SingerManagementMain.resx">
+      <DependentUpon>SingerManagementMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoAssigment\FesVideoAssigmentInputSongNumber.resx">
+      <DependentUpon>FesVideoAssigmentInputSongNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoAddDelete\FesVideoAddDeleteSearch.resx">
+      <DependentUpon>FesVideoAddDeleteSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoAddDelete\FesVideoAddDeleteMainAdvance.resx">
+      <DependentUpon>FesVideoAddDeleteMainAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\PackageIDInfo\PackageIDMain.resx">
+      <DependentUpon>PackageIDMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FestivalMain.resx">
+      <DependentUpon>FestivalMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\RecommendSong\RecommendSongMainAdvance.resx">
+      <DependentUpon>RecommendSongMainAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementTab\AuthGroup\AuthGroupMain.resx">
+      <DependentUpon>AuthGroupMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementTab\ExecuteManagement\ExecuteMain.resx">
+      <DependentUpon>ExecuteMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementTab\FunctionID\FunctionIDMain.resx">
+      <DependentUpon>FunctionIDMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementTab\Authority\AuthorityMain.resx">
+      <DependentUpon>AuthorityMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementTab\ProjectID\ProjectIDMain.resx">
+      <DependentUpon>ProjectIDMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementTab\User\UserMain.resx">
+      <DependentUpon>UserMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Common\FesDisplayCommon.resx">
+      <DependentUpon>FesDisplayCommon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCSearchWiiProduct.resx">
+      <DependentUpon>UCSearchWiiProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\FesDisplayCommonMain.resx">
+      <DependentUpon>FesDisplayCommonMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBTab\MenuDBTab.resx">
+      <DependentUpon>MenuDBTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\TabMenuDiscVideo.resx">
+      <DependentUpon>TabMenuDiscVideo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagementTab\MenuManagementTab.resx">
+      <DependentUpon>MenuManagementTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC\UCSqlConnection.resx">
+      <DependentUpon>UCSqlConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvancedDataGridView\AdvancedDataGridView.csproj">
+      <Project>{6eba0a55-b390-4479-a564-58d46094998d}</Project>
+      <Name>AdvancedDataGridView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FestivalBusiness\FestivalBusiness.csproj">
+      <Project>{e74f1636-2af9-4cac-b624-6f73d123449c}</Project>
+      <Name>FestivalBusiness</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FestivalCommon\FestivalCommon.csproj">
+      <Project>{83c95895-03d0-43a3-8c9c-c0cb47c0240e}</Project>
+      <Name>FestivalCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FestivalObjects\FestivalObjects.csproj">
+      <Project>{21d35110-e30a-481e-a8fd-315cf3d74722}</Project>
+      <Name>FestivalObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\FestivalUtilities.csproj">
+      <Project>{38e3a8e0-1bd6-46a9-90eb-7832956007df}</Project>
+      <Name>FestivalUtilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="feb.ico" />
+    <Content Include="fes32.ico" />
+    <Content Include="Fes32x.ico" />
+    <Content Include="FS48x48.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

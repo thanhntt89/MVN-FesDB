@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="A000" xml:space="preserve">
+    <value>MSGA000</value>
+  </data>
+  <data name="A001" xml:space="preserve">
+    <value>エラーメッセージ:  "取り込みを中止します。"</value>
+  </data>
+  <data name="A002" xml:space="preserve">
+    <value>{0} ご入力必須項目です。</value>
+  </data>
+  <data name="A003" xml:space="preserve">
+    <value>{0} 数値をご入力ください。</value>
+  </data>
+  <data name="A004" xml:space="preserve">
+    <value>この {0} を削除してもよろしいですか？</value>
+  </data>
+  <data name="ALERT_TITLE_MESSAGE" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="E000" xml:space="preserve">
+    <value>MSGE000</value>
+  </data>
+  <data name="E001" xml:space="preserve">
+    <value>エラーメッセージ:  "処理対象のレコードが見つかりません。"</value>
+  </data>
+  <data name="E002" xml:space="preserve">
+    <value>エラーメッセージ:  "8文字以内で指定してください。"</value>
+  </data>
+  <data name="E003" xml:space="preserve">
+    <value>"エラーメッセージ:  
+""文字数が384文字を超えています。文字数→"" &amp; エラーメッセージ:  
+"文字数が384文字を超えています。文字数→" &amp; {0}  &amp;&lt;改行&gt; 
+"最大文字数は、384文字です。"</value>
+  </data>
+  <data name="E004" xml:space="preserve">
+    <value>エラーメッセージ:  "カタカナで指定してください。"</value>
+  </data>
+  <data name="E005" xml:space="preserve">
+    <value>エラーメッセージ:  
+"文字数が256文字を超えています{0}。文字数→"  {1}  &lt;改行&gt; 
+"最大文字数は、256文字です。"</value>
+  </data>
+  <data name="E006" xml:space="preserve">
+    <value>エラーメッセージ: {0}が正しくありません。</value>
+  </data>
+  <data name="E007" xml:space="preserve">
+    <value>エラーメッセージ:  "UP予定日が正しくありません。"</value>
+  </data>
+  <data name="E008" xml:space="preserve">
+    <value>エラーメッセージ:  "Orch制作完了日が正しくありません。"</value>
+  </data>
+  <data name="E009" xml:space="preserve">
+    <value>エラーメッセージ:  "登録日時が正しくありません。"</value>
+  </data>
+  <data name="E010" xml:space="preserve">
+    <value>エラーメッセージ:  "停止日が正しくありません。"</value>
+  </data>
+  <data name="E011" xml:space="preserve">
+    <value>エラーメッセージ:  "新譜本扱月が正しくありません。"</value>
+  </data>
+  <data name="E012" xml:space="preserve">
+    <value>エラーメッセージ:  "3文字以内で指定してください。"</value>
+  </data>
+  <data name="E013" xml:space="preserve">
+    <value>エラーメッセージ:  "発売日が正しくありません。"</value>
+  </data>
+  <data name="E014" xml:space="preserve">
+    <value>エラーメッセージ:  "歌唱可能日が正しくありません。"</value>
+  </data>
+  <data name="E015" xml:space="preserve">
+    <value>エラーメッセージ: "カラオケ完パケ期限日が正しくありません。"</value>
+  </data>
+  <data name="E016" xml:space="preserve">
+    <value>{0} が正しくありません。</value>
+  </data>
+  <data name="E018" xml:space="preserve">
+    <value>エラーメッセージ:  {0} &amp; " 行目 " &amp;  {1} &amp; "のフォーマットが違います。"</value>
+  </data>
+  <data name="E019" xml:space="preserve">
+    <value>エラーメッセージ:  "数字で指定してください。"</value>
+  </data>
+  <data name="E020" xml:space="preserve">
+    <value>エラーメッセージ:  {0} &amp; " 行目 楽曲名邦題が未設定のため、邦題優先フラグを設定することはできません。"</value>
+  </data>
+  <data name="E021" xml:space="preserve">
+    <value>Fes独自歌手に設定されている歌手IDを指定してください。</value>
+  </data>
+  <data name="E022" xml:space="preserve">
+    <value>エラーメッセージ: MESSAGE_ERROR_WII_DATE_INCORRECT/n エラーメッセージ:  {0} &amp; " 行目 " &amp;  {1} &amp; "のフォーマットが違います。" &lt;改行&gt;
+"入力例：20121101"</value>
+  </data>
+  <data name="E023" xml:space="preserve">
+    <value>エラーメッセージ:  "半角英数字大文字で指定してください。"</value>
+  </data>
+  <data name="E024" xml:space="preserve">
+    <value>{0} 文字で指定してください。</value>
+  </data>
+  <data name="E025" xml:space="preserve">
+    <value>MSGE025</value>
+  </data>
+  <data name="E026" xml:space="preserve">
+    <value>ファイルの中身が空の可能性があります。
+録音可能曲リストの取込を中止します。</value>
+  </data>
+  <data name="E027" xml:space="preserve">
+    <value>カラオケNoのフォーマットが不正な行があったため取り込めませんでした。{0} 行目：{1}</value>
+  </data>
+  <data name="E028" xml:space="preserve">
+    <value>取り込むエクセル表のフォーマットが不正です。
+正しいフォーマットの列の数：30
+以内取り込もうとしてるエクセルの列の数：{0}</value>
+  </data>
+  <data name="E038" xml:space="preserve">
+    <value>例外が発生しました。
+【発生日時】 {0}
+【発生箇所】 {1}
+【障害内容】 {2}
+【備考】エラーログを{3}に出力します。
+システム担当者に連絡して下さい。</value>
+  </data>
+  <data name="E044" xml:space="preserve">
+    <value>{0} サーバー上にある{1} データベースに接続できません。データベースが存在し、サーバーが実行中であることを確認してください。</value>
+  </data>
+  <data name="E045" xml:space="preserve">
+    <value>3カラム以外の行があったため取り込めませんでした。
+{0}行目：{1}</value>
+  </data>
+  <data name="E046" xml:space="preserve">
+    <value>おすすめプログラムIDのフォーマットが不正な行があったため取り込めませんでした。
+{0}行目：{1}</value>
+  </data>
+  <data name="E047" xml:space="preserve">
+    <value>おすすめプログラムIDのフォーマットが不正な行があったため取り込めませんでした。
+{0}行目：{1}</value>
+  </data>
+  <data name="E048" xml:space="preserve">
+    <value>デジドコNoが設定されていないため取り込めませんでした。
+{0}行目：{1}</value>
+  </data>
+  <data name="E049" xml:space="preserve">
+    <value>デジドコNoのフォーマットが不正な行があったため取り込めませんでした。
+{0}行目：{1}</value>
+  </data>
+  <data name="E050" xml:space="preserve">
+    <value>デジドコNoのフォーマットが不正な行があったため取り込めませんでした。
+{0}行目：{1}</value>
+  </data>
+  <data name="E051" xml:space="preserve">
+    <value>表示順が設定されていないため取り込めませんでした。
+{0}行目：{1}</value>
+  </data>
+  <data name="E052" xml:space="preserve">
+    <value>表示順のフォーマットが不正な行があったため取り込めませんでした。
+{0}行目：{1}</value>
+  </data>
+  <data name="E053" xml:space="preserve">
+    <value>ファイルの中身が空の可能性があります。おすすめ曲リストの取込を中止します。</value>
+  </data>
+  <data name="ERROR_TITLE_MESSAGE" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="EXPASTE001" xml:space="preserve">
+    <value>{0} このフィールドは編集できません。</value>
+  </data>
+  <data name="EXPASTE002" xml:space="preserve">
+    <value>{0} このフィールドはデータ型が設定されていません</value>
+  </data>
+  <data name="EXPASTE003" xml:space="preserve">
+    <value>データ型が一致しません。</value>
+  </data>
+  <data name="I000" xml:space="preserve">
+    <value>データを全件抽出します。時間がかかりますが続行してよろしいですか？</value>
+  </data>
+  <data name="I001" xml:space="preserve">
+    <value>全件洗い替えを実施します。元に戻せませんが実行してよろしいですか？</value>
+  </data>
+  <data name="I002" xml:space="preserve">
+    <value>フィルが適用されています。続行してよろしいですか？</value>
+  </data>
+  <data name="I003" xml:space="preserve">
+    <value>{0} に出力しました。</value>
+  </data>
+  <data name="I004" xml:space="preserve">
+    <value>更新されています。{0}書き込まずに閉じてよろしいですか？</value>
+  </data>
+  <data name="I005" xml:space="preserve">
+    <value>更新されています。{0} 書き込まずに閉じてよろしいですか？</value>
+  </data>
+  <data name="I006" xml:space="preserve">
+    <value>操作に必要な権限がありません。</value>
+  </data>
+  <data name="I007" xml:space="preserve">
+    <value>登録が完了しました。</value>
+  </data>
+  <data name="I008" xml:space="preserve">
+    <value>データの更新に失敗しました。
+更新予定件数：{0}件
+処理件数：{1}件
+
+デジドコNo:{2}は、更新できませんでした。
+楽曲名邦題が未設定のコンテンツに、邦題優先フラグを設定しています。</value>
+  </data>
+  <data name="I009" xml:space="preserve">
+    <value>登録対象のレコードがありません。</value>
+  </data>
+  <data name="I010" xml:space="preserve">
+    <value>この項目は一括入力できません。</value>
+  </data>
+  <data name="I011" xml:space="preserve">
+    <value>データを全件抽出します。時間がかかりますが続行してよろしいですか？</value>
+  </data>
+  <data name="I012" xml:space="preserve">
+    <value>編集中のデータが存在しますが、処理を実行してよろしいですか？</value>
+  </data>
+  <data name="INFO_TITLE_MESSAGE" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="MESSAGE_ERROR_DIGINO_NOT_FOUND" xml:space="preserve">
+    <value>存在するデジドコNoを指定してください。</value>
+  </data>
+  <data name="MESSAGE_ERROR_DIGINO_REQUIRED" xml:space="preserve">
+    <value>デジドコNoが設定されていません。</value>
+  </data>
+  <data name="MESSAGE_ERROR_FILE_NOT_FOUND" xml:space="preserve">
+    <value>対象のファイルが見つかりません</value>
+  </data>
+  <data name="MESSAGE_ERROR_ID_REQUIRED" xml:space="preserve">
+    <value>通番が設定されていません。</value>
+  </data>
+  <data name="MESSAGE_ERROR_NO_AUTHORITY" xml:space="preserve">
+    <value>操作に必要な権限がありません</value>
+  </data>
+  <data name="MESSAGE_ERROR_NO_DATA" xml:space="preserve">
+    <value>出力対象のレコードが見つかりません</value>
+  </data>
+  <data name="MESSAGE_ERROR_OUTPUT_FAILED" xml:space="preserve">
+    <value>ファイルの出力に失敗しました</value>
+  </data>
+  <data name="MESSAGE_ERROR_UNKNOWN" xml:space="preserve">
+    <value>不明なエラーが発生しました。管理者に連絡してください。</value>
+  </data>
+  <data name="UPDATE_MESSAGE" xml:space="preserve">
+    <value>レコード更新</value>
+  </data>
+</root>

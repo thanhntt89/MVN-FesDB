@@ -1,0 +1,378 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Festival.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CONNECT_Server" Type="System.String" Scope="User">
+      <Value Profile="(Default)">xgmmsxdd01</Value>
+    </Setting>
+    <Setting Name="CONNECT_UserID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wiiAdmin</Value>
+    </Setting>
+    <Setting Name="CONNECT_Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">W_iiAdmin00000</Value>
+    </Setting>
+    <Setting Name="CONNECT_DBName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Wii</Value>
+    </Setting>
+    <Setting Name="CONNECT_DDETimeout_CheckConnecting" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="CONNECT_DDETimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="CONNECT_CommandTimeout" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="CONNECT_TMPDBName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">WiiTmp</Value>
+    </Setting>
+    <Setting Name="FES_CONTENT_INPUT_入力パス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\</Value>
+    </Setting>
+    <Setting Name="FES_CONENT_COMBOX_DATA_登録済み条件_検索条件" Type="System.String" Scope="User">
+      <Value Profile="(Default)">歌手名 NULL;[歌手名] is null;曲名 NULL;[楽曲名] is null;PU_ARTIST_IDが空;[PU_ARTIST_ID] is null;アップ予定日登録;[歌唱可能日] is not null and [アップ予定日] is null  and  [サービス発表日] is null;未アップ曲;[アップ予定日] is not null and [サービス発表日] is null;サービス中楽曲;[サービス発表日] is not null and [取消フラグ] is not null;未配信曲でOrchestraサービス中;[サービス発表日] is null and [Wii_U_サービス発表日] is not null;ナビDB親曲なし;[SONG_GROUP_INTRO_TYPE] is null;削除情報あり;[カラオケ削除情報] is not null</Value>
+    </Setting>
+    <Setting Name="COMBOX_TSV_出力条件" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Fes収集リスト;楽曲リスト</Value>
+    </Setting>
+    <Setting Name="RIBBON_EXPORT_MENU_FES_CONTENT_Fes収集リストパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\eb-server\x-drv\K-tai\digidoco\upload\tsv\festival\</Value>
+    </Setting>
+    <Setting Name="FES_CONTENT_IMPORT_FILE_TXT_録音可能曲リスト取込" Type="System.String" Scope="User">
+      <Value Profile="(Default)">録音可能曲.txt</Value>
+    </Setting>
+    <Setting Name="FES_CONTENT_IMPORT_FILE_XSL_更新項目リスト取込" Type="System.String" Scope="User">
+      <Value Profile="(Default)">更新項目.xls</Value>
+    </Setting>
+    <Setting Name="FES_CONTENT_SERVER_PATH_録音可能リスト取込配置ファイル" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\eb-server\Maprj\xing\Fes\tbl_Fes録音可能リスト.txt</Value>
+    </Setting>
+    <Setting Name="RIBBON_EXPORT_MENU_楽曲リストパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\</Value>
+    </Setting>
+    <Setting Name="FEST_TSV_LOG_PATH_ログファイル" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\eb-server\x-drv\K-tai\digidoco\upload\tsv\festival\TSV出力結果.txt</Value>
+    </Setting>
+    <Setting Name="FES_TSV_RECOMMEND_SONG_おすすめ曲" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\recommend_song_</Value>
+    </Setting>
+    <Setting Name="TSV_EXTENSION_ファイル拡張子" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.tsv</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_CONTENT_SERVER_PATH_出力パス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\eb-server\x-drv\K-tai\digidoco\upload\tsv\</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_LOCAL_FOLDER_WORK_作業フォルダ" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Work\</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_CONTENT_INIT_LOG_PATH" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F:\Fes\LogTsv\ContentsLog.ini</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_CONTENT_コンテンツ" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_CONTENT_V2_コンテンツ_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSコンテンツ_V2</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_SERVICE_サービス情報" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_SERVICE_V2_サービス情報_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSサービス情報_V2</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_TIEUP_タイアップ情報" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_TIEUP_V2_タイアップ情報_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSタイアップ情報_V2</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_SINGER_歌手" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS歌手</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_GENRE_ジャンル情報" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_GENRE_V2_ジャンル情報_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSジャンル情報_V2</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_GENRE_LIST_ジャンルリスト" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_GENRE_LARGE_LIST_ジャンルリスト大" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSジャンルリスト大ジャンル</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_GENRE_IN_LIST_ジャンルリスト中" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSジャンルリスト中ジャンル</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_GENRE_DESCRIPTION_ジャンル説明文" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSジャンル説明文</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_SONG_NAME_ENGLISH_NUMBER_楽曲名英数読み" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_SONG_NAME_ENGLISH_NUMBER_V2_楽曲名英数読み_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS楽曲名英数読み_V2</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_SINGER_NAME_歌手名英数読み" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS歌手名英数読み</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_RECOMMEND_SONG_おすすめ曲" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSおすすめ曲</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_START_SINGING_歌い出し" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS歌いだし</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_SINGER_ID_CHANGE_HISTORY_歌手ID変更履歴" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSsong_id_change_history</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_DISC_VERSION_SONG_DISC版収録曲" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_DISC_VERSION_SONG_V2_DISC版収録曲_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSディスク版収録曲_V2</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_CONTENT_RANKING_コンテンツランキング用" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FScontents_ranking</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_SINGER_RANKING_歌手ランキング" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSsinger_ranking</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_TIEUP_RANKING_タイアップランキング" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_TIEUP_RANKING_V2_タイアップランキング_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FStieup_ranking_V2</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_RANKING_BY_AGE_年代別ランキング" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSyears_ranking</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_UPDATE_DATE_更新日付" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS更新日付</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_ADDITION_SONG_追加曲" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS追加曲</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_INVIDUAL_VIDEO_ALLOCATION_個別映像割付情報" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS個別映像割付情報</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_INVIDUAL_VIDEO_DIS_RECORDING_個別映像DISC収録情報" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_INVIDUAL_VIDEO_DIS_RECORDING_V2_個別映像DISC収録情報_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS個別映像DISC収録情報_V2</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_PACKAGE_ID_INFO_パッケージID情報" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSパッケージID情報</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_ADD_REMOVE_DIS_SONG_ディスク追加削除曲" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSディスク追加削除曲</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_INDIVIDUAL_VIDEO_DISC_ADDITIONAL_DELETION_個別映像ディスク追加削除情報" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS個別映像ディスク追加削除情報</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_HEALTHY_KINGDOM_RECOMMENDED_SONG_健康王国おすすめ曲" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS健康王国おすすめ曲</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_ADD_REMOVE_CHAPTER_SONG_チャプター追加削除曲" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSチャプター追加削除曲</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_RECOMMENDED_PROGRAM_LIST_おすすめプログラムリスト" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSおすすめプログラム曲</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_RECOMMENDED_PROGRAM_おすすめプログラム名" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSおすすめプログラム名</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_COLLECTION_LIST_収集リスト" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FS収集リスト</Value>
+    </Setting>
+    <Setting Name="FILE_NAME_FES_EXPORT_RANKING_AGGREGATION_PERIOD_ランキング集計期間" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSランキング集計期間</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_DATE_TIME_IN_PUT_最新追加フラグ設定基準日数" Type="System.String" Scope="User">
+      <Value Profile="(Default)">21</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_VERSION_NUMBER_V1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_VERSION_NUMBER_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_DISC_版収録曲チェックファイルパス_V1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_EXPORT_DISC_版収録曲チェックファイルパス_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\DISC版収録曲チェックファイル_V2.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_ADDITION_SONG_LAST_6_DAYS_MAX_NUMBER_CHECK" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3000</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_加算日" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_FORLDER_SERVER_出力パス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\eb-server\x-drv\K-tai\digidoco\upload\tsv\</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_背景映像コードチェックファイルパス_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\背景映像コードチェックファイル_V2.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_背景映像コードチェックファイルパス_V1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_EXPORT_LOCAL_PATH_前回ディスク追加削除曲TSVパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Maprj\Festival\old\FSディスク追加削除曲.tsv</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_SERVER_PATH_ディスク追加削除曲取込ファイル" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\xgmmsxdd01\Maprj\xing\Fes\tbl_Fes前回ディスク追加削除曲.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_ディスク追加削除曲チェックファイルパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_EXPORT_前回個別映像ディスク追加削除情報TSVパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Maprj\Festival\old\FS個別映像ディスク追加削除情報.tsv</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_個別映像ディスク追加削除情報取込ファイル" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\xgmmsxdd01\Maprj\xing\Fes\tbl_Fes前回個別映像ディスク追加削除情報.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_チャプター追加削除曲フラグチェックファイルパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Maprj\Festival\チャプター追加削除曲フラグチェックファイル.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_前回チャプター追加削除曲TSVパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Maprj\Festival\old\FSチャプター追加削除曲.tsv</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_チャプター追加削除曲取込ファイル" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\xgmmsxdd01\Maprj\xing\Fes\tbl_Fes前回チャプター追加削除曲.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_チャプター追加削除曲前回チェックファイルパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IMPORT_RANKING_総合ランキング" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\cdn_wjk_total_month_150_</Value>
+    </Setting>
+    <Setting Name="IMPORT_RANKING_年間ランキング" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\year_ranking_.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_RECOMEND_SONG_LOCAL_PATH_おすすめ曲" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\recommend_song_</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_RECOMEND_SONG_SERVER_PATH_読替おすすめ曲取込配置ファイル" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\xgmmsxdd01\Maprj\xing\Fes\TBL_RecommendSong.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_歌手変更履歴取得元コンテンツTSVパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\old\FSコンテンツ.tsv</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_歌手変更履歴取得元歌手TSVパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\old\FS歌手.tsv</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_歌手取込配置ファイル" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\xgmmsxdd01\Maprj\xing\Fes\tbl_Fes前回歌手.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_コンテンツ取込配置ファイル" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\xgmmsxdd01\Maprj\xing\Fes\tbl_Fes前回コンテンツ.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_おすすめプログラムリストチェックファイルパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Maprj\Festival\おすすめプログラムリストチェックファイル.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_出力ファイルリスト_V1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_EXPORT_出力ファイルリスト_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSコンテンツ_V2;FSサービス情報_V2;FSタイアップ情報_V2;FS歌手;FSジャンル情報_V2;FSジャンルリスト大ジャンル;FSジャンルリスト中ジャンル;FSジャンル説明文;FS楽曲名英数読み_V2;FS歌手名英数読み;FSおすすめ曲;FS歌いだし;FSディスク版収録曲_V2;FSsong_id_change_history;FScontents_ranking;FSsinger_ranking;FStieup_ranking_V2;FSyears_ranking;FS更新日付;FSランキング集計期間;FS追加曲;FS個別映像割付情報;FS個別映像DISC収録情報_V2;FSパッケージID情報;FS収集リスト;FS健康王国おすすめ曲;FSおすすめプログラム曲;FSおすすめプログラム名</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_出力パス_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">festivalv2\all\search\</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_出力対象ファイルリネーム後名称_V2_HDD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSディスク追加削除曲;FS個別映像ディスク追加削除情報;FSチャプター追加削除曲</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_出力パス_V2_HDD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">festivalv2\all\hdd\</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_出力対象ファイルリネーム後名称_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSコンテンツ;FSサービス情報;FSタイアップ情報;FS歌手;FSジャンル情報;FSジャンルリスト大ジャンル;FSジャンルリスト中ジャンル;FSジャンル説明文;FS楽曲名英数読み;FS歌手名英数読み;FSおすすめ曲;FS歌いだし;FSディスク版収録曲;FSsong_id_change_history;FScontents_ranking;FSsinger_ranking;FStieup_ranking;FSyears_ranking;FS更新日付;FSランキング集計期間;FS追加曲;FS個別映像割付情報;FS個別映像DISC収録情報;FSパッケージID情報;FS収集リスト;FS健康王国おすすめ曲;FS健康王国おすすめプログラム曲;FS健康王国おすすめプログラム名</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_出力パス_V1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_EXPORT_出力ファイルリスト_V2_HDD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FSディスク追加削除曲;FS個別映像ディスク追加削除情報;FSチャプター追加削除曲</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_出力対象ファイルリネーム後名称_V1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_RECOMMEND_SONG_IMPORT_FILE_おすすめ曲リスト取込" Type="System.String" Scope="User">
+      <Value Profile="(Default)">おすすめ曲リスト.txt</Value>
+    </Setting>
+    <Setting Name="FES_VIDEO_ASSIGMENT_SEARCH_検索条件" Type="System.String" Scope="User">
+      <Value Profile="(Default)">背景動画コード あり全件;[背景映像コード] is not null</Value>
+    </Setting>
+    <Setting Name="RIBBON_EXPORT_MENU_FES_VIDEO_ASSIGMENT_映像割付リストパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Fes_up\</Value>
+    </Setting>
+    <Setting Name="FES_VIDEO_ASSIGMENT_EXPORT_DATA_出力条件" Type="System.String" Scope="User">
+      <Value Profile="(Default)">映像割付リスト</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_コンテンツ歌手IDチェックファイルパス_V1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_EXPORT_コンテンツ歌手IDチェックファイルパス_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\コンテンツ歌手IDチェックファイル_V2.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_歌いだしチェックファイルパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\歌いだしチェックファイル.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_DISC版収録曲チェックファイルパス_V1" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_EXPORT_DISC版収録曲チェックファイルパス_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\DISC版収録曲チェックファイル_V2.txt</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_前回ディスク追加削除曲TSVパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Maprj\Festival\old\FSディスク追加削除曲.tsv</Value>
+    </Setting>
+    <Setting Name="FES_VIDEO_ASSIGMENT_IMPORT_EXPORT_FILE_映像割付リスト取込" Type="System.String" Scope="User">
+      <Value Profile="(Default)">映像割付リスト.txt</Value>
+    </Setting>
+    <Setting Name="FES_VIDEO_ASSIGMENT_DEFAULT_PATH_映像割付リスト取込パス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\js-server\S-drv\制作\発納\festa映像割付\</Value>
+    </Setting>
+    <Setting Name="FES_SONG_WITH_DISC_検索条件_V1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DISCID_V1 あり全件;[FesDISCID] is not null</Value>
+    </Setting>
+    <Setting Name="FES_SONG_WITH_DISC_検索条件_V2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DISCID_V2 あり全件;[FesDISCID(Ver2)] is not null</Value>
+    </Setting>
+    <Setting Name="FES_SONG_WITH_DISC_FILE_NAME_IMPORT_DISCID割付リスト取込" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DISCID割付リスト.txt</Value>
+    </Setting>
+    <Setting Name="FES_SONG_WITH_DISC_SERVER_FILE_PATH_IMPORT_DISCID割付リスト取込配置ファイル" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\xgmmsxdd01\Maprj\xing\Fes\tbl_FesDISCID割付リスト.txt</Value>
+    </Setting>
+    <Setting Name="FES_SONG_WITH_DISC_IMPORT_LOG_DISCID割付リスト取込チェックファイルパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\maprj\Festival\DISCID割付リストチェックファイル.txt</Value>
+    </Setting>
+    <Setting Name="FES_VIDEOS_MANAGERMENT_検索条件" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_SONG_MANAGEMENT_検索条件" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_EXPORT_個別映像ディスク追加削除情報チェックファイルパス" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Maprj\Festival\個別映像ディスク追加削除情報チェックファイル.txt</Value>
+    </Setting>
+    <Setting Name="FES_CHAPTER_MANAGEMENT_検索条件" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FES_VIDEO_MANAGEMENT_背景ファイルサイズ取込" Type="System.String" Scope="User">
+      <Value Profile="(Default)">背景ファイルサイズリスト.txt</Value>
+    </Setting>
+    <Setting Name="FES_SONG_MANAGEMENT_DISC搭載曲データサイズ取込" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DISC搭載曲データサイズ.txt</Value>
+    </Setting>
+    <Setting Name="FES_DISK_MANAGEMENT_DISCサイズ" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">20000</Value>
+    </Setting>
+    <Setting Name="FES_DISK_MANAGEMENT_ファイルサイズの単位" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1048576</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
