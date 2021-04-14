@@ -31,10 +31,10 @@
             Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FesVideoDiscDisplay));
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            this.advancedDataGridView = new Zuby.ADGV.AdvancedDataGridView();
+            this.advFesIndividualVideoDisc = new Zuby.ADGV.AdvancedDataGridView();
             this.col背景ファイル名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFesDISCID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advFesIndividualVideoDisc)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewFilter
@@ -60,7 +60,7 @@
             this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
             this.dataGridViewFilter.ColumnUpdateTimeName = null;
             this.dataGridViewFilter.ColUpdatedIndex = 0;
-            this.dataGridViewFilter.DataGridViewSource = this.advancedDataGridView;
+            this.dataGridViewFilter.DataGridViewSource = this.advFesIndividualVideoDisc;
             this.dataGridViewFilter.DataSourceDisplay = null;
             this.dataGridViewFilter.DataTableSource = null;
             this.dataGridViewFilter.IsFilterActive = false;
@@ -71,23 +71,24 @@
             this.dataGridViewFilter.Size = new System.Drawing.Size(773, 444);
             this.dataGridViewFilter.TabIndex = 0;
             // 
-            // advancedDataGridView
+            // advFesIndividualVideoDisc
             // 
-            this.advancedDataGridView.AllowUserToAddRows = false;
-            this.advancedDataGridView.AllowUserToDeleteRows = false;
-            this.advancedDataGridView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.advancedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.advancedDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advFesIndividualVideoDisc.AllowUserToAddRows = false;
+            this.advFesIndividualVideoDisc.AllowUserToDeleteRows = false;
+            this.advFesIndividualVideoDisc.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.advFesIndividualVideoDisc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advFesIndividualVideoDisc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col背景ファイル名,
             this.colFesDISCID});
-            this.advancedDataGridView.FilterAndSortEnabled = true;
-            this.advancedDataGridView.Location = new System.Drawing.Point(12, 25);
-            this.advancedDataGridView.Name = "advancedDataGridView";
-            this.advancedDataGridView.ReadOnly = true;
-            this.advancedDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.advancedDataGridView.Size = new System.Drawing.Size(729, 230);
-            this.advancedDataGridView.TabIndex = 1;
-            this.advancedDataGridView.Visible = false;
+            this.advFesIndividualVideoDisc.FilterAndSortEnabled = true;
+            this.advFesIndividualVideoDisc.IsLoadConfig = false;
+            this.advFesIndividualVideoDisc.Location = new System.Drawing.Point(12, 25);
+            this.advFesIndividualVideoDisc.Name = "advFesIndividualVideoDisc";
+            this.advFesIndividualVideoDisc.ReadOnly = true;
+            this.advFesIndividualVideoDisc.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advFesIndividualVideoDisc.Size = new System.Drawing.Size(729, 230);
+            this.advFesIndividualVideoDisc.TabIndex = 1;
+            this.advFesIndividualVideoDisc.Visible = false;
             // 
             // col背景ファイル名
             // 
@@ -114,7 +115,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.advancedDataGridView);
+            this.Controls.Add(this.advFesIndividualVideoDisc);
             this.Controls.Add(this.dataGridViewFilter);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -123,8 +124,9 @@
             this.Name = "FesVideoDiscDisplay";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "個別映像DISC収録情報_追加削除管理";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FesVideoDiscDisplay_FormClosing);
             this.Load += new System.EventHandler(this.FesVideoDiscDisplay_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advFesIndividualVideoDisc)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -132,7 +134,7 @@
         #endregion
 
         private Base.DataGridViewFilter dataGridViewFilter;
-        private Zuby.ADGV.AdvancedDataGridView advancedDataGridView;
+        private Zuby.ADGV.AdvancedDataGridView advFesIndividualVideoDisc;
         private System.Windows.Forms.DataGridViewTextBoxColumn col背景ファイル名;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFesDISCID;
     }

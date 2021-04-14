@@ -34,7 +34,7 @@ namespace Festival.ManagementTab.ProjectID
 
             dataGridViewFilter.ColumnDeletedDataPropertyName = colDelete.DataPropertyName;
             dataGridViewFilter.AllowUserEdit = true;
-            dataGridViewFilter.DataGridViewSource = dtgProjects;
+            dataGridViewFilter.DataGridViewSource = advProjects;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colUpdateDate.DataPropertyName;
             dataGridViewFilter.ColumnUpdateTimeName = colUpdateDate.Name;
             dataGridViewFilter.CellClickedEvent += CellClick;
@@ -310,6 +310,7 @@ namespace Festival.ManagementTab.ProjectID
 
         private void ProjectIDMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            dataGridViewFilter.SaveConfig();
             CloseAndSave(e);
         }
 

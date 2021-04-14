@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExecuteMain));
-            this.dtgExecute = new Zuby.ADGV.AdvancedDataGridView();
+            this.advExecute = new Zuby.ADGV.AdvancedDataGridView();
             this.colロック削除 = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col項目 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,32 +40,33 @@
             this.colPC名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLoadExecute = new DevComponents.DotNetBar.ButtonX();
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgExecute)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advExecute)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtgExecute
+            // advExecute
             // 
-            this.dtgExecute.AllowUserToAddRows = false;
-            this.dtgExecute.AllowUserToDeleteRows = false;
-            this.dtgExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.advExecute.AllowUserToAddRows = false;
+            this.advExecute.AllowUserToDeleteRows = false;
+            this.advExecute.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgExecute.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgExecute.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advExecute.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advExecute.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colロック削除,
             this.colID,
             this.col項目,
             this.col状態,
             this.col担当者,
             this.colPC名});
-            this.dtgExecute.FilterAndSortEnabled = true;
-            this.dtgExecute.Location = new System.Drawing.Point(45, 74);
-            this.dtgExecute.Name = "dtgExecute";
-            this.dtgExecute.ReadOnly = true;
-            this.dtgExecute.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgExecute.Size = new System.Drawing.Size(682, 282);
-            this.dtgExecute.TabIndex = 1;
-            this.dtgExecute.Visible = false;
+            this.advExecute.FilterAndSortEnabled = true;
+            this.advExecute.IsLoadConfig = false;
+            this.advExecute.Location = new System.Drawing.Point(45, 74);
+            this.advExecute.Name = "advExecute";
+            this.advExecute.ReadOnly = true;
+            this.advExecute.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advExecute.Size = new System.Drawing.Size(682, 282);
+            this.advExecute.TabIndex = 1;
+            this.advExecute.Visible = false;
             // 
             // colロック削除
             // 
@@ -183,9 +184,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.dataGridViewFilter);
-            this.Controls.Add(this.dtgExecute);
+            this.Controls.Add(this.advExecute);
             this.Controls.Add(this.btnLoadExecute);
+            this.Controls.Add(this.dataGridViewFilter);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -193,8 +194,9 @@
             this.Name = "ExecuteMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "排他管理";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ExecuteMain_FormClosing);
             this.Load += new System.EventHandler(this.ExecuteMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgExecute)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advExecute)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -202,7 +204,7 @@
         #endregion
 
         private DevComponents.DotNetBar.ButtonX btnLoadExecute;
-        private Zuby.ADGV.AdvancedDataGridView dtgExecute;
+        private Zuby.ADGV.AdvancedDataGridView advExecute;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn colロック削除;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn col項目;

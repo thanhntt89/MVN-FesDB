@@ -28,18 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectIDMain));
             this.btn_save = new DevComponents.DotNetBar.ButtonX();
-            this.dtgProjects = new Zuby.ADGV.AdvancedDataGridView();
-            this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
+            this.advProjects = new Zuby.ADGV.AdvancedDataGridView();
             this.colDelete = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.colプロジェクトID = new Festival.Base.DataGridViewNumericColumn();
             this.col機能名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUpdateDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colOldプロジェクトID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgProjects)).BeginInit();
+            this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
+            ((System.ComponentModel.ISupportInitialize)(this.advProjects)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_save
@@ -55,60 +55,27 @@
             this.btn_save.Text = "登録(&S)";
             this.btn_save.Click += new System.EventHandler(this.btnSave);
             // 
-            // dtgProjects
+            // advProjects
             // 
-            this.dtgProjects.AllowUserToDeleteRows = false;
-            this.dtgProjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.advProjects.AllowUserToDeleteRows = false;
+            this.advProjects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advProjects.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advProjects.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDelete,
             this.colプロジェクトID,
             this.col機能名,
             this.colUpdateDate,
             this.colOldプロジェクトID});
-            this.dtgProjects.FilterAndSortEnabled = true;
-            this.dtgProjects.Location = new System.Drawing.Point(47, 56);
-            this.dtgProjects.Name = "dtgProjects";
-            this.dtgProjects.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgProjects.Size = new System.Drawing.Size(680, 301);
-            this.dtgProjects.TabIndex = 1;
-            this.dtgProjects.Visible = false;
-            // 
-            // dataGridViewFilter
-            // 
-            this.dataGridViewFilter.AllowUserEdit = false;
-            this.dataGridViewFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewFilter.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridViewFilter.CancelClose = false;
-            this.dataGridViewFilter.ColChoiseIndex = 0;
-            this.dataGridViewFilter.ColDeletedIndex = 0;
-            this.dataGridViewFilter.ColKeyIndex = 0;
-            this.dataGridViewFilter.ColumnChoiseDataPropertyName = null;
-            this.dataGridViewFilter.ColumnChoiseName = null;
-            this.dataGridViewFilter.ColumnCollection = null;
-            this.dataGridViewFilter.ColumnComboxChangeName = null;
-            this.dataGridViewFilter.ColumnDeletedDataPropertyName = null;
-            this.dataGridViewFilter.ColumnDeletedName = null;
-            this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
-            this.dataGridViewFilter.ColumnKeyName = null;
-            this.dataGridViewFilter.ColumnUpdateName = null;
-            this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
-            this.dataGridViewFilter.ColumnUpdateTimeName = null;
-            this.dataGridViewFilter.ColUpdatedIndex = 0;
-            this.dataGridViewFilter.DataGridViewSource = null;
-            this.dataGridViewFilter.DataSourceDisplay = null;
-            this.dataGridViewFilter.DataTableSource = null;
-            this.dataGridViewFilter.IsFilterActive = false;
-            this.dataGridViewFilter.Location = new System.Drawing.Point(12, 41);
-            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection1;
-            this.dataGridViewFilter.Name = "dataGridViewFilter";
-            this.dataGridViewFilter.SCREEN_TITLE = null;
-            this.dataGridViewFilter.Size = new System.Drawing.Size(760, 408);
-            this.dataGridViewFilter.TabIndex = 3;
+            this.advProjects.FilterAndSortEnabled = true;
+            this.advProjects.IsLoadConfig = false;
+            this.advProjects.Location = new System.Drawing.Point(47, 56);
+            this.advProjects.Name = "advProjects";
+            this.advProjects.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advProjects.Size = new System.Drawing.Size(680, 301);
+            this.advProjects.TabIndex = 1;
+            this.advProjects.Visible = false;
             // 
             // colDelete
             // 
@@ -190,13 +157,47 @@
             this.colOldプロジェクトID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.colOldプロジェクトID.Visible = false;
             // 
+            // dataGridViewFilter
+            // 
+            this.dataGridViewFilter.AllowUserEdit = false;
+            this.dataGridViewFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewFilter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridViewFilter.CancelClose = false;
+            this.dataGridViewFilter.ColChoiseIndex = 0;
+            this.dataGridViewFilter.ColDeletedIndex = 0;
+            this.dataGridViewFilter.ColKeyIndex = 0;
+            this.dataGridViewFilter.ColumnChoiseDataPropertyName = null;
+            this.dataGridViewFilter.ColumnChoiseName = null;
+            this.dataGridViewFilter.ColumnCollection = null;
+            this.dataGridViewFilter.ColumnComboxChangeName = null;
+            this.dataGridViewFilter.ColumnDeletedDataPropertyName = null;
+            this.dataGridViewFilter.ColumnDeletedName = null;
+            this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
+            this.dataGridViewFilter.ColumnKeyName = null;
+            this.dataGridViewFilter.ColumnUpdateName = null;
+            this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnUpdateTimeName = null;
+            this.dataGridViewFilter.ColUpdatedIndex = 0;
+            this.dataGridViewFilter.DataGridViewSource = null;
+            this.dataGridViewFilter.DataSourceDisplay = null;
+            this.dataGridViewFilter.DataTableSource = null;
+            this.dataGridViewFilter.IsFilterActive = false;
+            this.dataGridViewFilter.Location = new System.Drawing.Point(12, 41);
+            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection1;
+            this.dataGridViewFilter.Name = "dataGridViewFilter";
+            this.dataGridViewFilter.SCREEN_TITLE = null;
+            this.dataGridViewFilter.Size = new System.Drawing.Size(760, 408);
+            this.dataGridViewFilter.TabIndex = 3;
+            // 
             // ProjectIDMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.btn_save);
-            this.Controls.Add(this.dtgProjects);
+            this.Controls.Add(this.advProjects);
             this.Controls.Add(this.dataGridViewFilter);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -207,13 +208,13 @@
             this.Text = "プロジェクトID";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProjectIDMain_FormClosing);
             this.Load += new System.EventHandler(this.ProjectIDMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgProjects)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advProjects)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Zuby.ADGV.AdvancedDataGridView dtgProjects;
+        private Zuby.ADGV.AdvancedDataGridView advProjects;
         private DevComponents.DotNetBar.ButtonX btn_save;
         private Base.DataGridViewFilter dataGridViewFilter;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn colDelete;

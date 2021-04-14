@@ -154,7 +154,7 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             fesSongWithDiscBusiness = new FesSongWithDiscBusiness();
 
             // set struct datagridview
-            dataGridViewFilter.DataGridViewSource = advDisplayMain;
+            dataGridViewFilter.DataGridViewSource = advSongWithDisc;
             dataGridViewFilter.ColChoiseIndex = col選択.Index;
             dataGridViewFilter.ColUpdatedIndex = col更新日時.Index;
             dataGridViewFilter.ColKeyIndex = colデジドココンテンツID.Index;
@@ -181,7 +181,7 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
         {
             if (editMode == EnumEditMode.ReadOnly || editMode == EnumEditMode.None)
             {
-                foreach (DataGridViewColumn colm in advDisplayMain.Columns)
+                foreach (DataGridViewColumn colm in advSongWithDisc.Columns)
                 {
                     if (colm.DataPropertyName.Equals(col選択.DataPropertyName))
                         continue;
@@ -614,6 +614,11 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
                 LoadData();
                 fesSongWithDiscSearch.IsActive = false;
             }
+        }
+
+        public override void SaveConfig()
+        {
+            dataGridViewFilter.SaveConfig();
         }
     }
 }

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace FestivalCommon
@@ -7,7 +10,33 @@ namespace FestivalCommon
 
     public class Constants
     {
-        public static string VERSION_TEXT = "Version 3.0.4";
+        public static string VERSION_TEXT
+        {
+            get
+            {
+                FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+                return string.Format("Version {0}.{1}.{2}", fvi.ProductMajorPart, fvi.ProductMinorPart, fvi.FileBuildPart);
+            }
+        }
+
+        public static string SETTING_DATAGRIDVIEW_USER_ROOT_PATH
+        {
+            get
+            {
+                string path = string.Format("{0}", Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
+
+                if (Directory.Exists(path))
+                {
+                    path = string.Format("{0}\\{1}", path, "Festival");
+                }
+                else
+                {
+                    path = string.Format("{0}\\DefaultConfig", Application.StartupPath);
+                }
+
+                return path;
+            }
+        }
 
         // Log datetime format
         public static string LOG_DATE_TIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
@@ -19,19 +48,19 @@ namespace FestivalCommon
         public static string IMPORT_RECOMMEND_SONG_TMP_FILE_NAME = "Tmp.txt";
         // Table Name
         public static string WORK_TABLE_NAME_FESTCONTENT = string.Format("tbl_Wrk_Fesコンテンツ_{0}", Environment.MachineName).Replace("-", "_");
-        public static string SONG_NUMBER_NAME_TABLE_TMP = string.Format("tbl_Wrk_Fes選曲番号_{0}", Environment.MachineName).Replace("-", "_"); 
+        public static string SONG_NUMBER_NAME_TABLE_TMP = string.Format("tbl_Wrk_Fes選曲番号_{0}", Environment.MachineName).Replace("-", "_");
         public static string RECORDABLE_LIST_TABLE_NAME = "tbl_Fes録音可能リスト";
         public static string TABLE_TOTAL_RANKING = "tbl_FesTotal_Ranking";
         public static string TABLE_KARAOKE_YEAR_RANKING = "tbl_Fes_Karaoke_Year_Ranking";
         public static string TABLE_SONG_ADD_DELETE_NAME = string.Format("WiiTmp.dbo.[tbl_Wrk_FesDISC搭載曲追加削除管理_{0}]", Environment.MachineName).Replace("-", "_");
         public static string FEST_RECOMMEND_SONG_TABLE_DBTMP = string.Format("##FesRecommendSongTmp_{0}", Environment.MachineName.Replace("-", "_"));
         public static string FES_SONG_DISC_MANAGEMENT_WORK_TABLE_DBTMP = string.Format("##SongDiscManagementTmp_{0}", Environment.MachineName.Replace("-", "_"));
-        public static string FES_VIDEO_DISC_MANAGEMENT_WORK_TABLE_DBTMP = string.Format("##VideoDiscManagementTmp_{0}", Environment.MachineName.Replace("-", "_"));     
+        public static string FES_VIDEO_DISC_MANAGEMENT_WORK_TABLE_DBTMP = string.Format("##VideoDiscManagementTmp_{0}", Environment.MachineName.Replace("-", "_"));
 
         // Global variable in sql start with ##
         public static string FES_CHAPTER_MANAGEMENT_WORK_TABLE_DBTMP = string.Format("##FesChapterTableTmp{0}", Environment.MachineName.Replace("-", "_"));
         public static string FES_CONSTENT_TABLE_DBTMP = string.Format("##FesWorkTableTmp{0}", Environment.MachineName.Replace("-", "_"));
-        public static string FES_VIDEO_ASSIGMENT_TABLE_DBTMP = string.Format("##FesVideoAssigmentTableTmp{0}", Environment.MachineName.Replace("-", "_"));               
+        public static string FES_VIDEO_ASSIGMENT_TABLE_DBTMP = string.Format("##FesVideoAssigmentTableTmp{0}", Environment.MachineName.Replace("-", "_"));
 
         public static string FES_TIEUP_TABLE_DBTMP = string.Format("##FesTieupTableTmp{0}", Environment.MachineName.Replace("-", "_"));
         public static string FES_SONG_WITH_DISC_TABLE_DBTMP = string.Format("##FesSongWithDiscTableTmp{0}", Environment.MachineName.Replace("-", "_"));
@@ -43,8 +72,8 @@ namespace FestivalCommon
         public static string CONDITION_VALUE_BLANK = string.Empty;
 
         public static string FES_CONTENT_EXPORT_TYPE_FES_COLLECTION_LIST = "Fes収集リスト";
-        public static string FES_CONTENT_EXPORT_TYPE_SONG_LIST = "楽曲リスト";       
-       
+        public static string FES_CONTENT_EXPORT_TYPE_SONG_LIST = "楽曲リスト";
+
         public static string TitleInputFileMatchingScreenText = "ファイル照合";
         public static string TitleInputFileMatchingKaraokeScreenText = "ファイル照合 カラオケ";
         public static string TitleInputSongSelectedNumberText = "選曲番号入力";
@@ -158,7 +187,7 @@ namespace FestivalCommon
         public static string MSGA002 = "A002";
         public static string MSGA005 = "A005";
         public static string MSGA006 = "A006";
-       
+
     }
 
 

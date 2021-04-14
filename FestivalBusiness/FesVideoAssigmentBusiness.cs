@@ -53,7 +53,7 @@ namespace FestivalBusiness
 
                 bool isUpdate = false;
 
-                // Table update dbo.[Fes映像コード管理] hailt
+                // Table update dbo.[Fes映像コード管理] 
                 // Get all fes video assigment work update
                 DataTable tbWorkUpdate = GetFesVideoAssigmentWorkUpdate();
                 DataTable dtRegist = new DataTable();
@@ -135,10 +135,89 @@ namespace FestivalBusiness
             }
         }
 
+
+        public void SaveFromFesContents(SqlTransaction sqlTransac, DataTable dtFesVideo)
+        {
+            try
+            {        
+                DataRow row = dtFesVideo.Rows[0];
+
+                bool isUpdate = false;
+                DataTable dtRegist = new DataTable();
+                DataRow updateRow = null;
+                string contentId = string.Empty;
+                                
+                contentId = row["デジドココンテンツID"].ToString();
+                dtRegist = GetFesVideoCodeManagementById(contentId);
+
+                bool isAddNew = false;
+                isUpdate = true;
+
+                // Add new
+                if (dtRegist.Rows.Count == 0)
+                {
+                    dtRegist.Rows.Add();
+                    dtRegist.Rows[0]["デジドココンテンツID"] = row["デジドココンテンツID"];
+                    isAddNew = true;
+                }
+
+                updateRow = dtRegist.Rows[0];
+
+                foreach (DataColumn col in dtFesVideo.Columns)
+                {
+                    if (col.ColumnName.Equals("デジドココンテンツID"))
+                        continue;
+                    updateRow[col.ColumnName] = row[col];
+                }
+
+                //updateRow["最終更新日時"] = DateTime.Now;
+                //updateRow["最終更新者"] = Environment.UserName;
+                //updateRow["最終更新PC名"] = Environment.MachineName.Replace("-", "");
+
+                if (isUpdate)
+                {
+                    if (isAddNew)
+                    {
+                        InsertFesVideoManagement(sqlTransac, dtRegist);
+                    }
+                    else
+                    {
+                        UpdateFesViedeosManagment(sqlTransac, dtRegist);
+                    }
+
+                    // Update work table
+                    UpdateFesVideoManagmentWork(sqlTransac, contentId);
+                }
+
+                sqlTransac.Commit();
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+
+                sqlTransac.Rollback();
+                connection.Close();
+                throw ex;
+            }
+        }
+
+       public void DeleteFromFesContents(SqlTransaction sqlTransac)
+        {
+            try
+            {
+                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesVideoAssigmentQuery.GetDeleteFesVideoManagementQueryFromFesContents());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private void DeleteFesVideoManagement(SqlTransaction sqlTransac)
         {
             try
             {
+                //Delete Wii.dbo.Fes映像コード管理
                 SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesVideoAssigmentQuery.GetDeleteFesVideoManagementQuery());
                 // Delete work table
                 SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesVideoAssigmentQuery.GetDeleteFesVideoWorkQuery());
@@ -149,7 +228,7 @@ namespace FestivalBusiness
             }
         }
 
-        private void UpdateFesViedeosManagment(SqlTransaction sqlTransac, DataTable dtRegist)
+        public void UpdateFesViedeosManagment(SqlTransaction sqlTransac, DataTable dtRegist)
         {
             try
             {
@@ -173,7 +252,7 @@ namespace FestivalBusiness
             }
         }
 
-        private void InsertFesVideoManagement(SqlTransaction sqlTransac, DataTable dtRegist)
+        public void InsertFesVideoManagement(SqlTransaction sqlTransac, DataTable dtRegist)
         {
             try
             {
@@ -185,7 +264,7 @@ namespace FestivalBusiness
             }
         }
 
-        private DataTable GetFesVideoCodeManagementById(string contentId)
+        public DataTable GetFesVideoCodeManagementById(string contentId)
         {
             try
             {

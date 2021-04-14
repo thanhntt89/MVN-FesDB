@@ -37,7 +37,7 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.btnAddNew = new DevComponents.DotNetBar.ButtonX();
-            this.dtgRecommendSong = new Zuby.ADGV.AdvancedDataGridView();
+            this.advRecommendProgram = new Zuby.ADGV.AdvancedDataGridView();
             this.colDelete = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.colプログラムID = new Festival.Base.DataGridViewNumericColumn();
             this.colプログラム名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,7 +45,7 @@
             this.colDateTimeUpdate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colOldプログラムID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.fes歌手ID変更履歴BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgRecommendSong)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advRecommendProgram)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewFilter
@@ -126,24 +126,25 @@
             this.btnAddNew.Visible = false;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
-            // dtgRecommendSong
+            // advRecommendProgram
             // 
-            this.dtgRecommendSong.AllowUserToDeleteRows = false;
-            this.dtgRecommendSong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgRecommendSong.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advRecommendProgram.AllowUserToDeleteRows = false;
+            this.advRecommendProgram.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advRecommendProgram.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDelete,
             this.colプログラムID,
             this.colプログラム名,
             this.col備考,
             this.colDateTimeUpdate,
             this.colOldプログラムID});
-            this.dtgRecommendSong.FilterAndSortEnabled = true;
-            this.dtgRecommendSong.Location = new System.Drawing.Point(12, 54);
-            this.dtgRecommendSong.Name = "dtgRecommendSong";
-            this.dtgRecommendSong.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgRecommendSong.Size = new System.Drawing.Size(711, 311);
-            this.dtgRecommendSong.TabIndex = 2;
-            this.dtgRecommendSong.Visible = false;
+            this.advRecommendProgram.FilterAndSortEnabled = true;
+            this.advRecommendProgram.IsLoadConfig = false;
+            this.advRecommendProgram.Location = new System.Drawing.Point(12, 54);
+            this.advRecommendProgram.Name = "advRecommendProgram";
+            this.advRecommendProgram.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advRecommendProgram.Size = new System.Drawing.Size(711, 311);
+            this.advRecommendProgram.TabIndex = 2;
+            this.advRecommendProgram.Visible = false;
             // 
             // colDelete
             // 
@@ -241,7 +242,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.dtgRecommendSong);
+            this.Controls.Add(this.advRecommendProgram);
             this.Controls.Add(this.dataGridViewFilter);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.btnUpdate);
@@ -256,7 +257,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RecommendProgramMain_FormClosing);
             this.Load += new System.EventHandler(this.RecommendProgramMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fes歌手ID変更履歴BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgRecommendSong)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advRecommendProgram)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -264,7 +265,7 @@
         #endregion
 
         private Base.DataGridViewFilter dataGridViewFilter;
-        private Zuby.ADGV.AdvancedDataGridView dtgRecommendSong;
+        private Zuby.ADGV.AdvancedDataGridView advRecommendProgram;
         private System.Windows.Forms.BindingSource fes歌手ID変更履歴BindingSource;
         private DevComponents.DotNetBar.ButtonX btnAddNew;
         private DevComponents.DotNetBar.ButtonX btnUpdate;

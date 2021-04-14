@@ -29,7 +29,7 @@ namespace Festival.DBTab.SingerManagement
         public void InitData()
         {
             singerManagementBusiness = new SingerManagementBusiness();
-            dataGridViewFilter.DataGridViewSource = advancedDataGridView;
+            dataGridViewFilter.DataGridViewSource = advSinger;
             dataGridViewFilter.ColumnKeyDataPropertyName = colFes独自歌手ID.DataPropertyName;
             dataGridViewFilter.ColumnKeyName = colFes独自歌手ID.Name;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colDateTimeUpdate.DataPropertyName;
@@ -419,6 +419,7 @@ namespace Festival.DBTab.SingerManagement
 
         private void SingerManagementMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            dataGridViewFilter.SaveConfig();
             CloseAndSave(e);
         }
 

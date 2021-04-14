@@ -42,7 +42,7 @@ namespace Festival.DiscVideoTab.FesVideoAddDelete
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            this.advFesVideoAssigment = new Zuby.ADGV.AdvancedDataGridView();
+            this.advFesVideoAddDelete = new Zuby.ADGV.AdvancedDataGridView();
             this.col選択 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.col通番 = new Festival.Base.DataGridViewNumericColumn();
             this.col追加削除区分 = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
@@ -55,8 +55,8 @@ namespace Festival.DiscVideoTab.FesVideoAddDelete
             this.col削除 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.col更新日時 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colID = new Festival.Base.DataGridViewNumericColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advFesVideoAssigment)).BeginInit();
+           
+            ((System.ComponentModel.ISupportInitialize)(this.advFesVideoAddDelete)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewFilter
@@ -91,16 +91,16 @@ namespace Festival.DiscVideoTab.FesVideoAddDelete
             this.dataGridViewFilter.Size = new System.Drawing.Size(970, 547);
             this.dataGridViewFilter.TabIndex = 1;
             // 
-            // advFesVideoAssigment
+            // advFesVideoAddDelete
             // 
-            this.advFesVideoAssigment.AllowUserToAddRows = false;
-            this.advFesVideoAssigment.AllowUserToDeleteRows = false;
-            this.advFesVideoAssigment.AllowUserToOrderColumns = true;
-            this.advFesVideoAssigment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.advFesVideoAddDelete.AllowUserToAddRows = false;
+            this.advFesVideoAddDelete.AllowUserToDeleteRows = false;
+            this.advFesVideoAddDelete.AllowUserToOrderColumns = true;
+            this.advFesVideoAddDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.advFesVideoAssigment.ColumnHeadersHeight = 24;
-            this.advFesVideoAssigment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advFesVideoAddDelete.ColumnHeadersHeight = 24;
+            this.advFesVideoAddDelete.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col選択,
             this.col通番,
             this.col追加削除区分,
@@ -120,17 +120,18 @@ namespace Festival.DiscVideoTab.FesVideoAddDelete
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.advFesVideoAssigment.DefaultCellStyle = dataGridViewCellStyle10;
-            this.advFesVideoAssigment.FilterAndSortEnabled = true;
-            this.advFesVideoAssigment.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.advFesVideoAssigment.Location = new System.Drawing.Point(3, 3);
-            this.advFesVideoAssigment.Name = "advFesVideoAssigment";
-            this.advFesVideoAssigment.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.advFesVideoAssigment.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.advFesVideoAssigment.ShowCellErrors = false;
-            this.advFesVideoAssigment.Size = new System.Drawing.Size(964, 491);
-            this.advFesVideoAssigment.TabIndex = 23;
-            this.advFesVideoAssigment.Visible = false;
+            this.advFesVideoAddDelete.DefaultCellStyle = dataGridViewCellStyle10;
+            this.advFesVideoAddDelete.FilterAndSortEnabled = true;
+            this.advFesVideoAddDelete.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.advFesVideoAddDelete.IsLoadConfig = false;
+            this.advFesVideoAddDelete.Location = new System.Drawing.Point(3, 3);
+            this.advFesVideoAddDelete.Name = "advFesVideoAddDelete";
+            this.advFesVideoAddDelete.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advFesVideoAddDelete.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.advFesVideoAddDelete.ShowCellErrors = false;
+            this.advFesVideoAddDelete.Size = new System.Drawing.Size(964, 491);
+            this.advFesVideoAddDelete.TabIndex = 23;
+            this.advFesVideoAddDelete.Visible = false;
             // 
             // col選択
             // 
@@ -363,15 +364,15 @@ namespace Festival.DiscVideoTab.FesVideoAddDelete
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Controls.Add(this.advFesVideoAssigment);
+            this.Controls.Add(this.advFesVideoAddDelete);
             this.Controls.Add(this.dataGridViewFilter);
             this.Name = "FesVideoAddDeleteMainAdvance";
             this.SCREEN_TITLE = "個別映像DISC追加削除管理";
             this.Size = new System.Drawing.Size(970, 547);
             this.Load += new System.EventHandler(this.FesVideoAssigmentMainAdvance_Load);
             this.SizeChanged += new System.EventHandler(this.FesVideoAddDeleteMainAdvance_SizeChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advFesVideoAssigment)).EndInit();
+            
+            ((System.ComponentModel.ISupportInitialize)(this.advFesVideoAddDelete)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -379,7 +380,7 @@ namespace Festival.DiscVideoTab.FesVideoAddDelete
         #endregion
 
         private Base.DataGridViewFilter dataGridViewFilter;
-        private AdvancedDataGridView advFesVideoAssigment;
+        private AdvancedDataGridView advFesVideoAddDelete;
         private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn col選択;
         private Base.DataGridViewNumericColumn col通番;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn col追加削除区分;

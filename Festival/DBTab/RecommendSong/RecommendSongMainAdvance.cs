@@ -106,7 +106,7 @@ namespace Festival.DBTab.RecommendSong
             fecommendSongBusiness = new RecommendSongBusiness();
 
             // set struct datagridview
-            dataGridViewFilter.DataGridViewSource = dtgFestContent;
+            dataGridViewFilter.DataGridViewSource = advRecommendSong;
             dataGridViewFilter.ColChoiseIndex = col選択.Index;
             dataGridViewFilter.ColUpdatedIndex = col更新日時.Index;
             dataGridViewFilter.ColKeyIndex = colId.Index;
@@ -161,7 +161,7 @@ namespace Festival.DBTab.RecommendSong
         {
             if (editMode == EnumEditMode.ReadOnly || editMode == EnumEditMode.None)
             {
-                foreach (DataGridViewColumn colm in dtgFestContent.Columns)
+                foreach (DataGridViewColumn colm in advRecommendSong.Columns)
                 {
                     if (colm.DataPropertyName.Equals(col選択.DataPropertyName))
                         continue;
@@ -785,6 +785,11 @@ namespace Festival.DBTab.RecommendSong
                     MessageBox.Show(string.Format(GetResources.GetResourceMesssage(Constants.MSGE038), error.LogTime, error.ModuleName, error.ErrorMessage, error.FilePath), GetResources.GetResourceMesssage(Constants.ERROR_TITLE_MESSAGE), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }));
             }
+        }
+
+        public override void SaveConfig()
+        {
+            dataGridViewFilter.SaveConfig();
         }
     }
 }

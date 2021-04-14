@@ -37,7 +37,7 @@
             this.btnRecommendSongmanage = new System.Windows.Forms.Button();
             this.btnRecommendProgramManage = new System.Windows.Forms.Button();
             this.btnServiceDeleteFlagCorrection = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
+           
             this.SuspendLayout();
             // 
             // btnFestivalContent
@@ -156,7 +156,7 @@
             this.Name = "TabDatabase";
             this.Size = new System.Drawing.Size(651, 275);
             this.Load += new System.EventHandler(this.TabDatabase_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
+            
             this.ResumeLayout(false);
 
         }

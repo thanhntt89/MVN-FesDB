@@ -81,6 +81,4 @@ namespace Festival.Common
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }
-
-
 }

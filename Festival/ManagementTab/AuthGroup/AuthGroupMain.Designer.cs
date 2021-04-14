@@ -32,14 +32,14 @@
             Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthGroupMain));
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
-            this.dtgAuthGroup = new Zuby.ADGV.AdvancedDataGridView();
+            this.advAuthGroup = new Zuby.ADGV.AdvancedDataGridView();
             this.colDelete = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.col権限グループ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col権限名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUpdateDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colOld権限グループ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgAuthGroup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advAuthGroup)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -55,26 +55,27 @@
             this.btnSave.Text = "登録(&S)";
             this.btnSave.Click += new System.EventHandler(this.btn_save);
             // 
-            // dtgAuthGroup
+            // advAuthGroup
             // 
-            this.dtgAuthGroup.AllowUserToDeleteRows = false;
-            this.dtgAuthGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.advAuthGroup.AllowUserToDeleteRows = false;
+            this.advAuthGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgAuthGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgAuthGroup.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advAuthGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advAuthGroup.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDelete,
             this.col権限グループ,
             this.col権限名,
             this.colUpdateDate,
             this.colOld権限グループ});
-            this.dtgAuthGroup.FilterAndSortEnabled = true;
-            this.dtgAuthGroup.Location = new System.Drawing.Point(37, 66);
-            this.dtgAuthGroup.Name = "dtgAuthGroup";
-            this.dtgAuthGroup.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgAuthGroup.Size = new System.Drawing.Size(686, 257);
-            this.dtgAuthGroup.TabIndex = 1;
-            this.dtgAuthGroup.Visible = false;
+            this.advAuthGroup.FilterAndSortEnabled = true;
+            this.advAuthGroup.IsLoadConfig = false;
+            this.advAuthGroup.Location = new System.Drawing.Point(37, 66);
+            this.advAuthGroup.Name = "advAuthGroup";
+            this.advAuthGroup.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advAuthGroup.Size = new System.Drawing.Size(686, 257);
+            this.advAuthGroup.TabIndex = 1;
+            this.advAuthGroup.Visible = false;
             // 
             // colDelete
             // 
@@ -191,7 +192,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dtgAuthGroup);
+            this.Controls.Add(this.advAuthGroup);
             this.Controls.Add(this.dataGridViewFilter);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -202,13 +203,13 @@
             this.Text = "権限グループ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AuthGroupMain_FormClosing);
             this.Load += new System.EventHandler(this.AuthGroupMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgAuthGroup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advAuthGroup)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Zuby.ADGV.AdvancedDataGridView dtgAuthGroup;
+        private Zuby.ADGV.AdvancedDataGridView advAuthGroup;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn colDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn col権限グループ;

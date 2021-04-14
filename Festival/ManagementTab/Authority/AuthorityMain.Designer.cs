@@ -33,7 +33,7 @@
             Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorityMain));
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
-            this.dtgAuthority = new Zuby.ADGV.AdvancedDataGridView();
+            this.advAuthority = new Zuby.ADGV.AdvancedDataGridView();
             this.colDelete = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.col権限グループ = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.colプロジェクトID = new Festival.Base.DataGridViewNumericColumn();
@@ -51,7 +51,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxXColumn1 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgAuthority)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advAuthority)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -67,14 +67,14 @@
             this.btnSave.Text = "登録(&S)";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // dtgAuthority
+            // advAuthority
             // 
-            this.dtgAuthority.AllowUserToDeleteRows = false;
-            this.dtgAuthority.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.advAuthority.AllowUserToDeleteRows = false;
+            this.advAuthority.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgAuthority.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgAuthority.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advAuthority.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advAuthority.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDelete,
             this.col権限グループ,
             this.colプロジェクトID,
@@ -84,13 +84,14 @@
             this.colOld権限グループ,
             this.colOldプロジェクトID,
             this.colOld機能ID});
-            this.dtgAuthority.FilterAndSortEnabled = true;
-            this.dtgAuthority.Location = new System.Drawing.Point(29, 60);
-            this.dtgAuthority.Name = "dtgAuthority";
-            this.dtgAuthority.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgAuthority.Size = new System.Drawing.Size(719, 296);
-            this.dtgAuthority.TabIndex = 1;
-            this.dtgAuthority.Visible = false;
+            this.advAuthority.FilterAndSortEnabled = true;
+            this.advAuthority.IsLoadConfig = false;
+            this.advAuthority.Location = new System.Drawing.Point(29, 60);
+            this.advAuthority.Name = "advAuthority";
+            this.advAuthority.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advAuthority.Size = new System.Drawing.Size(719, 296);
+            this.advAuthority.TabIndex = 1;
+            this.advAuthority.Visible = false;
             // 
             // colDelete
             // 
@@ -371,7 +372,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dtgAuthority);
+            this.Controls.Add(this.advAuthority);
             this.Controls.Add(this.dataGridViewFilter);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -382,13 +383,13 @@
             this.Text = "権限割り当て";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AuthorityMain_FormClosing);
             this.Load += new System.EventHandler(this.PrivilegeMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgAuthority)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advAuthority)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Zuby.ADGV.AdvancedDataGridView dtgAuthority;
+        private Zuby.ADGV.AdvancedDataGridView advAuthority;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn dataGridViewButtonXColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

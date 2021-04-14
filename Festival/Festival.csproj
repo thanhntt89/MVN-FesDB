@@ -45,9 +45,11 @@
     </Reference>
     <Reference Include="DevComponents.Instrumentation, Version=14.1.0.0, Culture=neutral, PublicKeyToken=f90dc37c26666a67" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -76,6 +78,7 @@
     <Compile Include="Base\DataGridViewFilter.Designer.cs">
       <DependentUpon>DataGridViewFilter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Base\DataGridviewSetting.cs" />
     <Compile Include="Base\RowAddNewObject.cs" />
     <Compile Include="Common\EditModeEnum.cs" />
     <Compile Include="Base\FormBase.cs">
@@ -392,6 +395,12 @@
     <Compile Include="DBTab\RecommendSong\RecommendSongMainAdvance.Designer.cs">
       <DependentUpon>RecommendSongMainAdvance.cs</DependentUpon>
     </Compile>
+    <Compile Include="InstallerFestival.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="InstallerFestival.Designer.cs">
+      <DependentUpon>InstallerFestival.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManagementTab\AuthGroup\AuthGroupMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -627,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DBTab\RecommendSong\RecommendSongMainAdvance.resx">
       <DependentUpon>RecommendSongMainAdvance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InstallerFestival.resx">
+      <DependentUpon>InstallerFestival.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagementTab\AuthGroup\AuthGroupMain.resx">
       <DependentUpon>AuthGroupMain.cs</DependentUpon>

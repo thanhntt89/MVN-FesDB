@@ -33,7 +33,7 @@ namespace Festival.Base
             this.dtgAdvMain = new Zuby.ADGV.AdvancedDataGridView();
             this.navDataGridView = new Festival.Base.NavDataGridView();
             this.mnSearchToolBar = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
+           
             ((System.ComponentModel.ISupportInitialize)(this.dtgAdvMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +93,7 @@ namespace Festival.Base
             this.Name = "DataGridViewFilter";
             this.Size = new System.Drawing.Size(939, 492);
             this.Load += new System.EventHandler(this.DataGridViewFilter_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.dtgAdvMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

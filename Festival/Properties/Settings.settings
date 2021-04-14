@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="CONNECT_Server" Type="System.String" Scope="User">
-      <Value Profile="(Default)">xgmmsxdd01</Value>
+      <Value Profile="(Default)">thanhnt</Value>
     </Setting>
     <Setting Name="CONNECT_UserID" Type="System.String" Scope="User">
-      <Value Profile="(Default)">wiiAdmin</Value>
+      <Value Profile="(Default)">sa</Value>
     </Setting>
     <Setting Name="CONNECT_Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">W_iiAdmin00000</Value>
+      <Value Profile="(Default)">@dmin123</Value>
     </Setting>
     <Setting Name="CONNECT_DBName" Type="System.String" Scope="User">
       <Value Profile="(Default)">Wii</Value>

@@ -30,14 +30,14 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
         /// </summary>
         private void InitializeComponent()
         {
-            Festival.Base.MenuMainCollection menuMainCollection2 = new Festival.Base.MenuMainCollection();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            this.advDisplayMain = new Zuby.ADGV.AdvancedDataGridView();
+            this.advSongWithDisc = new Zuby.ADGV.AdvancedDataGridView();
             this.col選択 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.colWiiデジドコ選曲番号 = new Festival.Base.DataGridViewNumericColumn();
             this.colカラオケ選曲番号 = new Festival.Base.DataGridViewNumericColumn();
@@ -64,8 +64,8 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             this.col削除 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.col更新日時 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colデジドココンテンツID = new Festival.Base.DataGridViewNumericColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advDisplayMain)).BeginInit();
+           
+            ((System.ComponentModel.ISupportInitialize)(this.advSongWithDisc)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewFilter
@@ -94,22 +94,22 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             this.dataGridViewFilter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewFilter.IsFilterActive = false;
             this.dataGridViewFilter.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection2;
+            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection1;
             this.dataGridViewFilter.Name = "dataGridViewFilter";
             this.dataGridViewFilter.SCREEN_TITLE = null;
             this.dataGridViewFilter.Size = new System.Drawing.Size(970, 547);
             this.dataGridViewFilter.TabIndex = 1;
             // 
-            // advDisplayMain
+            // advSongWithDisc
             // 
-            this.advDisplayMain.AllowUserToAddRows = false;
-            this.advDisplayMain.AllowUserToDeleteRows = false;
-            this.advDisplayMain.AllowUserToOrderColumns = true;
-            this.advDisplayMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.advSongWithDisc.AllowUserToAddRows = false;
+            this.advSongWithDisc.AllowUserToDeleteRows = false;
+            this.advSongWithDisc.AllowUserToOrderColumns = true;
+            this.advSongWithDisc.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.advDisplayMain.ColumnHeadersHeight = 24;
-            this.advDisplayMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advSongWithDisc.ColumnHeadersHeight = 24;
+            this.advSongWithDisc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col選択,
             this.colWiiデジドコ選曲番号,
             this.colカラオケ選曲番号,
@@ -136,24 +136,25 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             this.col削除,
             this.col更新日時,
             this.colデジドココンテンツID});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.advDisplayMain.DefaultCellStyle = dataGridViewCellStyle9;
-            this.advDisplayMain.FilterAndSortEnabled = true;
-            this.advDisplayMain.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.advDisplayMain.Location = new System.Drawing.Point(3, 3);
-            this.advDisplayMain.Name = "advDisplayMain";
-            this.advDisplayMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.advDisplayMain.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.advDisplayMain.ShowCellErrors = false;
-            this.advDisplayMain.Size = new System.Drawing.Size(964, 491);
-            this.advDisplayMain.TabIndex = 23;
-            this.advDisplayMain.Visible = false;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.advSongWithDisc.DefaultCellStyle = dataGridViewCellStyle5;
+            this.advSongWithDisc.FilterAndSortEnabled = true;
+            this.advSongWithDisc.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.advSongWithDisc.IsLoadConfig = false;
+            this.advSongWithDisc.Location = new System.Drawing.Point(3, 3);
+            this.advSongWithDisc.Name = "advSongWithDisc";
+            this.advSongWithDisc.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advSongWithDisc.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.advSongWithDisc.ShowCellErrors = false;
+            this.advSongWithDisc.Size = new System.Drawing.Size(964, 491);
+            this.advSongWithDisc.TabIndex = 23;
+            this.advSongWithDisc.Visible = false;
             // 
             // col選択
             // 
@@ -262,8 +263,8 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             // colFesDISCIDVer2
             // 
             this.colFesDISCIDVer2.DataPropertyName = "FesDISCIDVer2";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Yellow;
-            this.colFesDISCIDVer2.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Yellow;
+            this.colFesDISCIDVer2.DefaultCellStyle = dataGridViewCellStyle1;
             this.colFesDISCIDVer2.HeaderText = "Fes_DISCID_V2";
             this.colFesDISCIDVer2.MaxInputLength = 8;
             this.colFesDISCIDVer2.MaxValueInput = ((long)(2147483647));
@@ -293,8 +294,8 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             // colNET利用フラグVer2
             // 
             this.colNET利用フラグVer2.DataPropertyName = "NET利用フラグVer2";
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Yellow;
-            this.colNET利用フラグVer2.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Yellow;
+            this.colNET利用フラグVer2.DefaultCellStyle = dataGridViewCellStyle2;
             this.colNET利用フラグVer2.DropDownHeight = 106;
             this.colNET利用フラグVer2.DropDownWidth = 121;
             this.colNET利用フラグVer2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -353,8 +354,8 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             this.col取消日Ver2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.col取消日Ver2.CustomFormat = "yyyy/MM/dd";
             this.col取消日Ver2.DataPropertyName = "取消日Ver2";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Yellow;
-            this.col取消日Ver2.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Yellow;
+            this.col取消日Ver2.DefaultCellStyle = dataGridViewCellStyle3;
             this.col取消日Ver2.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.col取消日Ver2.HeaderText = "取消日_V2";
             this.col取消日Ver2.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
@@ -555,8 +556,8 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             // col備考Ver2
             // 
             this.col備考Ver2.DataPropertyName = "備考Ver2";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Yellow;
-            this.col備考Ver2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Yellow;
+            this.col備考Ver2.DefaultCellStyle = dataGridViewCellStyle4;
             this.col備考Ver2.HeaderText = "備考(Ver2)";
             this.col備考Ver2.MaxInputLength = 255;
             this.col備考Ver2.MinimumWidth = 22;
@@ -633,14 +634,14 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Controls.Add(this.advDisplayMain);
+            this.Controls.Add(this.advSongWithDisc);
             this.Controls.Add(this.dataGridViewFilter);
             this.Name = "FesSongWithDiscMainAdvance";
             this.SCREEN_TITLE = "DISC搭載曲管理V";
             this.Size = new System.Drawing.Size(970, 547);
             this.Load += new System.EventHandler(this.DisVideoSearchMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advDisplayMain)).EndInit();
+            
+            ((System.ComponentModel.ISupportInitialize)(this.advSongWithDisc)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -648,7 +649,7 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
         #endregion
 
         private Base.DataGridViewFilter dataGridViewFilter;
-        private AdvancedDataGridView advDisplayMain;
+        private AdvancedDataGridView advSongWithDisc;
         private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn col選択;
         private Base.DataGridViewNumericColumn colWiiデジドコ選曲番号;
         private Base.DataGridViewNumericColumn colカラオケ選曲番号;

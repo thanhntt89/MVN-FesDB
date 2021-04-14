@@ -829,6 +829,9 @@ namespace Festival.Common
             if (CurrentLayout == null)
                 return;
 
+            //SaveConfig
+            CurrentLayout.LayoutObjectAdvance.SaveConfig();
+
             if (CurrentLayout.EditMode == EnumEditMode.Edit)
             {
                 CancelClose = false;
@@ -877,24 +880,11 @@ namespace Festival.Common
             else if (keyData == (Keys.Alt | Keys.D0))
             {
                 btnAllOff_Click(null, null);
-            }
-            //else if (keyData == (Keys.Control | Keys.S))
-            //{
-            //    btnSave_Click(null, null);
-            //}
-            //else if (keyData == (Keys.Control | Keys.Shift | Keys.N))
-            //{
-            //    btnAddNew_Click(null, null);
-            //}
+            }           
             else if (keyData == Keys.Space || keyData == Keys.F2)
             {
                 EnableEditDataByShortCutKey();
-            }
-            //else if (keyData == (Keys.Control | Keys.Shift | Keys.A))
-            //{
-            //    btnImportData_Click(null, null);
-            //}
-
+            }    
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -978,5 +968,6 @@ namespace Festival.Common
                 this.panelMain.Size = new Size(this.Size.Width - 2 * panelMain.Margin.Left, this.Size.Height - 5 * txtEditCell.Height);
             }
         }
+        
     }
 }

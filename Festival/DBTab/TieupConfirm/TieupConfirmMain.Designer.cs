@@ -74,6 +74,7 @@
             this.colタイアップソート用カナ,
             this.colUpdateDate});
             this.advTieup.FilterAndSortEnabled = true;
+            this.advTieup.IsLoadConfig = false;
             this.advTieup.Location = new System.Drawing.Point(35, 36);
             this.advTieup.Name = "advTieup";
             this.advTieup.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -319,14 +320,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(784, 361);
-            this.Controls.Add(this.dataGridViewFilter);
             this.Controls.Add(this.advTieup);
+            this.Controls.Add(this.dataGridViewFilter);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TieupConfirmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ジャンルタイアップ確認";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TieupConfirmMain_FormClosing);
             this.Load += new System.EventHandler(this.TieupConfirmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.advTieup)).EndInit();
             this.ResumeLayout(false);

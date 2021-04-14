@@ -87,7 +87,7 @@ namespace FestivalBusiness
 
         public static string GetFesVideoAssimentWorkTmpQuery()
         {
-            string query = string.Format("SELECT 選択,[Wii(デジドコ)選曲番号] as Wiiデジドコ選曲番号 ,カラオケ選曲番号,楽曲名,歌手名,楽曲名検索用カナ,曲名よみがな補正,歌手名検索用カナ,背景映像コード,CONVERT(datetime,[アップ予定日]) as アップ予定日,CONVERT(datetime,[サービス発表日]) as サービス発表日,取消フラグ,[JV映像区分(背景映像区分)] as JV映像区分背景映像区分 ,備考,削除,CONVERT(datetime,[更新日時]) as 更新日時,デジドココンテンツID FROM WiiTmp.dbo.[tbl_Wrk_Fes個別映像割付_{0}] as t1 left join Wii.dbo.[Fes非公開理由] as t2 on t1.取消フラグ = t2.[取り消しID] order by [Wii(デジドコ)選曲番号]", Environment.MachineName.Replace(" -", ""));
+            string query = string.Format("SELECT 選択,[Wii(デジドコ)選曲番号] as Wiiデジドコ選曲番号 ,カラオケ選曲番号,楽曲名,歌手名,楽曲名検索用カナ,曲名よみがな補正,歌手名検索用カナ,背景映像コード,CONVERT(datetime,[アップ予定日]) as アップ予定日,CONVERT(datetime,[サービス発表日]) as サービス発表日,取消フラグ,[JV映像区分(背景映像区分)] as JV映像区分背景映像区分 ,備考,削除,CONVERT(datetime,[更新日時]) as 更新日時,デジドココンテンツID FROM WiiTmp.dbo.[tbl_Wrk_Fes個別映像割付_{0}] as t1 left join Wii.dbo.[Fes非公開理由] as t2 on t1.取消フラグ = t2.[取り消しID] order by [Wii(デジドコ)選曲番号]", Environment.MachineName.Replace("-", ""));
             return query;
         }
 
@@ -130,6 +130,12 @@ namespace FestivalBusiness
         internal static string GetDeleteFesVideoManagementQuery()
         {
             string query = string.Format("delete from Wii.dbo.Fes映像コード管理  where [デジドココンテンツID] in (select [デジドココンテンツID] from [WiiTmp].[dbo].[tbl_Wrk_Fes個別映像割付_{0}]  where [削除] = 1)", Environment.MachineName.Replace("-", ""));
+            return query;
+        }
+
+        internal static string GetDeleteFesVideoManagementQueryFromFesContents()
+        {
+            string query = string.Format("delete from Wii.dbo.Fes映像コード管理  where [デジドココンテンツID] in (select [デジドココンテンツID] from [WiiTmp].[dbo].[tbl_Wrk_Fesコンテンツ_{0}]  where [削除] = 1)", Environment.MachineName.Replace("-", ""));
             return query;
         }
 

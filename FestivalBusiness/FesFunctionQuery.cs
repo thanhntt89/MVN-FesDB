@@ -13,6 +13,8 @@ namespace FestivalBusiness
         public static string GetDataByIdQuery(string projectId, string functionId)
         {
             string query = string.Format("select [プロジェクトID] , [機能ID], [機能名], [タイムスタンプ] FROM [Wii].[dbo].[Fes機能ID] where [プロジェクトID] = '{0}' AND [機能ID] = '{1}' ", projectId, functionId);
+
+
             return query;
         }
 

@@ -189,7 +189,7 @@ namespace Festival.DBTab.FesContent
             festivalContentBusiness = new FesContentBusiness();
 
             // set struct datagridview
-            dataGridViewFilter.DataGridViewSource = dtgFestContent;
+            dataGridViewFilter.DataGridViewSource = advFestContent;
             dataGridViewFilter.ColChoiseIndex = col選択.Index;
             dataGridViewFilter.ColUpdatedIndex = col更新日時.Index;
             dataGridViewFilter.ColKeyIndex = colデジドココンテンツID.Index;
@@ -233,7 +233,7 @@ namespace Festival.DBTab.FesContent
         {
             if (editMode == EnumEditMode.ReadOnly || editMode == EnumEditMode.None)
             {
-                foreach (DataGridViewColumn colm in dtgFestContent.Columns)
+                foreach (DataGridViewColumn colm in advFestContent.Columns)
                 {
                     if (colm.DataPropertyName.Equals(col選択.DataPropertyName))
                         continue;
@@ -793,6 +793,11 @@ namespace Festival.DBTab.FesContent
                 // Reset active
                 fesSearchingConditionCommon.IsActive = false;
             }
+        }
+
+        public override void SaveConfig()
+        {
+            dataGridViewFilter.SaveConfig();
         }
     }
 }

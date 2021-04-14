@@ -25,7 +25,7 @@ namespace Festival.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("xgmmsxdd01")]
+        [global::System.Configuration.DefaultSettingValueAttribute("thanhnt")]
         public string CONNECT_Server {
             get {
                 return ((string)(this["CONNECT_Server"]));
@@ -37,7 +37,7 @@ namespace Festival.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("wiiAdmin")]
+        [global::System.Configuration.DefaultSettingValueAttribute("sa")]
         public string CONNECT_UserID {
             get {
                 return ((string)(this["CONNECT_UserID"]));
@@ -49,7 +49,7 @@ namespace Festival.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("W_iiAdmin00000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("@dmin123")]
         public string CONNECT_Password {
             get {
                 return ((string)(this["CONNECT_Password"]));

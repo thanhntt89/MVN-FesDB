@@ -30,7 +30,7 @@ namespace Festival.DBTab.SingerIdChangeManagement
         public void InitData()
         {
             singerIdChangeManagementBusiness = new SingerIdChangeManagementBusiness();
-            dataGridViewFilter.DataGridViewSource = advancedDataGridView;
+            dataGridViewFilter.DataGridViewSource = advSingerIdChange;
             dataGridViewFilter.ColumnKeyDataPropertyName = col履歴No.DataPropertyName;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colDateTimeUpdate.DataPropertyName;
 
@@ -178,6 +178,11 @@ namespace Festival.DBTab.SingerIdChangeManagement
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void SingerIdChangeManagementMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dataGridViewFilter.SaveConfig();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Festival.DiscVideoTab.FesDiskCapacity
         public void InitDisckLayout()
         {
             // set struct datagridview
-            dataGridViewFilter.DataGridViewSource = dtgDiskManagement;
+            dataGridViewFilter.DataGridViewSource = advDiskManagement;
             dataGridViewFilter.ColumnKeyDataPropertyName = colFesDISCID.DataPropertyName;
             dataGridViewFilter.ColumnKeyName = colFesDISCID.Name;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colDateTimeUpdate.DataPropertyName;
@@ -113,6 +113,7 @@ namespace Festival.DiscVideoTab.FesDiskCapacity
 
         private void DiskCapacityManagement_FormClosing(object sender, FormClosingEventArgs e)
         {
+            dataGridViewFilter.SaveConfig();
             fesDiskCapacityBusiness = null;
             GC.Collect();
         }

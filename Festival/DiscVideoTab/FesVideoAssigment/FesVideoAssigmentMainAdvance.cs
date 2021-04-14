@@ -597,5 +597,10 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
         {
             InitData();
         }
+
+        public override void SaveConfig()
+        {
+            dataGridViewFilter.SaveConfig();
+        }
     }
 }

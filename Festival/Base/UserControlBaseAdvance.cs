@@ -9,7 +9,6 @@ using Festival.Common;
 using static Festival.Common.FestivalEvents;
 using FestivalUtilities;
 using Zuby.ADGV;
-using Festival.Base.DataGridViewColumnCustom;
 using System.Linq;
 namespace Festival.Base
 {
@@ -33,7 +32,7 @@ namespace Festival.Base
         public MenuMainCollection MainMenuEditModeCollection { get; set; }
 
         public List<int> noUpdateRecordList = new List<int>();
-
+        
         /// <summary>
         /// Datasource display column text
         /// </summary>
@@ -45,9 +44,7 @@ namespace Festival.Base
         {
             get;
         }
-        
-        //public bool HasData { get; set; }
-
+      
         public bool CancelClose { get; set; }
 
 
@@ -56,9 +53,7 @@ namespace Festival.Base
             InitializeComponent();
             MainMenuEditModeCollection = new MenuMainCollection();
         }
-
-        public BindingSource bindingSource_main = new BindingSource();
-
+        
         public WaitingForm waiting = null;
         public BackgroundWorker bgwProcess = null;
 
@@ -151,12 +146,6 @@ namespace Festival.Base
             {
                 if (waiting != null)
                 {
-                    //if (bgwProcess != null)
-                    //{
-                    //    bgwProcess.CancelAsync();
-                    //    bgwProcess.Dispose();
-                    //    bgwProcess = null;
-                    //}
                     waiting.Close();
                     waiting = null;
                 }
@@ -460,6 +449,11 @@ namespace Festival.Base
         }
 
         public virtual void InitMenuSearchMain()
+        {
+
+        }
+
+        public virtual void SaveConfig()
         {
 
         }

@@ -32,7 +32,7 @@
             Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserMain));
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
-            this.dtgUser = new Zuby.ADGV.AdvancedDataGridView();
+            this.advUser = new Zuby.ADGV.AdvancedDataGridView();
             this.colDelete = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.col利用者ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col権限グループ = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
@@ -40,7 +40,7 @@
             this.colUpdateDate = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.colOld利用者ID = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advUser)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -56,28 +56,29 @@
             this.btnSave.Text = "登録(&S)";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // dtgUser
+            // advUser
             // 
-            this.dtgUser.AllowUserToDeleteRows = false;
-            this.dtgUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.advUser.AllowUserToDeleteRows = false;
+            this.advUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgUser.ColumnHeadersHeight = 24;
-            this.dtgUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dtgUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advUser.ColumnHeadersHeight = 24;
+            this.advUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.advUser.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDelete,
             this.col利用者ID,
             this.col権限グループ,
             this.col利用者名,
             this.colUpdateDate,
             this.colOld利用者ID});
-            this.dtgUser.FilterAndSortEnabled = true;
-            this.dtgUser.Location = new System.Drawing.Point(33, 62);
-            this.dtgUser.Name = "dtgUser";
-            this.dtgUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgUser.Size = new System.Drawing.Size(719, 310);
-            this.dtgUser.TabIndex = 1;
-            this.dtgUser.Visible = false;
+            this.advUser.FilterAndSortEnabled = true;
+            this.advUser.IsLoadConfig = false;
+            this.advUser.Location = new System.Drawing.Point(33, 62);
+            this.advUser.Name = "advUser";
+            this.advUser.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advUser.Size = new System.Drawing.Size(719, 310);
+            this.advUser.TabIndex = 1;
+            this.advUser.Visible = false;
             // 
             // colDelete
             // 
@@ -198,7 +199,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dtgUser);
+            this.Controls.Add(this.advUser);
             this.Controls.Add(this.dataGridViewFilter);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -209,13 +210,13 @@
             this.Text = "利用者";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.UserMain_FormClosing);
             this.Load += new System.EventHandler(this.UserMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advUser)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Zuby.ADGV.AdvancedDataGridView dtgUser;
+        private Zuby.ADGV.AdvancedDataGridView advUser;
         private DevComponents.DotNetBar.ButtonX btnSave;
         private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn colDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn col利用者ID;

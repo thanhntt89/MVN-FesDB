@@ -18,10 +18,10 @@ namespace Festival.Base
         void LoadData();
 
         void Choise(bool? isSelected);
-             
+
 
         void EditCell(DataGridViewCell cell);
-       
+
         void UpdateCell(DataGridViewCell cell, object data);
 
         void UnFilter();
@@ -72,7 +72,7 @@ namespace Festival.Base
         DataGridViewColumnCollection GetDataGridViewColumns();
 
         void ActiveMenuFreeze(bool? isActive);
-        
+
         List<string> GetHideColumns();
 
         /// <summary>
@@ -85,6 +85,8 @@ namespace Festival.Base
         /// Get all column katakana
         /// </summary>
         /// <returns></returns>
-        ColumnsCollection GetKatakanaColumns();       
+        ColumnsCollection GetKatakanaColumns();
+
+        void SaveConfig();
     }
 }

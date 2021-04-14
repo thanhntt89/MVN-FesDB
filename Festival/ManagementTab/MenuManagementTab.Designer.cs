@@ -33,8 +33,7 @@
             this.btnAuthorityGroup = new System.Windows.Forms.Button();
             this.btnExclusiveManagement = new System.Windows.Forms.Button();
             this.btnAuthorityAllocate = new System.Windows.Forms.Button();
-            this.btnProjectID = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
+            this.btnProjectID = new System.Windows.Forms.Button();           
             this.SuspendLayout();
             // 
             // btnFunctionID
@@ -122,7 +121,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "TabManagement";
             this.Size = new System.Drawing.Size(602, 219);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
+            
             this.ResumeLayout(false);
 
         }

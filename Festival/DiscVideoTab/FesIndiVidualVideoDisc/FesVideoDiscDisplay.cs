@@ -110,5 +110,10 @@ namespace Festival.DiscVideoTab.FesIndiVidualVideoDisc
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void FesVideoDiscDisplay_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dataGridViewFilter.SaveConfig();
+        }
     }
 }

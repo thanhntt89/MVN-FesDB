@@ -34,7 +34,7 @@ namespace Festival.ManagementTab.User
 
             dataGridViewFilter.ColumnDeletedDataPropertyName = colDelete.DataPropertyName;
             dataGridViewFilter.AllowUserEdit = true;
-            dataGridViewFilter.DataGridViewSource = dtgUser;
+            dataGridViewFilter.DataGridViewSource = advUser;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colUpdateDate.DataPropertyName;
             dataGridViewFilter.ColumnUpdateTimeName = colUpdateDate.Name;
             dataGridViewFilter.CellClickedEvent += CellClick;
@@ -332,6 +332,7 @@ namespace Festival.ManagementTab.User
 
         private void UserMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            dataGridViewFilter.SaveConfig();
             CloseAndSave(e);
         }
         

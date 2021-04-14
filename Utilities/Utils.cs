@@ -249,7 +249,7 @@ namespace FestivalUtilities
         /// <param name="data"></param>
         /// <returns></returns>
         public static bool IsNumeric(string value)
-        {           
+        {
             return value.All(char.IsNumber);
         }
 
@@ -429,14 +429,6 @@ namespace FestivalUtilities
         // Convert string to Vatoba
         public static string ConvertVatoBa(string str)
         {
-            //string strdakuon = "バビブベボ";
-            //string strSeionConvert_1 = "ヴァヴィヴヴェヴォ";
-
-            // ヴァ→バ
-            // ヴィ→ビ
-            // ヴェ→ベ
-            // ヴォ→ボ
-            // ヴ→ブ
             string result = str;
             try
             {
@@ -489,7 +481,7 @@ namespace FestivalUtilities
         /// Delete all file in folder
         /// </summary>
         /// <param name="folderPath"></param>
-        public static void DeleteAllFileInFolder(string folderPath)
+        public static void DeleteAllFileInFolder(string folderPath, string[] ignor = null)
         {
             try
             {
@@ -497,8 +489,20 @@ namespace FestivalUtilities
                     return;
                 // Delete files
                 string[] listFile = Directory.GetFiles(folderPath);
+                bool exist = false;
+
                 foreach (var file in listFile)
                 {
+                    if (ignor != null)
+                    {
+                        foreach (var item in ignor)
+                        {
+                            if (file.Contains(item))
+                                exist = true;
+                        }
+                        if (exist) continue;
+                    }
+
                     File.Delete(file);
                 }
 
@@ -510,6 +514,8 @@ namespace FestivalUtilities
                     DeleteAllFileInFolder(folder);
                 }
 
+                //Delete Folder
+                Directory.Delete(folderPath);
             }
             catch (Exception ex)
             {

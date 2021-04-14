@@ -37,7 +37,7 @@ namespace Festival.ManagementTab.Authority
 
             dataGridViewFilter.ColumnDeletedDataPropertyName = colDelete.DataPropertyName;
             dataGridViewFilter.AllowUserEdit = true;
-            dataGridViewFilter.DataGridViewSource = dtgAuthority;
+            dataGridViewFilter.DataGridViewSource = advAuthority;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colUpdateDate.DataPropertyName;
             dataGridViewFilter.ColumnUpdateTimeName = colUpdateDate.Name;
             dataGridViewFilter.CellClickedEvent += CellClick;
@@ -436,6 +436,7 @@ namespace Festival.ManagementTab.Authority
 
         private void AuthorityMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            dataGridViewFilter.SaveConfig();
             CloseAndSave(e);
         }
     }

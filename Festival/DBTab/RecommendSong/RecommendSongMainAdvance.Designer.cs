@@ -31,14 +31,13 @@ namespace Festival.DBTab.RecommendSong
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dtgFestContent = new Zuby.ADGV.AdvancedDataGridView();
-            this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
+            Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
+            this.advRecommendSong = new Zuby.ADGV.AdvancedDataGridView();
             this.col選択 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.colプログラムID = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
             this.colプログラム名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,20 +55,21 @@ namespace Festival.DBTab.RecommendSong
             this.col更新日時 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colデジドココンテンツID = new Festival.Base.DataGridViewNumericColumn();
             this.colId = new Festival.Base.DataGridViewNumericColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFestContent)).BeginInit();
+            this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
+           
+            ((System.ComponentModel.ISupportInitialize)(this.advRecommendSong)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtgFestContent
+            // advRecommendSong
             // 
-            this.dtgFestContent.AllowUserToAddRows = false;
-            this.dtgFestContent.AllowUserToDeleteRows = false;
-            this.dtgFestContent.AllowUserToOrderColumns = true;
-            this.dtgFestContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.advRecommendSong.AllowUserToAddRows = false;
+            this.advRecommendSong.AllowUserToDeleteRows = false;
+            this.advRecommendSong.AllowUserToOrderColumns = true;
+            this.advRecommendSong.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgFestContent.ColumnHeadersHeight = 24;
-            this.dtgFestContent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advRecommendSong.ColumnHeadersHeight = 24;
+            this.advRecommendSong.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col選択,
             this.colプログラムID,
             this.colプログラム名,
@@ -94,49 +94,18 @@ namespace Festival.DBTab.RecommendSong
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgFestContent.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dtgFestContent.FilterAndSortEnabled = true;
-            this.dtgFestContent.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.dtgFestContent.Location = new System.Drawing.Point(14, 22);
-            this.dtgFestContent.Name = "dtgFestContent";
-            this.dtgFestContent.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgFestContent.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dtgFestContent.ShowCellErrors = false;
-            this.dtgFestContent.Size = new System.Drawing.Size(936, 465);
-            this.dtgFestContent.TabIndex = 19;
-            this.dtgFestContent.Visible = false;
-            // 
-            // dataGridViewFilter
-            // 
-            this.dataGridViewFilter.AllowUserEdit = false;
-            this.dataGridViewFilter.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridViewFilter.CancelClose = false;
-            this.dataGridViewFilter.ColChoiseIndex = 0;
-            this.dataGridViewFilter.ColDeletedIndex = 0;
-            this.dataGridViewFilter.ColKeyIndex = 0;
-            this.dataGridViewFilter.ColumnChoiseDataPropertyName = null;
-            this.dataGridViewFilter.ColumnChoiseName = null;
-            this.dataGridViewFilter.ColumnCollection = null;
-            this.dataGridViewFilter.ColumnComboxChangeName = null;
-            this.dataGridViewFilter.ColumnDeletedDataPropertyName = null;
-            this.dataGridViewFilter.ColumnDeletedName = null;
-            this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
-            this.dataGridViewFilter.ColumnKeyName = null;
-            this.dataGridViewFilter.ColumnUpdateName = null;
-            this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
-            this.dataGridViewFilter.ColumnUpdateTimeName = null;
-            this.dataGridViewFilter.ColUpdatedIndex = 0;
-            this.dataGridViewFilter.DataGridViewSource = this.dtgFestContent;
-            this.dataGridViewFilter.DataSourceDisplay = null;
-            this.dataGridViewFilter.DataTableSource = null;
-            this.dataGridViewFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewFilter.IsFilterActive = false;
-            this.dataGridViewFilter.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection1;
-            this.dataGridViewFilter.Name = "dataGridViewFilter";
-            this.dataGridViewFilter.SCREEN_TITLE = null;
-            this.dataGridViewFilter.Size = new System.Drawing.Size(970, 547);
-            this.dataGridViewFilter.TabIndex = 1;
+            this.advRecommendSong.DefaultCellStyle = dataGridViewCellStyle6;
+            this.advRecommendSong.FilterAndSortEnabled = true;
+            this.advRecommendSong.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.advRecommendSong.IsLoadConfig = false;
+            this.advRecommendSong.Location = new System.Drawing.Point(14, 22);
+            this.advRecommendSong.Name = "advRecommendSong";
+            this.advRecommendSong.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advRecommendSong.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.advRecommendSong.ShowCellErrors = false;
+            this.advRecommendSong.Size = new System.Drawing.Size(936, 465);
+            this.advRecommendSong.TabIndex = 19;
+            this.advRecommendSong.Visible = false;
             // 
             // col選択
             // 
@@ -415,19 +384,51 @@ namespace Festival.DBTab.RecommendSong
             this.colId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.colId.Visible = false;
             // 
+            // dataGridViewFilter
+            // 
+            this.dataGridViewFilter.AllowUserEdit = false;
+            this.dataGridViewFilter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridViewFilter.CancelClose = false;
+            this.dataGridViewFilter.ColChoiseIndex = 0;
+            this.dataGridViewFilter.ColDeletedIndex = 0;
+            this.dataGridViewFilter.ColKeyIndex = 0;
+            this.dataGridViewFilter.ColumnChoiseDataPropertyName = null;
+            this.dataGridViewFilter.ColumnChoiseName = null;
+            this.dataGridViewFilter.ColumnCollection = null;
+            this.dataGridViewFilter.ColumnComboxChangeName = null;
+            this.dataGridViewFilter.ColumnDeletedDataPropertyName = null;
+            this.dataGridViewFilter.ColumnDeletedName = null;
+            this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
+            this.dataGridViewFilter.ColumnKeyName = null;
+            this.dataGridViewFilter.ColumnUpdateName = null;
+            this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnUpdateTimeName = null;
+            this.dataGridViewFilter.ColUpdatedIndex = 0;
+            this.dataGridViewFilter.DataGridViewSource = this.advRecommendSong;
+            this.dataGridViewFilter.DataSourceDisplay = null;
+            this.dataGridViewFilter.DataTableSource = null;
+            this.dataGridViewFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewFilter.IsFilterActive = false;
+            this.dataGridViewFilter.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection1;
+            this.dataGridViewFilter.Name = "dataGridViewFilter";
+            this.dataGridViewFilter.SCREEN_TITLE = null;
+            this.dataGridViewFilter.Size = new System.Drawing.Size(970, 547);
+            this.dataGridViewFilter.TabIndex = 1;
+            // 
             // RecommendSongMainAdvance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Controls.Add(this.dtgFestContent);
+            this.Controls.Add(this.advRecommendSong);
             this.Controls.Add(this.dataGridViewFilter);
             this.Name = "RecommendSongMainAdvance";
             this.SCREEN_TITLE = "おすすめ曲管理";
             this.Size = new System.Drawing.Size(970, 547);
             this.Load += new System.EventHandler(this.DisVideoSearchMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFestContent)).EndInit();
+            
+            ((System.ComponentModel.ISupportInitialize)(this.advRecommendSong)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -435,7 +436,7 @@ namespace Festival.DBTab.RecommendSong
         #endregion
 
         private Base.DataGridViewFilter dataGridViewFilter;
-        private AdvancedDataGridView dtgFestContent;
+        private AdvancedDataGridView advRecommendSong;
         private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn col選択;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn colプログラムID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colプログラム名;

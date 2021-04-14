@@ -128,5 +128,10 @@ namespace Festival.DBTab.TieupConfirm
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void TieupConfirmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dataGridViewFilter.SaveConfig();
+        }
     }
 }

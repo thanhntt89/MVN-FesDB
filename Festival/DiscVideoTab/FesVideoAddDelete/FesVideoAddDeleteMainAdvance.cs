@@ -87,7 +87,7 @@ namespace Festival.DiscVideoTab.FesVideoAddDelete
             videoDiscManagementBusiness = new FesVideoAddDeleteBusiness();
 
             // set struct datagridview
-            dataGridViewFilter.DataGridViewSource = advFesVideoAssigment;
+            dataGridViewFilter.DataGridViewSource = advFesVideoAddDelete;
             dataGridViewFilter.ColChoiseIndex = col選択.Index;
             dataGridViewFilter.ColUpdatedIndex = col更新日時.Index;
             dataGridViewFilter.ColKeyIndex = colID.Index;
@@ -136,7 +136,7 @@ namespace Festival.DiscVideoTab.FesVideoAddDelete
         {
             if (editMode == EnumEditMode.ReadOnly || editMode == EnumEditMode.None)
             {
-                foreach (DataGridViewColumn colm in advFesVideoAssigment.Columns)
+                foreach (DataGridViewColumn colm in advFesVideoAddDelete.Columns)
                 {
                     if (colm.DataPropertyName.Equals(col選択.DataPropertyName))
                         continue;
@@ -731,6 +731,11 @@ namespace Festival.DiscVideoTab.FesVideoAddDelete
 
                 LogException(error);
             }
+        }
+
+        public override void SaveConfig()
+        {
+            dataGridViewFilter.SaveConfig();
         }
     }
 }

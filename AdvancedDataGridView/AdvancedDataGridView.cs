@@ -22,6 +22,10 @@ namespace Zuby.ADGV
     [System.ComponentModel.DesignerCategory("")]
     public class AdvancedDataGridView : DataGridView
     {
+        /// <summary>
+        /// Is load config
+        /// </summary>
+        public bool IsLoadConfig { get; set; }
 
         #region public events
 

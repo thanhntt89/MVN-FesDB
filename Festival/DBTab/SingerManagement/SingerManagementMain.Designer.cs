@@ -29,15 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SingerManagementMain));
             this.fes歌手ID変更履歴BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             this.btnAddNew = new DevComponents.DotNetBar.ButtonX();
-            this.advancedDataGridView = new Zuby.ADGV.AdvancedDataGridView();
-            this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            this.btnSave = new DevComponents.DotNetBar.ButtonX();
+            this.advSinger = new Zuby.ADGV.AdvancedDataGridView();
             this.colDelete = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.colFes独自歌手ID = new Festival.Base.DataGridViewNumericColumn();
             this.col歌手名 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,8 +44,10 @@
             this.col歌手名ソート用英数 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDateTimeUpdate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colOldFes独自歌手ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
+            this.btnSave = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.fes歌手ID変更履歴BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advSinger)).BeginInit();
             this.SuspendLayout();
             // 
             // btnUpdate
@@ -78,11 +78,11 @@
             this.btnAddNew.Visible = false;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
-            // advancedDataGridView
+            // advSinger
             // 
-            this.advancedDataGridView.AllowUserToDeleteRows = false;
-            this.advancedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.advancedDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advSinger.AllowUserToDeleteRows = false;
+            this.advSinger.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advSinger.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDelete,
             this.colFes独自歌手ID,
             this.col歌手名,
@@ -91,61 +91,14 @@
             this.col歌手名ソート用英数,
             this.colDateTimeUpdate,
             this.colOldFes独自歌手ID});
-            this.advancedDataGridView.FilterAndSortEnabled = true;
-            this.advancedDataGridView.Location = new System.Drawing.Point(12, 54);
-            this.advancedDataGridView.Name = "advancedDataGridView";
-            this.advancedDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.advancedDataGridView.Size = new System.Drawing.Size(747, 325);
-            this.advancedDataGridView.TabIndex = 2;
-            this.advancedDataGridView.Visible = false;
-            // 
-            // dataGridViewFilter
-            // 
-            this.dataGridViewFilter.AllowUserEdit = false;
-            this.dataGridViewFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dataGridViewFilter.CancelClose = false;
-            this.dataGridViewFilter.ColChoiseIndex = 0;
-            this.dataGridViewFilter.ColDeletedIndex = 0;
-            this.dataGridViewFilter.ColKeyIndex = 0;
-            this.dataGridViewFilter.ColumnChoiseDataPropertyName = null;
-            this.dataGridViewFilter.ColumnChoiseName = null;
-            this.dataGridViewFilter.ColumnCollection = null;
-            this.dataGridViewFilter.ColumnComboxChangeName = null;
-            this.dataGridViewFilter.ColumnDeletedDataPropertyName = null;
-            this.dataGridViewFilter.ColumnDeletedName = null;
-            this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
-            this.dataGridViewFilter.ColumnKeyName = null;
-            this.dataGridViewFilter.ColumnUpdateName = null;
-            this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
-            this.dataGridViewFilter.ColumnUpdateTimeName = null;
-            this.dataGridViewFilter.ColUpdatedIndex = 0;
-            this.dataGridViewFilter.DataGridViewSource = null;
-            this.dataGridViewFilter.DataSourceDisplay = null;
-            this.dataGridViewFilter.DataTableSource = null;
-            this.dataGridViewFilter.ForeColor = System.Drawing.Color.Black;
-            this.dataGridViewFilter.IsFilterActive = false;
-            this.dataGridViewFilter.Location = new System.Drawing.Point(3, 36);
-            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection1;
-            this.dataGridViewFilter.Name = "dataGridViewFilter";
-            this.dataGridViewFilter.SCREEN_TITLE = null;
-            this.dataGridViewFilter.Size = new System.Drawing.Size(779, 423);
-            this.dataGridViewFilter.TabIndex = 0;
-            // 
-            // btnSave
-            // 
-            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnSave.Location = new System.Drawing.Point(706, 7);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(76, 23);
-            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnSave.TabIndex = 5;
-            this.btnSave.Text = "登録(&S)";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.advSinger.FilterAndSortEnabled = true;
+            this.advSinger.IsLoadConfig = false;
+            this.advSinger.Location = new System.Drawing.Point(12, 54);
+            this.advSinger.Name = "advSinger";
+            this.advSinger.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advSinger.Size = new System.Drawing.Size(747, 325);
+            this.advSinger.TabIndex = 2;
+            this.advSinger.Visible = false;
             // 
             // colDelete
             // 
@@ -254,13 +207,61 @@
             this.colOldFes独自歌手ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.colOldFes独自歌手ID.Visible = false;
             // 
+            // dataGridViewFilter
+            // 
+            this.dataGridViewFilter.AllowUserEdit = false;
+            this.dataGridViewFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dataGridViewFilter.CancelClose = false;
+            this.dataGridViewFilter.ColChoiseIndex = 0;
+            this.dataGridViewFilter.ColDeletedIndex = 0;
+            this.dataGridViewFilter.ColKeyIndex = 0;
+            this.dataGridViewFilter.ColumnChoiseDataPropertyName = null;
+            this.dataGridViewFilter.ColumnChoiseName = null;
+            this.dataGridViewFilter.ColumnCollection = null;
+            this.dataGridViewFilter.ColumnComboxChangeName = null;
+            this.dataGridViewFilter.ColumnDeletedDataPropertyName = null;
+            this.dataGridViewFilter.ColumnDeletedName = null;
+            this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
+            this.dataGridViewFilter.ColumnKeyName = null;
+            this.dataGridViewFilter.ColumnUpdateName = null;
+            this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnUpdateTimeName = null;
+            this.dataGridViewFilter.ColUpdatedIndex = 0;
+            this.dataGridViewFilter.DataGridViewSource = null;
+            this.dataGridViewFilter.DataSourceDisplay = null;
+            this.dataGridViewFilter.DataTableSource = null;
+            this.dataGridViewFilter.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewFilter.IsFilterActive = false;
+            this.dataGridViewFilter.Location = new System.Drawing.Point(3, 36);
+            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection1;
+            this.dataGridViewFilter.Name = "dataGridViewFilter";
+            this.dataGridViewFilter.SCREEN_TITLE = null;
+            this.dataGridViewFilter.Size = new System.Drawing.Size(779, 423);
+            this.dataGridViewFilter.TabIndex = 0;
+            // 
+            // btnSave
+            // 
+            this.btnSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSave.Location = new System.Drawing.Point(706, 7);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(76, 23);
+            this.btnSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSave.TabIndex = 5;
+            this.btnSave.Text = "登録(&S)";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // SingerManagementMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.advancedDataGridView);
+            this.Controls.Add(this.advSinger);
             this.Controls.Add(this.dataGridViewFilter);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAddNew);
@@ -273,7 +274,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SingerManagementMain_FormClosing);
             this.Load += new System.EventHandler(this.SingerIdChangeManagementMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fes歌手ID変更履歴BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advSinger)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -281,7 +282,7 @@
         #endregion
 
         private Base.DataGridViewFilter dataGridViewFilter;
-        private Zuby.ADGV.AdvancedDataGridView advancedDataGridView;
+        private Zuby.ADGV.AdvancedDataGridView advSinger;
         private System.Windows.Forms.BindingSource fes歌手ID変更履歴BindingSource;
         private DevComponents.DotNetBar.ButtonX btnAddNew;
         private DevComponents.DotNetBar.ButtonX btnUpdate;

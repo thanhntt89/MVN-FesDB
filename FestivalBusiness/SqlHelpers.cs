@@ -5,29 +5,77 @@ using System.Data.SqlClient;
 
 namespace FestivalBusiness
 {
+    public class Parameters
+    {
+        private IList<Parameter> _parameters;
+
+        public Parameters()
+        {
+            _parameters = new List<Parameter>();
+        }
+
+        public void Add(Parameter paramter)
+        {
+            _parameters.Add(paramter);
+        }
+
+        public int Count { get { return _parameters.Count; } }
+
+        public IList<Parameter> GetParameters { get { return _parameters; } }
+    }
+
+    public class Parameter
+    {
+        public string Name { get; set; }
+        public object Values { get; set; }
+    }
+
     public class SqlHelpers
     {
         public static int CommandTimeOut { get; set; }
         private static int DefaultTimeOut = 30;
 
-        public static void ExecuteNonQuery(string connectionString, CommandType commandType, string commandText)
+        public static void ExecuteNonQuery(string connectionString, CommandType commandType, string commandText, Parameters parameters = null)
         {
             SqlConnection sqlConnection = new SqlConnection(connectionString);
-            sqlConnection.Open();
+
             SqlCommand command = new SqlCommand();
+
+            // Add parameter
+            if (parameters != null)
+            {
+                foreach (var par in parameters.GetParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(par.Name, par.Values));
+                }
+            }
+
             command.Connection = sqlConnection;
             command.CommandTimeout = CommandTimeOut == 0 ? DefaultTimeOut : CommandTimeOut;
             command.CommandType = commandType;
             command.CommandText = commandText;
+
+            sqlConnection.Open();
             command.ExecuteNonQuery();
             sqlConnection.Close();
         }
 
-        public static void ExecuteNonQuery(SqlConnection sqlConnection, CommandType commandType, string commandText)
+        public static void ExecuteNonQuery(SqlConnection sqlConnection, CommandType commandType, string commandText, Parameters parameters = null)
         {
+            SqlCommand command = new SqlCommand();
+
+            // Add parameter
+            if (parameters != null)
+            {
+                foreach (var par in parameters.GetParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(par.Name, par.Values));
+                }
+            }
+
             if (sqlConnection.State == ConnectionState.Closed)
                 sqlConnection.Open();
-            SqlCommand command = new SqlCommand();
+
             command.Connection = sqlConnection;
             command.CommandTimeout = CommandTimeOut == 0 ? DefaultTimeOut : CommandTimeOut;
             command.CommandType = commandType;
@@ -36,9 +84,19 @@ namespace FestivalBusiness
             sqlConnection.Close();
         }
 
-        public static void ExecuteNonQuery(SqlTransaction sqlTransaction, CommandType commandType, string commandText)
+        public static void ExecuteNonQuery(SqlTransaction sqlTransaction, CommandType commandType, string commandText, Parameters parameters = null)
         {
             SqlCommand command = new SqlCommand();
+
+            // Add parameter
+            if (parameters != null)
+            {
+                foreach (var par in parameters.GetParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(par.Name, par.Values));
+                }
+            }
+
             command.Transaction = sqlTransaction;
             command.Connection = sqlTransaction.Connection;
             command.CommandTimeout = CommandTimeOut == 0 ? DefaultTimeOut : CommandTimeOut;
@@ -47,44 +105,79 @@ namespace FestivalBusiness
             command.ExecuteNonQuery();
         }
 
-        public static DataSet ExecuteDataset(string connectionString, CommandType commandType, string commandText)
+        public static DataSet ExecuteDataset(string connectionString, CommandType commandType, string commandText, Parameters parameters = null)
         {
             DataSet dataSet = new DataSet();
             SqlConnection sqlConnection = new SqlConnection(connectionString);
-            sqlConnection.Open();
+
             SqlCommand command = new SqlCommand();
+
+            // Add parameter
+            if (parameters != null)
+            {
+                foreach (var par in parameters.GetParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(par.Name, par.Values));
+                }
+            }
+
             command.Connection = sqlConnection;
             command.CommandTimeout = CommandTimeOut == 0 ? DefaultTimeOut : CommandTimeOut;
             command.CommandType = commandType;
             command.CommandText = commandText;
+
+            sqlConnection.Open();
             dataSet = ExecuteDataSet(command);
             sqlConnection.Close();
             return dataSet;
         }
 
-        public static DataSet ExecuteDataset(SqlConnection sqlConnection, CommandType commandType, string commandText)
+        public static DataSet ExecuteDataset(SqlConnection sqlConnection, CommandType commandType, string commandText, Parameters parameters = null)
         {
+            SqlCommand command = new SqlCommand();
+
+            // Add parameter
+            if (parameters != null)
+            {
+                foreach (var par in parameters.GetParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(par.Name, par.Values));
+                }
+            }
+
             DataSet dataSet = new DataSet();
+            command.Connection = sqlConnection;
+            command.CommandTimeout = CommandTimeOut == 0 ? DefaultTimeOut : CommandTimeOut;
+            command.CommandType = commandType;
+            command.CommandText = commandText;
+
             if (sqlConnection.State == ConnectionState.Closed)
                 sqlConnection.Open();
-            SqlCommand command = new SqlCommand();
-            command.Connection = sqlConnection;
-            command.CommandTimeout = CommandTimeOut == 0 ? DefaultTimeOut : CommandTimeOut;
-            command.CommandType = commandType;
-            command.CommandText = commandText;
             dataSet = ExecuteDataSet(command);
             sqlConnection.Close();
             return dataSet;
         }
 
-        public static DataSet ExecuteDataset(SqlTransaction sqlTransaction, CommandType commandType, string commandText)
+        public static DataSet ExecuteDataset(SqlTransaction sqlTransaction, CommandType commandType, string commandText, Parameters parameters = null)
         {
-            DataSet dataSet = new DataSet();
             SqlCommand command = new SqlCommand();
-            command.Connection = sqlTransaction.Connection;
+
+            // Add parameter
+            if (parameters != null)
+            {
+                foreach (var par in parameters.GetParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(par.Name, par.Values));
+                }
+            }
+
+            DataSet dataSet = new DataSet();
+
             command.CommandTimeout = CommandTimeOut == 0 ? DefaultTimeOut : CommandTimeOut;
             command.CommandType = commandType;
             command.CommandText = commandText;
+
+            command.Connection = sqlTransaction.Connection;
             dataSet = ExecuteDataSet(command);
             return dataSet;
         }
@@ -100,11 +193,22 @@ namespace FestivalBusiness
             return ds;
         }
 
-        public static IEnumerable<T> ExecuteObject<T>(SqlTransaction sqlTransaction, CommandType commandType, string commandText)
+        public static IEnumerable<T> ExecuteObject<T>(SqlTransaction sqlTransaction, CommandType commandType, string commandText, Parameters parameters = null)
         {
+            SqlCommand command = new SqlCommand();
+
+            // Add parameter
+            if (parameters != null)
+            {
+                foreach (var par in parameters.GetParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(par.Name, par.Values));
+                }
+            }
+
             IList<T> items = new List<T>();
             DataSet dataSet = new DataSet();
-            SqlCommand command = new SqlCommand();
+
             command.Connection = sqlTransaction.Connection;
             command.CommandTimeout = CommandTimeOut == 0 ? DefaultTimeOut : CommandTimeOut;
             command.CommandType = commandType;
@@ -120,11 +224,22 @@ namespace FestivalBusiness
             return items;
         }
 
-        public static IEnumerable<T> ExecuteObject<T>(SqlConnection connection, CommandType commandType, string commandText)
+        public static IEnumerable<T> ExecuteObject<T>(SqlConnection connection, CommandType commandType, string commandText, Parameters parameters = null)
         {
+            SqlCommand command = new SqlCommand();
+
+            // Add parameter
+            if (parameters != null)
+            {
+                foreach (var par in parameters.GetParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(par.Name, par.Values));
+                }
+            }
+
             IList<T> items = new List<T>();
             DataSet dataSet = new DataSet();
-            SqlCommand command = new SqlCommand();
+
             if (connection.State == ConnectionState.Closed)
                 connection.Open();
 
@@ -145,8 +260,19 @@ namespace FestivalBusiness
             return items;
         }
 
-        public static IEnumerable<T> ExecuteObject<T>(string connectionString, CommandType commandType, string commandText)
+        public static IEnumerable<T> ExecuteObject<T>(string connectionString, CommandType commandType, string commandText, Parameters parameters = null)
         {
+            SqlCommand command = new SqlCommand();
+
+            // Add parameter
+            if (parameters != null)
+            {
+                foreach (var par in parameters.GetParameters)
+                {
+                    command.Parameters.Add(new SqlParameter(par.Name, par.Values));
+                }
+            }
+
             IList<T> items = new List<T>();
             DataSet dataSet = new DataSet();
             try
@@ -154,7 +280,6 @@ namespace FestivalBusiness
                 SqlConnection sqlConnection = new SqlConnection(connectionString);
                 sqlConnection.Open();
 
-                SqlCommand command = new SqlCommand();
                 command.Connection = sqlConnection;
                 command.CommandTimeout = CommandTimeOut == 0 ? DefaultTimeOut : CommandTimeOut;
                 command.CommandType = commandType;

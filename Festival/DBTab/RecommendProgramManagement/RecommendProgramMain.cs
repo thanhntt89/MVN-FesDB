@@ -35,7 +35,7 @@ namespace Festival.DBTab.RecommendProgramManagement
         public void InitData()
         {
             recommendProgramBusiness = new RecommendProgramBusiness();
-            dataGridViewFilter.DataGridViewSource = dtgRecommendSong;
+            dataGridViewFilter.DataGridViewSource = advRecommendProgram;
             dataGridViewFilter.ColumnKeyDataPropertyName = colプログラムID.DataPropertyName;
             dataGridViewFilter.ColumnKeyName = colプログラムID.Name;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colDateTimeUpdate.DataPropertyName;
@@ -484,6 +484,7 @@ namespace Festival.DBTab.RecommendProgramManagement
 
         public void CloseAndSave(FormClosingEventArgs e)
         {
+            dataGridViewFilter.SaveConfig();
             Save(null);
         }
     }

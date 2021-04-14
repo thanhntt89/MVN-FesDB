@@ -20,8 +20,8 @@ namespace Festival
         private ICommonBusiness iCommonBusiness;
 
         public FestivalMain()
-        {       
-            InitializeComponent();          
+        {
+            InitializeComponent();
             InitUCControl();
         }
 
@@ -47,7 +47,7 @@ namespace Festival
 
         private void BgwProcess_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           // HideCheckConnect(true, "");
+            // HideCheckConnect(true, "");
             if (bgwProcess != null)
             {
                 bgwProcess.DoWork -= BgwProcess_DoWork;
@@ -58,8 +58,8 @@ namespace Festival
         }
 
         private void BgwProcess_DoWork(object sender, DoWorkEventArgs e)
-        {           
-             CheckConnection();
+        {
+            CheckConnection();
         }
 
         private void CheckConnection()
@@ -170,7 +170,7 @@ namespace Festival
                 int rowIndex = 0;
 
                 int countRole = 0;
-                
+
                 foreach (DataRow row in dtRole.Rows)
                 {
                     if (rowIndex == 0)

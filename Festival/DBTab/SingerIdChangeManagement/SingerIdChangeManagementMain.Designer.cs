@@ -34,7 +34,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SingerIdChangeManagementMain));
             this.fes歌手ID変更履歴BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnAddNew = new DevComponents.DotNetBar.ButtonX();
-            this.advancedDataGridView = new Zuby.ADGV.AdvancedDataGridView();
+            this.advSingerIdChange = new Zuby.ADGV.AdvancedDataGridView();
             this.colDelete = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.col変更利用者ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col変更日時 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
@@ -51,7 +51,7 @@
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
             this.btnUpdate = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.fes歌手ID変更履歴BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advSingerIdChange)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAddNew
@@ -67,12 +67,12 @@
             this.btnAddNew.Visible = false;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
-            // advancedDataGridView
+            // advSingerIdChange
             // 
-            this.advancedDataGridView.AllowUserToAddRows = false;
-            this.advancedDataGridView.AllowUserToDeleteRows = false;
-            this.advancedDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.advancedDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advSingerIdChange.AllowUserToAddRows = false;
+            this.advSingerIdChange.AllowUserToDeleteRows = false;
+            this.advSingerIdChange.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advSingerIdChange.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDelete,
             this.col変更利用者ID,
             this.col変更日時,
@@ -86,14 +86,15 @@
             this.col変更後_歌手名ソート用カナ,
             this.col履歴No,
             this.colDateTimeUpdate});
-            this.advancedDataGridView.FilterAndSortEnabled = true;
-            this.advancedDataGridView.Location = new System.Drawing.Point(12, 48);
-            this.advancedDataGridView.Name = "advancedDataGridView";
-            this.advancedDataGridView.ReadOnly = true;
-            this.advancedDataGridView.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.advancedDataGridView.Size = new System.Drawing.Size(513, 188);
-            this.advancedDataGridView.TabIndex = 2;
-            this.advancedDataGridView.Visible = false;
+            this.advSingerIdChange.FilterAndSortEnabled = true;
+            this.advSingerIdChange.IsLoadConfig = false;
+            this.advSingerIdChange.Location = new System.Drawing.Point(12, 48);
+            this.advSingerIdChange.Name = "advSingerIdChange";
+            this.advSingerIdChange.ReadOnly = true;
+            this.advSingerIdChange.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advSingerIdChange.Size = new System.Drawing.Size(513, 188);
+            this.advSingerIdChange.TabIndex = 2;
+            this.advSingerIdChange.Visible = false;
             // 
             // colDelete
             // 
@@ -346,19 +347,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
-            this.Controls.Add(this.dataGridViewFilter);
-            this.Controls.Add(this.advancedDataGridView);
+            this.Controls.Add(this.advSingerIdChange);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnAddNew);
+            this.Controls.Add(this.dataGridViewFilter);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SingerIdChangeManagementMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "歌手ID変更管理";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SingerIdChangeManagementMain_FormClosing);
             this.Load += new System.EventHandler(this.SingerIdChangeManagementMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fes歌手ID変更履歴BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advSingerIdChange)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -366,7 +368,7 @@
         #endregion
 
         private Base.DataGridViewFilter dataGridViewFilter;
-        private Zuby.ADGV.AdvancedDataGridView advancedDataGridView;
+        private Zuby.ADGV.AdvancedDataGridView advSingerIdChange;
         private System.Windows.Forms.BindingSource fes歌手ID変更履歴BindingSource;
         private DevComponents.DotNetBar.ButtonX btnAddNew;
         private DevComponents.DotNetBar.ButtonX btnUpdate;

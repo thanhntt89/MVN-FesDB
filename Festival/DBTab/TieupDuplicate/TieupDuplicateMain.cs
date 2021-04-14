@@ -104,5 +104,9 @@ namespace Festival.DBTab.TieupDuplicate
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+        private void TieupDuplicateMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dataGridViewFilter.SaveConfig();
+        }
     }
 }

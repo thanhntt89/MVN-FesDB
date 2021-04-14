@@ -21,6 +21,9 @@ namespace Festival.Base
         {
             InitializeComponent();
         }
+
+        public BindingSource bindingSource_main = new BindingSource();
+
         private int LastSelectedColumnIndex = -1;
         private int LasSelectedRowIndex = -1;
         private int LastHorizontalScrollingOffset = 0;
@@ -460,6 +463,10 @@ namespace Festival.Base
                     }
                 }
 
+                dtgAdvMain.Name = DataGridViewSource.Name;
+
+                dtgAdvMain.LoadConfiguration();
+
                 // Set datasource            
                 dtgAdvMain.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
                 dtgAdvMain.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
@@ -498,7 +505,7 @@ namespace Festival.Base
 
             bindingSource_main.Filter = string.Empty;
 
-            if (isFirstLoadData)
+            if (isFirstLoadData && !dtgAdvMain.IsLoadConfig)
             {
                 DataGridViewUtils.FastAutoSizeColumns(dtgAdvMain);
                 isFirstLoadData = false;
@@ -508,6 +515,7 @@ namespace Festival.Base
             {
                 DisplayItemSeleted(IsDisplayItemSeleted);
             }
+
             dtgAdvMain.CleanFilterAndSort();
             navDataGridView.EnableClearFilterAndSortButton();
             InitDataGridViewEvent();
@@ -1104,6 +1112,11 @@ namespace Festival.Base
             {
                 throw ex;
             }
-        }      
+        }        
+
+        public override void SaveConfig()
+        {
+            dtgAdvMain.SaveConfiguration();
+        }        
     }
 }

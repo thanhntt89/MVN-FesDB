@@ -43,7 +43,7 @@
             this.btnSave = new DevComponents.DotNetBar.ButtonX();
             this.btnImportData = new DevComponents.DotNetBar.ButtonX();
             this.btnAddNew = new DevComponents.DotNetBar.ButtonX();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
+           
             ((System.ComponentModel.ISupportInitialize)(this.dateInput)).BeginInit();
             this.SuspendLayout();
             // 
@@ -298,7 +298,7 @@
             this.Name = "FesDisplayCommon";
             this.Size = new System.Drawing.Size(898, 503);
             this.Load += new System.EventHandler(this.UCSearchCommon_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.dateInput)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

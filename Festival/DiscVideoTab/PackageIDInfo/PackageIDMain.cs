@@ -33,7 +33,7 @@ namespace Festival.DiscVideoTab.PackageIDInfo
         {
             dataGridViewFilter.ColumnDeletedDataPropertyName = colDelete.DataPropertyName;
             dataGridViewFilter.AllowUserEdit = true;
-            dataGridViewFilter.DataGridViewSource = dtgPackage;
+            dataGridViewFilter.DataGridViewSource = advPackage;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colUpdateDate.DataPropertyName;
             dataGridViewFilter.ColumnUpdateTimeName = colUpdateDate.Name;
             dataGridViewFilter.CellClickedEvent += CellClick;
@@ -308,6 +308,7 @@ namespace Festival.DiscVideoTab.PackageIDInfo
 
         private void PackageIDMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            dataGridViewFilter.SaveConfig();
             CloseAndSave(e);
         }
 

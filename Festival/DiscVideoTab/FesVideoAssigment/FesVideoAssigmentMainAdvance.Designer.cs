@@ -54,7 +54,7 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.col削除 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.col更新日時 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colデジドココンテンツID = new Festival.Base.DataGridViewNumericColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
+           
             ((System.ComponentModel.ISupportInitialize)(this.advFesVideoAssigment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -427,7 +427,7 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.SCREEN_TITLE = "個別映像割付";
             this.Size = new System.Drawing.Size(800, 400);
             this.Load += new System.EventHandler(this.FesVideoAssigmentMainAdvance_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.advFesVideoAssigment)).EndInit();
             this.ResumeLayout(false);
 

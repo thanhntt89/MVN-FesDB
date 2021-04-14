@@ -38,7 +38,7 @@
             this.btnFesSongWithDiscV1 = new System.Windows.Forms.Button();
             this.btnFesVideoAssigment = new System.Windows.Forms.Button();
             this.btnFesChapterAddDelete = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
+           
             this.SuspendLayout();
             // 
             // btnCheckDiskCapacity
@@ -171,7 +171,7 @@
             this.Controls.Add(this.btnFesVideoAssigment);
             this.Name = "TabDis";
             this.Size = new System.Drawing.Size(803, 425);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
+            
             this.ResumeLayout(false);
 
         }

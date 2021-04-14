@@ -31,7 +31,7 @@ namespace Festival.ManagementTab.ExecuteManagement
 
             dataGridViewFilter.ColumnDeletedDataPropertyName = colロック削除.DataPropertyName;
             dataGridViewFilter.ColumnDeletedName = colロック削除.Name;
-            dataGridViewFilter.DataGridViewSource = dtgExecute;
+            dataGridViewFilter.DataGridViewSource = advExecute;
             dataGridViewFilter.CellClickedEvent += CellClick;
 
             dataGridViewFilter.InitData();
@@ -120,6 +120,11 @@ namespace Festival.ManagementTab.ExecuteManagement
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void ExecuteMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dataGridViewFilter.SaveConfig();
         }
     }
 }

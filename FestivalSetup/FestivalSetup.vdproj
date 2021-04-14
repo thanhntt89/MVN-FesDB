@@ -15,43 +15,25 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_1563F496FA2670ABDBE63B2C5728AB74"
-        "OwnerKey" = "8:_FBE5F30A19491DFCA0D6128C2F648981"
+        "MsmKey" = "8:_14E96BF2DB35CE3C576A57DE16EA7A5D"
+        "OwnerKey" = "8:_BDDB2A24E487D1BA302EA7633B930BFC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_1563F496FA2670ABDBE63B2C5728AB74"
-        "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1563F496FA2670ABDBE63B2C5728AB74"
-        "OwnerKey" = "8:_1732113F80F7715CD4E4D04C8A81C30A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1563F496FA2670ABDBE63B2C5728AB74"
-        "OwnerKey" = "8:_3DF2A9C9162A13DDA78640C09EA113CC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1732113F80F7715CD4E4D04C8A81C30A"
-        "OwnerKey" = "8:_A892F55D10388A0E31044B5491C4535F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1732113F80F7715CD4E4D04C8A81C30A"
+        "MsmKey" = "8:_14E96BF2DB35CE3C576A57DE16EA7A5D"
         "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_18DE050417F6B91577DC570E0116F6D1"
+        "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1C86EF5D0BCDA077B087F7C4DC578E19"
         "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -69,20 +51,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_639B5B2199399B5FB45D73B88760F309"
-        "OwnerKey" = "8:_A892F55D10388A0E31044B5491C4535F"
+        "MsmKey" = "8:_68BCB4EA9FF01962678FB23D4CD8742D"
+        "OwnerKey" = "8:_FBE5F30A19491DFCA0D6128C2F648981"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_639B5B2199399B5FB45D73B88760F309"
+        "MsmKey" = "8:_68BCB4EA9FF01962678FB23D4CD8742D"
         "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_72A5BAAAD0595A630B64B3BAE8FDDB0F"
-        "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
+        "MsmKey" = "8:_68BCB4EA9FF01962678FB23D4CD8742D"
+        "OwnerKey" = "8:_14E96BF2DB35CE3C576A57DE16EA7A5D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_68BCB4EA9FF01962678FB23D4CD8742D"
+        "OwnerKey" = "8:_3DF2A9C9162A13DDA78640C09EA113CC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -93,13 +81,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9A59CBC2A72A451ED60DA3FA63C29586"
+        "OwnerKey" = "8:_BDDB2A24E487D1BA302EA7633B930BFC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9A59CBC2A72A451ED60DA3FA63C29586"
+        "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A892F55D10388A0E31044B5491C4535F"
+        "MsmKey" = "8:_A93C6D3DACF1E25C8D32635ABAFF4125"
+        "OwnerKey" = "8:_BDDB2A24E487D1BA302EA7633B930BFC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A93C6D3DACF1E25C8D32635ABAFF4125"
         "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -117,19 +123,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AB369F5BE1627BA6F25C602DA3A90C5A"
-        "OwnerKey" = "8:_A892F55D10388A0E31044B5491C4535F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_AB369F5BE1627BA6F25C602DA3A90C5A"
+        "MsmKey" = "8:_BDDB2A24E487D1BA302EA7633B930BFC"
         "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C676FF7562C38E43422FCBCF9E3970C4"
+        "MsmKey" = "8:_D2153AF71E9B2AAB0650C8E379F91052"
         "OwnerKey" = "8:_A201E52616174C6FB1A5A9A1815E852F"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -148,37 +148,37 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C676FF7562C38E43422FCBCF9E3970C4"
+        "OwnerKey" = "8:_D2153AF71E9B2AAB0650C8E379F91052"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A892F55D10388A0E31044B5491C4535F"
+        "OwnerKey" = "8:_BDDB2A24E487D1BA302EA7633B930BFC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AB369F5BE1627BA6F25C602DA3A90C5A"
+        "OwnerKey" = "8:_A93C6D3DACF1E25C8D32635ABAFF4125"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1732113F80F7715CD4E4D04C8A81C30A"
+        "OwnerKey" = "8:_14E96BF2DB35CE3C576A57DE16EA7A5D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_639B5B2199399B5FB45D73B88760F309"
+        "OwnerKey" = "8:_9A59CBC2A72A451ED60DA3FA63C29586"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_72A5BAAAD0595A630B64B3BAE8FDDB0F"
+        "OwnerKey" = "8:_1C86EF5D0BCDA077B087F7C4DC578E19"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -208,7 +208,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1563F496FA2670ABDBE63B2C5728AB74"
+        "OwnerKey" = "8:_68BCB4EA9FF01962678FB23D4CD8742D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -289,6 +289,20 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_A69D5936D6A8437F9A870F5738F6F2CE"
+            {
+            "Name" = "8:Primary output from Festival (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_A201E52616174C6FB1A5A9A1815E852F"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_4DBCF7AC_0270_4D6F_8533_6CB0B3CADB03"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -312,45 +326,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1563F496FA2670ABDBE63B2C5728AB74"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_14E96BF2DB35CE3C576A57DE16EA7A5D"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:DevComponents.DotNetBar2, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:FestivalObjects, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_1563F496FA2670ABDBE63B2C5728AB74"
-                    {
-                    "Name" = "8:DevComponents.DotNetBar2.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:DevComponents.DotNetBar2.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_608A6E96240C4F0D802889F456369AB8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1732113F80F7715CD4E4D04C8A81C30A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FestivalObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_1732113F80F7715CD4E4D04C8A81C30A"
+                    "_14E96BF2DB35CE3C576A57DE16EA7A5D"
                     {
                     "Name" = "8:FestivalObjects.dll"
                     "Attributes" = "3:512"
@@ -388,6 +371,37 @@
                     }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_608A6E96240C4F0D802889F456369AB8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1C86EF5D0BCDA077B087F7C4DC578E19"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AdvancedDataGridView, Version=1.1.24520.8, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1C86EF5D0BCDA077B087F7C4DC578E19"
+                    {
+                    "Name" = "8:AdvancedDataGridView.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AdvancedDataGridView.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_608A6E96240C4F0D802889F456369AB8"
@@ -467,51 +481,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_639B5B2199399B5FB45D73B88760F309"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_68BCB4EA9FF01962678FB23D4CD8742D"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FestivalCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:DevComponents.DotNetBar2, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_639B5B2199399B5FB45D73B88760F309"
+                    "_68BCB4EA9FF01962678FB23D4CD8742D"
                     {
-                    "Name" = "8:FestivalCommon.dll"
+                    "Name" = "8:DevComponents.DotNetBar2.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:FestivalCommon.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_608A6E96240C4F0D802889F456369AB8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_72A5BAAAD0595A630B64B3BAE8FDDB0F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AdvancedDataGridView, Version=1.1.24520.7, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_72A5BAAAD0595A630B64B3BAE8FDDB0F"
-                    {
-                    "Name" = "8:AdvancedDataGridView.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AdvancedDataGridView.dll"
+            "SourcePath" = "8:DevComponents.DotNetBar2.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_608A6E96240C4F0D802889F456369AB8"
@@ -549,20 +532,51 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A892F55D10388A0E31044B5491C4535F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9A59CBC2A72A451ED60DA3FA63C29586"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FestivalBusiness, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:FestivalCommon, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_A892F55D10388A0E31044B5491C4535F"
+                    "_9A59CBC2A72A451ED60DA3FA63C29586"
                     {
-                    "Name" = "8:FestivalBusiness.dll"
+                    "Name" = "8:FestivalCommon.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:FestivalBusiness.dll"
+            "SourcePath" = "8:FestivalCommon.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_608A6E96240C4F0D802889F456369AB8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A93C6D3DACF1E25C8D32635ABAFF4125"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FestivalUtilities, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A93C6D3DACF1E25C8D32635ABAFF4125"
+                    {
+                    "Name" = "8:FestivalUtilities.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FestivalUtilities.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_608A6E96240C4F0D802889F456369AB8"
@@ -611,20 +625,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_AB369F5BE1627BA6F25C602DA3A90C5A"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BDDB2A24E487D1BA302EA7633B930BFC"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FestivalUtilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:FestivalBusiness, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_AB369F5BE1627BA6F25C602DA3A90C5A"
+                    "_BDDB2A24E487D1BA302EA7633B930BFC"
                     {
-                    "Name" = "8:FestivalUtilities.dll"
+                    "Name" = "8:FestivalBusiness.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:FestivalUtilities.dll"
+            "SourcePath" = "8:FestivalBusiness.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_608A6E96240C4F0D802889F456369AB8"
@@ -642,14 +656,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C676FF7562C38E43422FCBCF9E3970C4"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D2153AF71E9B2AAB0650C8E379F91052"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C676FF7562C38E43422FCBCF9E3970C4"
+                    "_D2153AF71E9B2AAB0650C8E379F91052"
                     {
                     "Name" = "8:WinFormAnimation.dll"
                     "Attributes" = "3:512"
@@ -760,15 +774,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:FestivalDB"
-        "ProductCode" = "8:{C016A2D2-0EBE-4CAB-A249-7B79D5E1EE9F}"
-        "PackageCode" = "8:{C37E1B3D-F494-4C48-B06C-E745A6C3F7D6}"
+        "ProductCode" = "8:{B8682BCA-1CC8-4C83-AE29-CC3E7AFCE4B5}"
+        "PackageCode" = "8:{8297E78B-02C4-498F-9BCB-93911AA34C3A}"
         "UpgradeCode" = "8:{90C05EB4-992C-4F72-B3A3-96E785E77989}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:3.0.3"
+        "ProductVersion" = "8:3.1.0"
         "Manufacturer" = "8:MVN Viet Nam"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

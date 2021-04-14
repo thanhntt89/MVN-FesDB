@@ -34,7 +34,7 @@ namespace Festival.ManagementTab.FunctionID
 
             dataGridViewFilter.ColumnDeletedDataPropertyName = colDelete.DataPropertyName;
             dataGridViewFilter.AllowUserEdit = true;
-            dataGridViewFilter.DataGridViewSource = dtgFuntions;
+            dataGridViewFilter.DataGridViewSource = advFuntions;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colUpdateDate.DataPropertyName;
             dataGridViewFilter.ColumnUpdateTimeName = colUpdateDate.Name;
             dataGridViewFilter.CellClickedEvent += CellClick;
@@ -350,6 +350,7 @@ namespace Festival.ManagementTab.FunctionID
 
         private void FunctionIDMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            dataGridViewFilter.SaveConfig();
             CloseAndSave(e);
         }
 

@@ -54,6 +54,7 @@
             this.colタイアップ検索用カナ,
             this.colタイアップソート用カナ});
             this.advTieupDuplicate.FilterAndSortEnabled = true;
+            this.advTieupDuplicate.IsLoadConfig = false;
             this.advTieupDuplicate.Location = new System.Drawing.Point(12, 45);
             this.advTieupDuplicate.Name = "advTieupDuplicate";
             this.advTieupDuplicate.ReadOnly = true;
@@ -157,8 +158,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 361);
-            this.Controls.Add(this.dataGridViewFilter);
             this.Controls.Add(this.advTieupDuplicate);
+            this.Controls.Add(this.dataGridViewFilter);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -166,6 +167,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "タイアップ重複確認";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TieupDuplicateMain_FormClosing);
             this.Load += new System.EventHandler(this.TieupDuplicateMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.advTieupDuplicate)).EndInit();
             this.ResumeLayout(false);

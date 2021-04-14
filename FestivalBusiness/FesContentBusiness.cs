@@ -12,7 +12,8 @@ namespace FestivalBusiness
     public class FesContentBusiness : BusinessBase
     {
         private CommonBusiness commonBusiness = new CommonBusiness();
-
+        private FesVideoAssigmentBusiness fesVideoAssigmentBusiness = new FesVideoAssigmentBusiness();
+        
         public DataTable GetDataExportContentList(List<string> getDisplayedIdList)
         {
             try
@@ -63,7 +64,9 @@ namespace FestivalBusiness
         {
             try
             {
-                // Valid data
+                // Valid_data
+                //Removed display column コンテンツ種類
+                updateDataWorkFesContentTable.Columns.Remove("コンテンツ種類");
 
                 SaveWorkTableTmp(updateDataWorkFesContentTable);
 
@@ -88,6 +91,11 @@ namespace FestivalBusiness
 
                 string columnName = string.Empty;
                 DataRow updateRow = null;
+
+                //FesVideoCode              
+                bool isAddNewVideoCode = false;
+                DataTable dtFesVideoCode = new DataTable();
+
                 DataTable dtFesServiceTable = null;
 
                 if (connection.State == ConnectionState.Closed)
@@ -96,17 +104,31 @@ namespace FestivalBusiness
 
                 foreach (DataRow row in dtFesContentWorkTable.Rows)
                 {
+                    //ContentId
+                    contentId = row[0].ToString();
+
+                    //FesVideoCode
+                    dtFesVideoCode = fesVideoAssigmentBusiness.GetFesVideoCodeManagementById(contentId);                  
+                    isAddNewVideoCode = false;
+
+                    if (dtFesVideoCode.Rows.Count == 0)
+                    {
+                        isAddNewVideoCode = true;
+                        dtFesVideoCode.Rows.Add();
+                        //FesVideoCode
+                        dtFesVideoCode.Rows[0]["デジドココンテンツID"] = row["デジドココンテンツID"];
+                    }
+
                     isAddNew = false;
                     isUpdate = true;
-
-                    contentId = row[0].ToString();
+                   
                     dtFesServiceTable = GetDataFesServiceTable(contentId);
-
                     // Insert new
                     if (dtFesServiceTable.Rows.Count == 0)
                     {
                         dtFesServiceTable.Rows.Add();
                         dtFesServiceTable.Rows[0]["デジドココンテンツID"] = row["デジドココンテンツID"];
+
                         isAddNew = true;
                     }// Update
 
@@ -135,7 +157,7 @@ namespace FestivalBusiness
                         }
                         else if (columnName.Equals("邦題優先フラグ"))
                         {
-                            if (!string.IsNullOrWhiteSpace(row[col].ToString()) &&  row[col] == DBNull.Value)
+                            if (!string.IsNullOrWhiteSpace(row[col].ToString()) && row[col] == DBNull.Value)
                             {
                                 if (!string.IsNullOrWhiteSpace(message.NoUpdateRecord))
                                 {
@@ -160,9 +182,20 @@ namespace FestivalBusiness
                                 updateRow[columnName] = row[columnName];
                             }
                         }
+                        //FesVideoCode colum
+                        else if (columnName.Equals("背景映像コード"))
+                        {
+                            dtFesVideoCode.Rows[0]["背景映像コード"] = row["背景映像コード"];
+                        }
                         else
                         {
                             updateRow[col.ColumnName] = row[col.ColumnName];
+
+                            //FesVideoCode colum
+                            if (columnName.Equals("備考"))
+                            {
+                                dtFesVideoCode.Rows[0]["備考"] = row["備考"];
+                            }
                         }
                     }
 
@@ -171,6 +204,11 @@ namespace FestivalBusiness
                         updateRow["最終更新日時"] = DateTime.Now;
                         updateRow["最終更新者"] = Environment.UserName;
                         updateRow["最終更新PC名"] = Environment.MachineName;
+
+                        //FesVideoCode colum
+                        dtFesVideoCode.Rows[0]["最終更新日時"] = updateRow["最終更新日時"];
+                        dtFesVideoCode.Rows[0]["最終更新者"] = updateRow["最終更新者"];
+                        dtFesVideoCode.Rows[0]["最終更新PC名"] = updateRow["最終更新PC名"];
 
                         if (isAddNew)
                         {
@@ -183,6 +221,16 @@ namespace FestivalBusiness
 
                         // Update table work
                         UpdateFesContentWorkTable(sqlTransac, contentId);
+
+                        //FesVideoCode
+                        if (isAddNewVideoCode)
+                        {
+                            fesVideoAssigmentBusiness.InsertFesVideoManagement(sqlTransac, dtFesVideoCode);
+                        }
+                        else
+                        {
+                            fesVideoAssigmentBusiness.UpdateFesViedeosManagment(sqlTransac, dtFesVideoCode);
+                        }
 
                         countSucess++;
                     }
@@ -216,6 +264,10 @@ namespace FestivalBusiness
             {
                 // Delete registable
                 SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesContentQuery.GetDeleteRegisteredFesContentQuery());
+
+                //Delete Fes映像コード管理
+                fesVideoAssigmentBusiness.DeleteFromFesContents(sqlTransac);
+
                 // Delete work table
                 SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesContentQuery.GetDeleteFesContentWorkQuery());
             }
@@ -254,6 +306,7 @@ namespace FestivalBusiness
             try
             {
                 SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesContentQuery.GetInserFestContentQuery(dtFesServiceTable));
+
             }
             catch (Exception ex)
             {

@@ -30,7 +30,8 @@ namespace Festival.DBTab.FesContent
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -59,12 +60,14 @@ namespace Festival.DBTab.FesContent
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
-            this.dtgFestContent = new Zuby.ADGV.AdvancedDataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.advFestContent = new Zuby.ADGV.AdvancedDataGridView();
+            this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
             this.col選択 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.colWiiデジドコ選曲番号 = new Festival.Base.DataGridViewNumericColumn();
             this.colカラオケ選曲番号 = new Festival.Base.DataGridViewNumericColumn();
             this.col親選曲番号 = new Festival.Base.DataGridViewNumericColumn();
+            this.colコンテンツ種類ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colコンテンツ種類 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col配信マーク = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col表示用Fesアレンジコード = new Festival.Base.DataGridViewNumericColumn();
@@ -146,25 +149,25 @@ namespace Festival.DBTab.FesContent
             this.col更新日時 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colSONG_GROUP_INTRO_TYPE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colデジドココンテンツID = new Festival.Base.DataGridViewNumericColumn();
-            this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFestContent)).BeginInit();
+           
+            ((System.ComponentModel.ISupportInitialize)(this.advFestContent)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtgFestContent
+            // advFestContent
             // 
-            this.dtgFestContent.AllowUserToAddRows = false;
-            this.dtgFestContent.AllowUserToDeleteRows = false;
-            this.dtgFestContent.AllowUserToOrderColumns = true;
-            this.dtgFestContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.advFestContent.AllowUserToAddRows = false;
+            this.advFestContent.AllowUserToDeleteRows = false;
+            this.advFestContent.AllowUserToOrderColumns = true;
+            this.advFestContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtgFestContent.ColumnHeadersHeight = 24;
-            this.dtgFestContent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advFestContent.ColumnHeadersHeight = 24;
+            this.advFestContent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col選択,
             this.colWiiデジドコ選曲番号,
             this.colカラオケ選曲番号,
             this.col親選曲番号,
+            this.colコンテンツ種類ID,
             this.colコンテンツ種類,
             this.col配信マーク,
             this.col表示用Fesアレンジコード,
@@ -246,24 +249,57 @@ namespace Festival.DBTab.FesContent
             this.col更新日時,
             this.colSONG_GROUP_INTRO_TYPE,
             this.colデジドココンテンツID});
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgFestContent.DefaultCellStyle = dataGridViewCellStyle29;
-            this.dtgFestContent.FilterAndSortEnabled = true;
-            this.dtgFestContent.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.dtgFestContent.Location = new System.Drawing.Point(3, 0);
-            this.dtgFestContent.Name = "dtgFestContent";
-            this.dtgFestContent.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgFestContent.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dtgFestContent.ShowCellErrors = false;
-            this.dtgFestContent.Size = new System.Drawing.Size(800, 375);
-            this.dtgFestContent.TabIndex = 19;
-            this.dtgFestContent.Visible = false;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.advFestContent.DefaultCellStyle = dataGridViewCellStyle30;
+            this.advFestContent.FilterAndSortEnabled = true;
+            this.advFestContent.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.advFestContent.IsLoadConfig = false;
+            this.advFestContent.Location = new System.Drawing.Point(3, 0);
+            this.advFestContent.Name = "advFestContent";
+            this.advFestContent.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advFestContent.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.advFestContent.ShowCellErrors = false;
+            this.advFestContent.Size = new System.Drawing.Size(800, 375);
+            this.advFestContent.TabIndex = 19;
+            this.advFestContent.Visible = false;
+            // 
+            // dataGridViewFilter
+            // 
+            this.dataGridViewFilter.AllowUserEdit = false;
+            this.dataGridViewFilter.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridViewFilter.CancelClose = false;
+            this.dataGridViewFilter.ColChoiseIndex = 0;
+            this.dataGridViewFilter.ColDeletedIndex = 0;
+            this.dataGridViewFilter.ColKeyIndex = 0;
+            this.dataGridViewFilter.ColumnChoiseDataPropertyName = null;
+            this.dataGridViewFilter.ColumnChoiseName = null;
+            this.dataGridViewFilter.ColumnCollection = null;
+            this.dataGridViewFilter.ColumnComboxChangeName = null;
+            this.dataGridViewFilter.ColumnDeletedDataPropertyName = null;
+            this.dataGridViewFilter.ColumnDeletedName = null;
+            this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
+            this.dataGridViewFilter.ColumnKeyName = null;
+            this.dataGridViewFilter.ColumnUpdateName = null;
+            this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnUpdateTimeName = null;
+            this.dataGridViewFilter.ColUpdatedIndex = 0;
+            this.dataGridViewFilter.DataGridViewSource = this.advFestContent;
+            this.dataGridViewFilter.DataSourceDisplay = null;
+            this.dataGridViewFilter.DataTableSource = null;
+            this.dataGridViewFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewFilter.IsFilterActive = false;
+            this.dataGridViewFilter.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection1;
+            this.dataGridViewFilter.Name = "dataGridViewFilter";
+            this.dataGridViewFilter.SCREEN_TITLE = null;
+            this.dataGridViewFilter.Size = new System.Drawing.Size(800, 400);
+            this.dataGridViewFilter.TabIndex = 1;
             // 
             // col選択
             // 
@@ -314,6 +350,15 @@ namespace Festival.DBTab.FesContent
             this.col親選曲番号.Name = "col親選曲番号";
             this.col親選曲番号.ReadOnly = true;
             this.col親選曲番号.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // colコンテンツ種類ID
+            // 
+            this.colコンテンツ種類ID.DataPropertyName = "コンテンツ種類ID";
+            this.colコンテンツ種類ID.HeaderText = "コンテンツ種類ID";
+            this.colコンテンツ種類ID.MinimumWidth = 22;
+            this.colコンテンツ種類ID.Name = "colコンテンツ種類ID";
+            this.colコンテンツ種類ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.colコンテンツ種類ID.Visible = false;
             // 
             // colコンテンツ種類
             // 
@@ -1512,18 +1557,19 @@ namespace Festival.DBTab.FesContent
             // col背景映像コード
             // 
             this.col背景映像コード.DataPropertyName = "背景映像コード";
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.Yellow;
+            this.col背景映像コード.DefaultCellStyle = dataGridViewCellStyle26;
             this.col背景映像コード.HeaderText = "背景映像コード";
             this.col背景映像コード.MaxInputLength = 7;
             this.col背景映像コード.MinimumWidth = 22;
             this.col背景映像コード.Name = "col背景映像コード";
-            this.col背景映像コード.ReadOnly = true;
             this.col背景映像コード.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // col著作権備考
             // 
             this.col著作権備考.DataPropertyName = "著作権備考";
-            dataGridViewCellStyle26.BackColor = System.Drawing.Color.Yellow;
-            this.col著作権備考.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.Yellow;
+            this.col著作権備考.DefaultCellStyle = dataGridViewCellStyle27;
             this.col著作権備考.HeaderText = "著作権備考";
             this.col著作権備考.MaxInputLength = 255;
             this.col著作権備考.MinimumWidth = 22;
@@ -1533,8 +1579,8 @@ namespace Festival.DBTab.FesContent
             // col備考
             // 
             this.col備考.DataPropertyName = "備考";
-            dataGridViewCellStyle27.BackColor = System.Drawing.Color.Yellow;
-            this.col備考.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.Yellow;
+            this.col備考.DefaultCellStyle = dataGridViewCellStyle28;
             this.col備考.HeaderText = "備考";
             this.col備考.MaxInputLength = 255;
             this.col備考.MinimumWidth = 22;
@@ -1547,9 +1593,9 @@ namespace Festival.DBTab.FesContent
             this.col削除.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.col削除.CheckValue = "N";
             this.col削除.DataPropertyName = "削除";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle28.BackColor = System.Drawing.Color.Yellow;
-            this.col削除.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.Yellow;
+            this.col削除.DefaultCellStyle = dataGridViewCellStyle29;
             this.col削除.HeaderText = "削除";
             this.col削除.MinimumWidth = 22;
             this.col削除.Name = "col削除";
@@ -1668,51 +1714,19 @@ namespace Festival.DBTab.FesContent
             this.colデジドココンテンツID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.colデジドココンテンツID.Visible = false;
             // 
-            // dataGridViewFilter
-            // 
-            this.dataGridViewFilter.AllowUserEdit = false;
-            this.dataGridViewFilter.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridViewFilter.CancelClose = false;
-            this.dataGridViewFilter.ColChoiseIndex = 0;
-            this.dataGridViewFilter.ColDeletedIndex = 0;
-            this.dataGridViewFilter.ColKeyIndex = 0;
-            this.dataGridViewFilter.ColumnChoiseDataPropertyName = null;
-            this.dataGridViewFilter.ColumnChoiseName = null;
-            this.dataGridViewFilter.ColumnCollection = null;
-            this.dataGridViewFilter.ColumnComboxChangeName = null;
-            this.dataGridViewFilter.ColumnDeletedDataPropertyName = null;
-            this.dataGridViewFilter.ColumnDeletedName = null;
-            this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
-            this.dataGridViewFilter.ColumnKeyName = null;
-            this.dataGridViewFilter.ColumnUpdateName = null;
-            this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
-            this.dataGridViewFilter.ColumnUpdateTimeName = null;
-            this.dataGridViewFilter.ColUpdatedIndex = 0;
-            this.dataGridViewFilter.DataGridViewSource = this.dtgFestContent;
-            this.dataGridViewFilter.DataSourceDisplay = null;
-            this.dataGridViewFilter.DataTableSource = null;
-            this.dataGridViewFilter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewFilter.IsFilterActive = false;
-            this.dataGridViewFilter.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewFilter.MainMenuEditModeCollection = menuMainCollection1;
-            this.dataGridViewFilter.Name = "dataGridViewFilter";
-            this.dataGridViewFilter.SCREEN_TITLE = null;
-            this.dataGridViewFilter.Size = new System.Drawing.Size(800, 400);
-            this.dataGridViewFilter.TabIndex = 1;
-            // 
             // FesContentMainAdvance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Controls.Add(this.dtgFestContent);
+            this.Controls.Add(this.advFestContent);
             this.Controls.Add(this.dataGridViewFilter);
             this.Name = "FesContentMainAdvance";
             this.SCREEN_TITLE = "Festivalコンテンツ";
             this.Size = new System.Drawing.Size(800, 400);
             this.Load += new System.EventHandler(this.DisVideoSearchMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgFestContent)).EndInit();
+            
+            ((System.ComponentModel.ISupportInitialize)(this.advFestContent)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1720,11 +1734,12 @@ namespace Festival.DBTab.FesContent
         #endregion
 
         private Base.DataGridViewFilter dataGridViewFilter;
-        private AdvancedDataGridView dtgFestContent;
+        private AdvancedDataGridView advFestContent;
         private DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn col選択;
         private Base.DataGridViewNumericColumn colWiiデジドコ選曲番号;
         private Base.DataGridViewNumericColumn colカラオケ選曲番号;
         private Base.DataGridViewNumericColumn col親選曲番号;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colコンテンツ種類ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colコンテンツ種類;
         private System.Windows.Forms.DataGridViewTextBoxColumn col配信マーク;
         private Base.DataGridViewNumericColumn col表示用Fesアレンジコード;

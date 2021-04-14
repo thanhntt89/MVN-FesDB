@@ -30,33 +30,34 @@
         {
             Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiskCapacityManagement));
-            this.dtgDiskManagement = new Zuby.ADGV.AdvancedDataGridView();
+            this.advDiskManagement = new Zuby.ADGV.AdvancedDataGridView();
             this.colFesDISCID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col合計 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col残り = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDateTimeUpdate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgDiskManagement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advDiskManagement)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtgDiskManagement
+            // advDiskManagement
             // 
-            this.dtgDiskManagement.AllowUserToAddRows = false;
-            this.dtgDiskManagement.AllowUserToDeleteRows = false;
-            this.dtgDiskManagement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgDiskManagement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.advDiskManagement.AllowUserToAddRows = false;
+            this.advDiskManagement.AllowUserToDeleteRows = false;
+            this.advDiskManagement.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advDiskManagement.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colFesDISCID,
             this.col合計,
             this.col残り,
             this.colDateTimeUpdate});
-            this.dtgDiskManagement.FilterAndSortEnabled = true;
-            this.dtgDiskManagement.Location = new System.Drawing.Point(70, 57);
-            this.dtgDiskManagement.Name = "dtgDiskManagement";
-            this.dtgDiskManagement.ReadOnly = true;
-            this.dtgDiskManagement.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dtgDiskManagement.Size = new System.Drawing.Size(643, 191);
-            this.dtgDiskManagement.TabIndex = 1;
-            this.dtgDiskManagement.Visible = false;
+            this.advDiskManagement.FilterAndSortEnabled = true;
+            this.advDiskManagement.IsLoadConfig = false;
+            this.advDiskManagement.Location = new System.Drawing.Point(70, 57);
+            this.advDiskManagement.Name = "advDiskManagement";
+            this.advDiskManagement.ReadOnly = true;
+            this.advDiskManagement.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.advDiskManagement.Size = new System.Drawing.Size(643, 191);
+            this.advDiskManagement.TabIndex = 1;
+            this.advDiskManagement.Visible = false;
             // 
             // colFesDISCID
             // 
@@ -161,8 +162,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
+            this.Controls.Add(this.advDiskManagement);
             this.Controls.Add(this.dataGridViewFilter);
-            this.Controls.Add(this.dtgDiskManagement);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -172,7 +173,7 @@
             this.Text = "ディスク容量チェック";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DiskCapacityManagement_FormClosing);
             this.Load += new System.EventHandler(this.DiskCapacityManagement_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgDiskManagement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advDiskManagement)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -180,7 +181,7 @@
         #endregion
 
         private Base.DataGridViewFilter dataGridViewFilter;
-        private Zuby.ADGV.AdvancedDataGridView dtgDiskManagement;
+        private Zuby.ADGV.AdvancedDataGridView advDiskManagement;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFesDISCID;
         private System.Windows.Forms.DataGridViewTextBoxColumn col合計;
         private System.Windows.Forms.DataGridViewTextBoxColumn col残り;

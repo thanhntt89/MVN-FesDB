@@ -32,7 +32,7 @@ namespace Festival.ManagementTab.AuthGroup
             authGroupBusiness = new FesAuthGroupBusiness();
             dataGridViewFilter.ColumnDeletedDataPropertyName = colDelete.DataPropertyName;
             dataGridViewFilter.AllowUserEdit = true;
-            dataGridViewFilter.DataGridViewSource = dtgAuthGroup;
+            dataGridViewFilter.DataGridViewSource = advAuthGroup;
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colUpdateDate.DataPropertyName;
             dataGridViewFilter.ColumnUpdateTimeName = colUpdateDate.Name;
             dataGridViewFilter.CellClickedEvent += CellClick;
@@ -328,6 +328,7 @@ namespace Festival.ManagementTab.AuthGroup
 
         private void AuthGroupMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            dataGridViewFilter.SaveConfig();
             CloseAndSave(e);
         }
     }
