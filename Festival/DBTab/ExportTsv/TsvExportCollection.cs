@@ -285,7 +285,7 @@ namespace Festival.DBTab
         {
             get; set;
         }
-        public string FileLocalPath
+        public string LocalFolderPath
         {
             get
             {
@@ -311,6 +311,6 @@ namespace Festival.DBTab
         public string FileNameServer { get; set; }
 
         public DateTime UploadTime { get; set; }
-        public bool IgNorUpload { get; set; }
+        public bool IgNorUpload { get; set; }       
     }
 }

@@ -12,6 +12,7 @@ using System.Reflection;
 using Zuby.ADGV;
 using System.Collections.Generic;
 using Festival.Base.DataGridViewColumnCustom;
+using System.Globalization;
 
 namespace Festival.Base
 {
@@ -35,6 +36,8 @@ namespace Festival.Base
         private bool isFirstLoadData = true;
         public bool AllowUserEdit { get; set; }
         private int firstDisplayedScrollingRowIndex = 0;
+        //Get Video locktype
+
 
         public void InitDataGridViewEvent()
         {
@@ -69,6 +72,7 @@ namespace Festival.Base
             firstDisplayedScrollingRowIndex = 0;
             firstDisplayedScrollingColumnIndex = 0;
         }
+
 
         public void RemoveEventDataGridView()
         {
@@ -222,6 +226,22 @@ namespace Festival.Base
             dtgAdvMain.CleanFilterAndSort();
         }
 
+        public object GetDataByKeyIdAndField(string keyId, string fiedlName)
+        {
+            object obj = new object();
+            DataTable dt = GetDataByKeyColumn(keyId);
+            if (dt != null)
+            {
+                obj = dt.Rows[0][fiedlName];
+            }
+            return obj;
+        }
+
+        public DataTable GetDataByKeyColumn(string keyId)
+        {
+            return DataGridViewUtils.GetDataByColumnId(DataTableSource, ColumnKeyDataPropertyName, keyId);
+        }
+
         public override DataTable GetUpdateData()
         {
             if (dtgAdvMain != null)
@@ -319,6 +339,20 @@ namespace Festival.Base
         public override void Choise(bool? isSelected)
         {
             ChoiseProcess(isSelected);
+        }
+
+        /// <summary>
+        /// Count rows data
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+                int count = 0;
+                if (DataTableSource != null)
+                    count = DataTableSource.Rows.Count;
+                return count;
+            }
         }
 
         private void UpdateColumnChoise(bool isSelected)
@@ -465,6 +499,7 @@ namespace Festival.Base
 
                 dtgAdvMain.Name = DataGridViewSource.Name;
 
+                //Load config header
                 dtgAdvMain.LoadConfiguration();
 
                 // Set datasource            
@@ -504,7 +539,7 @@ namespace Festival.Base
             dtgAdvMain.RowHeadersVisible = true;
 
             bindingSource_main.Filter = string.Empty;
-
+            // dtgAdvMain.LoadConfiguration();
             if (isFirstLoadData && !dtgAdvMain.IsLoadConfig)
             {
                 DataGridViewUtils.FastAutoSizeColumns(dtgAdvMain);
@@ -605,6 +640,8 @@ namespace Festival.Base
             }
             else
             {
+                if (cell.RowIndex == -1) return;
+
                 string keyId = dtgAdvMain.Rows[cell.RowIndex].Cells[ColumnKeyName].Value.ToString();
                 UpdateTableSource(keyId, cell.OwningColumn.DataPropertyName, data);
                 ExecuteUpdateDataColumn(keyId, tbData, Columns);
@@ -801,10 +838,24 @@ namespace Festival.Base
                 return;
             try
             {
-                dtgAdvMain.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+                // Get scroll before copy
+                int position = dtgAdvMain.HorizontalScrollingOffset;
+                // Removed first tab
+                dtgAdvMain.RowHeadersVisible = false;
+                //Copy with header
+                if (dtgAdvMain.CountSeletedColumn > 1)
+                    dtgAdvMain.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+                else // Copy without header
+                    dtgAdvMain.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+
                 Clipboard.Clear();
 
                 DataObject copyData = dtgAdvMain.GetClipboardContent();
+
+                dtgAdvMain.RowHeadersVisible = true;
+                //Set scroll position after copy
+                dtgAdvMain.HorizontalScrollingOffset = position;
+
                 // Copy data to clipboard
                 Clipboard.SetDataObject(copyData, true, 10, 200);
             }
@@ -832,9 +883,8 @@ namespace Festival.Base
         public override void Paste()
         {
             try
-            {
-                SetValueCellActionCut();
-                Paste(dtgAdvMain);
+            {                
+                Pastes();
             }
             catch (Exception ex)
             {
@@ -865,9 +915,9 @@ namespace Festival.Base
         /// Paste value copy and cut 
         /// </summary>
         /// <param name="dataGridView"></param>
-        private void Paste(AdvancedDataGridView dataGridView)
+        private void Pastes()
         {
-            if (dataGridView == null || dataGridView.CurrentCell == null || dataGridView.CurrentCell.IsInEditMode)
+            if (dtgAdvMain == null || dtgAdvMain.CurrentCell == null || dtgAdvMain.CurrentCell.IsInEditMode)
                 return;
 
             try
@@ -877,14 +927,14 @@ namespace Festival.Base
                 string[] lines = data.Split('\n');
 
                 int iFail = 0;
-                int iRow = dataGridView.CurrentCell.RowIndex;
-                int iCol = dataGridView.CurrentCell.ColumnIndex;
+                int iRow = dtgAdvMain.CurrentCell.RowIndex;
+                int iCol = dtgAdvMain.CurrentCell.ColumnIndex;
 
                 DataGridViewCell oCell;
 
                 foreach (string line in lines)
                 {
-                    if (iRow > dataGridView.RowCount || line.Length < 0)
+                    if (iRow > dtgAdvMain.RowCount || line.Length < 0)
                     {
                         break;
                     }
@@ -893,24 +943,27 @@ namespace Festival.Base
 
                     for (int i = 0; i < sCells.GetLength(0); ++i)
                     {
-                        if (iCol + i > dataGridView.ColumnCount)
+                        if (iCol + i > dtgAdvMain.ColumnCount)
                         {
                             break;
                         }
 
-                        oCell = dataGridView[iCol + i, iRow];
+                        oCell = dtgAdvMain[iCol + i, iRow];
 
                         if (oCell.ReadOnly)
                         {
-                            throw new ArgumentException(string.Format(GetResources.GetResourceMesssage(Constants.EXPASTE001), iFail));
+                            // throw new ArgumentException(string.Format(GetResources.GetResourceMesssage(Constants.EXPASTE001), iFail));
+                            return;
                         }
 
-                        if (oCell.ValueType == null)
+                        if (!CheckValidCell(oCell, data))
                         {
-                            throw new ArgumentException(string.Format(GetResources.GetResourceMesssage(Constants.EXPASTE002), iFail));
+                            MessageBox.Show(string.Format("存在する{0}を指定してください。", oCell.OwningColumn.HeaderText), GetResources.GetResourceMesssage(Constants.ALERT_TITLE_MESSAGE), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
                         }
 
-                        oCell.Value = Convert.ChangeType(sCells[i], oCell.FormattedValueType);
+                        UpdateCell(oCell, data);
+                        //oCell.Value = Convert.ChangeType(sCells[i], oCell.FormattedValueType);
                     }
 
                     iRow++;
@@ -921,6 +974,62 @@ namespace Festival.Base
                 throw new ArgumentException(GetResources.GetResourceMesssage(Constants.EXPASTE003));
             }
         }
+
+        private bool CheckValidCell(DataGridViewCell cell, object data)
+        {
+            if (cell == null)
+                return false;
+            int MaxLength = 0;
+            int MinLength = 0;
+            if (data == null || data == DBNull.Value || string.IsNullOrWhiteSpace(data.ToString()))
+                return true;
+
+            if (cell.GetType().Equals(typeof(DataGridViewNumericCell)))
+            {
+                MaxLength = ((DataGridViewNumericColumn)cell.OwningColumn).MaxInputLength;
+                MinLength = ((DataGridViewNumericColumn)cell.OwningColumn).MinInputLength;
+
+                if (data.ToString().Length > MaxLength || data.ToString().Length < MinLength)
+                    return false;
+
+                return Utils.IsNumeric(data.ToString());
+            }
+            if (cell.GetType().Equals(typeof(DataGridViewTextBoxCell)))
+            {
+                MaxLength = ((DataGridViewTextBoxColumn)cell.OwningColumn).MaxInputLength;
+                if (data.ToString().Length > MaxLength || data.ToString().Length < MinLength)
+                    return false;
+            }
+            if (cell.GetType().Equals(typeof(DataGridViewDateTimeInputCell)))
+            {
+                DateTime dateValue = DateTime.MinValue;
+                string[] formats = {"M/d/yyyy h:mm:ss tt", "M/d/yyyy h:mm tt",
+                   "MM/dd/yyyy hh:mm:ss", "M/d/yyyy h:mm:ss","yyyy/MM/dd","yyyyMMdd","yyyy/MM/dd HH:mm:ss",
+                   "M/d/yyyy hh:mm tt", "M/d/yyyy hh tt",
+                   "M/d/yyyy h:mm", "M/d/yyyy h:mm",
+                   "MM/dd/yyyy hh:mm", "M/dd/yyyy hh:mm"};
+
+                DateTime.TryParseExact(data.ToString(), formats, null,
+                               DateTimeStyles.AllowWhiteSpaces |
+                               DateTimeStyles.AdjustToUniversal,
+                               out dateValue);
+
+                return dateValue != DateTime.MinValue;
+            }
+            if (cell.GetType().Equals(typeof(DataGridViewComboBoxExCell)))
+            {
+                var cbo = (DataGridViewComboBoxExColumn)cell.OwningColumn;
+                DataTable dtSource = cbo.DataSource as DataTable;
+                var exist = dtSource.AsEnumerable().Where(r => r.Field<object>(0) != null && r.Field<object>(0).ToString().Equals(data.ToString())).FirstOrDefault();
+                if (exist == null)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
 
         /// <summary>
         /// Set value for cell after cut
@@ -1072,6 +1181,7 @@ namespace Festival.Base
                 DataTableSource.Rows.Remove(removeRow);
         }
 
+
         public void SetRowSeleted(string id, string columName)
         {
             if (dtgAdvMain == null || dtgAdvMain.Rows.Count == 0)
@@ -1112,11 +1222,195 @@ namespace Festival.Base
             {
                 throw ex;
             }
-        }        
+        }
 
         public override void SaveConfig()
         {
             dtgAdvMain.SaveConfiguration();
-        }        
+        }
+
+
+        private void UpdateVideoLockStatuColum(DataGridViewCell columnUpdateCell, DataTable tbVideoLock, IList<string> festaLocks, object data)
+        {
+            if (string.IsNullOrWhiteSpace(ColumnVideoCodeDataPropertyName) || string.IsNullOrWhiteSpace(ColumnVideoLockTypeDataPropertyName) || string.IsNullOrWhiteSpace(ColumnVideoContentTypeDataPropertyName))
+                return;
+            RemoveEventDataGridView();
+
+            CurrentColumnIndex = columnUpdateCell.ColumnIndex;
+            CurrentRowsIndex = columnUpdateCell.RowIndex;
+
+            string lockTypeText = string.Empty;
+
+            object contentType = null;
+            object videoCode = null;
+            object lockType = null;
+            object updateValue = data;
+
+            DataTable dtView = this.DataTableSource.DefaultView.ToTable();
+
+            if (dtView == null || dtView.Rows.Count == 0)
+                return;
+
+            foreach (DataRow row in dtView.Rows)
+            {
+                DataRow updateRow = this.DataTableSource.AsEnumerable().Where(r => r.Field<object>(ColumnKeyDataPropertyName).ToString().Equals(row[ColumnKeyDataPropertyName].ToString())).FirstOrDefault();
+                if (updateRow == null) continue;
+
+                lockTypeText = string.Empty;
+
+                contentType = row[ColumnVideoContentTypeDataPropertyName];
+
+                if (columnUpdateCell.OwningColumn.DataPropertyName.Equals(ColumnVideoCodeDataPropertyName))
+                {
+                    lockType = row[ColumnVideoLockTypeDataPropertyName];
+                    videoCode = updateValue;
+                }
+                else if (columnUpdateCell.OwningColumn.DataPropertyName.Equals(ColumnVideoLockTypeDataPropertyName))
+                {
+                    videoCode = row[ColumnVideoCodeDataPropertyName];
+                    lockType = updateValue;
+                }
+
+                //Lock by user on layout
+                if (lockType != null && lockType.ToString().Equals("1"))
+                {
+                    lockTypeText = string.Format("{0}/", Constants.VIDEO_LOCK_TYPE_INDIVIDUAL);
+                }
+
+                if (videoCode != null && videoCode != DBNull.Value)
+                {
+                    var checkVideoLock = tbVideoLock.AsEnumerable().Where(r => r.Field<object>("VideoCode").ToString().Trim().Equals(videoCode.ToString().Trim()));
+                    if (checkVideoLock != null && checkVideoLock.Count() > 0)
+                    {
+                        //Lockvideo code in table lock
+                        lockTypeText += string.Format("{0}/", Constants.VIDEO_LOCK_TYPE_NO_CHANGE);
+                    }
+                }
+
+                if (festaLocks != null)
+                {
+                    if (contentType != null && festaLocks.Contains(contentType.ToString()))
+                    {
+                        lockTypeText += string.Format("{0}/", Constants.VIDEO_LOCK_TYPE_FESTA);
+                    }
+                }
+                //Removed last sepread character 
+                if (lockTypeText.Length > 0 || lockTypeText.LastIndexOf('/', lockTypeText.Length - 1) == 0)
+                    lockTypeText = lockTypeText.Remove(lockTypeText.Length - 1, 1);
+
+                if (updateValue != null && string.IsNullOrWhiteSpace(updateValue.ToString()) || updateValue == null)
+                    updateRow[columnUpdateCell.OwningColumn.DataPropertyName] = DBNull.Value;
+                else
+                    updateRow[columnUpdateCell.OwningColumn.DataPropertyName] = updateValue;
+
+                updateRow[ColumnVideoLockTypeTextDataPropertyName] = lockTypeText;
+                updateRow[ColumnUpdateTimeDataPropertyName] = DateTime.Now.ToString(Constants.LOG_DATE_TIME_FORMAT);
+            }
+
+            this.DataTableSource.AcceptChanges();
+
+            InitDataGridViewEvent();
+        }
+
+        private void UpdateVideoLockStatusColumnSigleCell(DataGridViewCell columnUpdateCell, DataTable tbVideoLock, IList<string> festaLocks, object data)
+        {
+            RemoveEventDataGridView();
+
+            CurrentColumnIndex = columnUpdateCell.ColumnIndex;
+            CurrentRowsIndex = columnUpdateCell.RowIndex;
+
+            string lockTypeText = string.Empty;
+
+            object contentType = null;
+            object videoCode = null;
+            object lockType = null;
+            object updateValue = data;
+
+            DataRow updateRow = this.DataTableSource.AsEnumerable().Where(r => r.Field<object>(ColumnKeyDataPropertyName).ToString().Equals(CurrentKeyValue)).FirstOrDefault();
+
+            if (updateRow == null) return;
+
+            lockTypeText = string.Empty;
+
+            contentType = updateRow[ColumnVideoContentTypeDataPropertyName];
+
+            if (columnUpdateCell.OwningColumn.DataPropertyName.Equals(ColumnVideoCodeDataPropertyName))
+            {
+                lockType = updateRow[ColumnVideoLockTypeDataPropertyName];
+                videoCode = updateValue;
+            }
+            else if (columnUpdateCell.OwningColumn.DataPropertyName.Equals(ColumnVideoLockTypeDataPropertyName))
+            {
+                videoCode = updateRow[ColumnVideoCodeDataPropertyName];
+                lockType = updateValue;
+            }
+
+            //Lock by user on layout
+            if (lockType != null && lockType.ToString().Equals("1"))
+            {
+                lockTypeText = string.Format("{0}/", Constants.VIDEO_LOCK_TYPE_INDIVIDUAL);
+            }
+
+            if (videoCode != null && videoCode != DBNull.Value)
+            {
+                var checkVideoLock = tbVideoLock.AsEnumerable().Where(r => r.Field<object>("VideoCode").ToString().Trim().Equals(videoCode.ToString().Trim()));
+                if (checkVideoLock != null && checkVideoLock.Count() > 0)
+                {
+                    //Lockvideo code in table lock
+                    lockTypeText += string.Format("{0}/", Constants.VIDEO_LOCK_TYPE_NO_CHANGE);
+                }
+            }
+
+            if (festaLocks != null)
+            {
+                if (contentType != null && festaLocks.Contains(contentType.ToString()))
+                {
+                    lockTypeText += string.Format("{0}/", Constants.VIDEO_LOCK_TYPE_FESTA);
+                }
+            }
+            //Removed last sepread character 
+            if (lockTypeText.Length > 0 || lockTypeText.LastIndexOf('/', lockTypeText.Length - 1) == 0)
+                lockTypeText = lockTypeText.Remove(lockTypeText.Length - 1, 1);
+
+            if (updateValue != null && string.IsNullOrWhiteSpace(updateValue.ToString()) || updateValue == null)
+                updateRow[columnUpdateCell.OwningColumn.DataPropertyName] = DBNull.Value;
+            else
+                updateRow[columnUpdateCell.OwningColumn.DataPropertyName] = updateValue;
+
+            updateRow[ColumnVideoLockTypeTextDataPropertyName] = lockTypeText;
+            updateRow[ColumnUpdateTimeDataPropertyName] = DateTime.Now.ToString(Constants.LOG_DATE_TIME_FORMAT);
+
+            this.DataTableSource.AcceptChanges();
+
+            InitDataGridViewEvent();
+        }
+
+        public void UpdateVideoLockColumn(bool isBulkUpdate, DataGridViewCell columnUpdateCell, object data, DataTable tbVideoLock = null, IList<string> festaLocks = null)
+        {
+            if (columnUpdateCell.OwningColumn.DataPropertyName.Equals(ColumnVideoLockTypeDataPropertyName))
+            {
+                //Check value
+                var cbo = (DataGridViewComboBoxExColumn)columnUpdateCell.OwningColumn;
+                DataTable dtSource = cbo.DataSource as DataTable;
+                var exist = dtSource.AsEnumerable().Where(r => r.Field<object>(0).Equals(data)).FirstOrDefault();
+                if (exist == null && !string.IsNullOrEmpty(data.ToString()))
+                {
+                    MessageBox.Show(string.Format("存在する{0}を指定してください。", columnUpdateCell.OwningColumn.HeaderText), GetResources.GetResourceMesssage(Constants.ALERT_TITLE_MESSAGE), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+
+            if (columnUpdateCell.OwningColumn.DataPropertyName.Equals(ColumnVideoCodeDataPropertyName) || columnUpdateCell.OwningColumn.DataPropertyName.Equals(ColumnVideoLockTypeDataPropertyName))
+            {
+                if (isBulkUpdate)
+                {
+                    UpdateVideoLockStatuColum(columnUpdateCell, tbVideoLock, festaLocks, data);
+                }
+                else
+                {
+                    UpdateVideoLockStatusColumnSigleCell(columnUpdateCell, tbVideoLock, festaLocks, data);
+                }
+            }
+        }
     }
 }

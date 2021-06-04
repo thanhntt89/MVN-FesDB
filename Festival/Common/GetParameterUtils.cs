@@ -36,6 +36,19 @@ namespace Festival.Common
             }
         }
 
+        public static void ActiveInputText(ComboBoxEx combox, TextBoxX txtBox1, TextBoxX txtBox2)
+        {
+            txtBox1.Enabled = true;
+            txtBox2.Enabled = true;
+            txtBox1.Text = string.Empty;
+            txtBox2.Text = string.Empty;
+            if (combox.SelectedIndex > 0)
+            {
+                txtBox1.Enabled = false;
+                txtBox2.Enabled = false;
+            }
+        }
+
         public static bool CheckCompareNumberInput(string lableName, string messageCode, TextBoxX textBox1, TextBoxX textBox2)
         {
             int value1 = -1;
@@ -252,6 +265,35 @@ namespace Festival.Common
             else if (!string.IsNullOrWhiteSpace(textNumberTo.Text))
             {
                 param = string.Format(" and  {0} <=  '{1}'", columnName, textNumberTo.Text);
+            }
+            if (!string.IsNullOrWhiteSpace(param))
+                slqParameters.Add(param);
+        }
+
+        internal static void GetParameterComboxWithTextBox(List<string> slqParameters, string columnName, ComboBoxEx combCheck, TextBoxX txtFrom, TextBoxX txtTo)
+        {
+            string param = string.Empty;
+            // If combox not blank
+            if (combCheck != null && combCheck.SelectedIndex > 0)
+            {
+                param = string.Format("and {0} is {1}", columnName, combCheck.Text.ToLower());
+                if (!string.IsNullOrEmpty(param))
+                    slqParameters.Add(param);
+
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(txtFrom.Text) && !string.IsNullOrWhiteSpace(txtTo.Text))
+            {
+                param = string.Format("and {0} between {1} and {2}", columnName, txtFrom.Text, txtTo.Text);
+            }
+            else if (!string.IsNullOrWhiteSpace(txtFrom.Text))
+            {
+                param = string.Format(" and  {0} =  {1}", columnName, txtFrom.Text);
+            }
+            else if (!string.IsNullOrWhiteSpace(txtTo.Text))
+            {
+                param = string.Format(" and  {0} <=  {1}", columnName, txtTo.Text);
             }
             if (!string.IsNullOrWhiteSpace(param))
                 slqParameters.Add(param);

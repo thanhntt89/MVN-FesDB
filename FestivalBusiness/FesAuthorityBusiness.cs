@@ -79,23 +79,26 @@ namespace FestivalBusiness
                 sqlTransac = connection.BeginTransaction();
                 string query = string.Empty;
 
+                Parameters parameters;
+
                 foreach (DataRow row in dtSave.Rows)
                 {
                     dtInsert.Rows.Clear();
                     dtInsert.Rows.Add(row["権限グループ"], row["プロジェクトID"], row["機能ID"], row["更新タイプ"], row["Old権限グループ"], row["OldプロジェクトID"], row["Old機能ID"] );
                     query = string.Empty;
 
+                    parameters = new Parameters();
+
                     if (row["Old権限グループ"] == DBNull.Value)
                     {
-                        query = FesAuthorityQuery.GetInsertAuthorityQuery(dtInsert);
+                        query = FesAuthorityQuery.GetInsertAuthorityQuery(dtInsert, ref parameters);
                     }
                     else
                     {
-                        query = FesAuthorityQuery.GetUpdateAuthorityQuery(dtInsert);
-                       
+                        query = FesAuthorityQuery.GetUpdateAuthorityQuery(dtInsert, ref parameters);
                     }
 
-                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, query);
+                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, query, parameters);
                     updateCount++;
                 }
 

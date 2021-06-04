@@ -27,9 +27,65 @@ namespace FestivalBusiness
             return query;
         }
 
-        internal static string GetDataByIdQuery(string userId)
+        internal static string GetDataByIdQuery(string userId, ref Parameters parmeters)
         {
-            string query = string.Format("select 利用者ID, 権限グループ, 利用者名 from Wii.dbo.[Fes利用者] where 利用者ID='{0}'", userId);
+            parmeters.Add(new Parameter() {
+                Name = string.Format("@利用者ID"),
+                Values = userId
+            });
+            string query = string.Format("select 利用者ID, 権限グループ, 利用者名 from Wii.dbo.[Fes利用者] where 利用者ID = @利用者ID");
+            return query;
+        }
+
+        internal static string GetInsertUserQuery(DataTable dataUpdte, ref Parameters parmeters)
+        {
+            DataRow row = dataUpdte.Rows[0];
+            string columnValue = string.Empty;
+            string values = string.Empty;
+            string columns = string.Empty;
+
+            foreach (DataColumn col in dataUpdte.Columns)
+            {
+                if (col.ColumnName.Contains("Old"))
+                    continue;
+
+                columns += string.Format("[{0}],", col.ColumnName);
+                values += string.Format("@{0},", col.ColumnName);
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Remove(values.Length - 1, 1);
+            columns = columns.Remove(columns.Length - 1, 1);
+
+            string query = string.Format("INSERT INTO Wii.dbo.[Fes利用者] ({0}) VALUES({1})", columns, values);
+            return query;
+        }
+
+        internal static string GetUpdateUserQuery(DataTable dtUpdate, ref Parameters parmeters)
+        {
+            DataRow row = dtUpdate.Rows[0];
+            string values = string.Empty;
+
+            foreach (DataColumn col in dtUpdate.Columns)
+            {
+                if (!col.ColumnName.Contains("Old"))
+                    values += string.Format("{0}=@{0}, ", col.ColumnName);
+
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Trim();
+            values = values.Remove(values.Length - 1, 1);
+
+            string query = string.Format("UPDATE Wii.dbo.[Fes利用者] SET {0} WHERE 利用者ID = @Old利用者ID ", values);
             return query;
         }
 

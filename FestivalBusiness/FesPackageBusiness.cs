@@ -46,6 +46,7 @@ namespace FestivalBusiness
                 sqlTransac = connection.BeginTransaction();
                 string sqlExecuteString = string.Empty;
                 string olUserId = string.Empty;
+                Parameters parmeters;
 
                 foreach (DataRow row in dtSource.Rows)
                 {
@@ -55,16 +56,18 @@ namespace FestivalBusiness
 
                     olUserId = row["OldFesDISCID"] == null ? string.Empty : row["OldFesDISCID"].ToString();
 
+                    parmeters = new Parameters();
+
                     if (string.IsNullOrWhiteSpace(olUserId))
                     {
-                        sqlExecuteString = FesPackageQuery.GetSavePackegeQuery(dataUpdte);
+                        sqlExecuteString = FesPackageQuery.GetSavePackegeQuery(dataUpdte, ref parmeters);
                     }
                     else
                     {
-                        sqlExecuteString = FesPackageQuery.GetUpdatePackegeQuery(dataUpdte);
+                        sqlExecuteString = FesPackageQuery.GetUpdatePackegeQuery(dataUpdte, ref parmeters);
                     }
 
-                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, sqlExecuteString);
+                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, sqlExecuteString, parmeters);
                     countUpdate++;
                 }
 

@@ -98,15 +98,23 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId = ExportFesContants.コンテンツ,
                         FileNameLocal = string.IsNullOrEmpty( Properties.Settings.Default.FILE_NAME_FES_EXPORT_CONTENT_コンテンツ)? string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_CONTENT_コンテンツ + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     },
                  new FileEntity()
                  {
                      FileExportId = ExportFesContants.コンテンツ_V2,
                      FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_CONTENT_V2_コンテンツ_V2)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_CONTENT_V2_コンテンツ_V2 + FILE_EXTENSION,
-                     FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                     LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
+                 },
+                  new FileEntity()
+                 {
+                     FileExportId = ExportFesContants.TSV出力演奏時間Null補正対象,
+                     FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FES_EXPORT_LOG_PATH_SERVER_FILE_CONTENT_EMPTY)?string.Empty: Path.GetFileName(Properties.Settings.Default.FES_EXPORT_LOG_PATH_SERVER_FILE_CONTENT_EMPTY),
+                     LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
+                        UploadTime = DateTime.MinValue,
+                        FileServerPath = Properties.Settings.Default.FES_EXPORT_LOG_PATH_SERVER_FILE_CONTENT_EMPTY
                  }
                 }
             });
@@ -123,7 +131,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId = ExportFesContants.歌手,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_SINGER_歌手)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_SINGER_歌手 + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -140,14 +148,14 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.楽曲名英数読み,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_SONG_NAME_ENGLISH_NUMBER_楽曲名英数読み)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_SONG_NAME_ENGLISH_NUMBER_楽曲名英数読み + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     },
                      new FileEntity()
                     {
                         FileExportId=ExportFesContants.楽曲名英数読み_V2,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_SONG_NAME_ENGLISH_NUMBER_V2_楽曲名英数読み_V2)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_SONG_NAME_ENGLISH_NUMBER_V2_楽曲名英数読み_V2 + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -163,7 +171,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.歌い出し,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_START_SINGING_歌い出し)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_START_SINGING_歌い出し + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -179,7 +187,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.コンテンツランキング用,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_CONTENT_RANKING_コンテンツランキング用)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_CONTENT_RANKING_コンテンツランキング用 + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -195,7 +203,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.年代別ランキング,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_RANKING_BY_AGE_年代別ランキング)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_RANKING_BY_AGE_年代別ランキング + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -211,7 +219,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.個別映像割付情報,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_INVIDUAL_VIDEO_ALLOCATION_個別映像割付情報)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_INVIDUAL_VIDEO_ALLOCATION_個別映像割付情報 + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -227,7 +235,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.ディスク追加削除曲,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_ADD_REMOVE_DIS_SONG_ディスク追加削除曲)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_ADD_REMOVE_DIS_SONG_ディスク追加削除曲 + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -243,7 +251,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.健康王国おすすめ曲,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_HEALTHY_KINGDOM_RECOMMENDED_SONG_健康王国おすすめ曲)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_HEALTHY_KINGDOM_RECOMMENDED_SONG_健康王国おすすめ曲 + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -259,7 +267,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.おすすめプログラムリスト,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_RECOMMENDED_PROGRAM_LIST_おすすめプログラムリスト)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_RECOMMENDED_PROGRAM_LIST_おすすめプログラムリスト + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -275,7 +283,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.収集リスト,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_COLLECTION_LIST_収集リスト)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_COLLECTION_LIST_収集リスト + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -291,14 +299,14 @@ namespace Festival.DBTab.ExportTsv
                 {
                     FileExportId=ExportFesContants.サービス情報,
                     FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_SERVICE_サービス情報)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_SERVICE_サービス情報 + FILE_EXTENSION,
-                    FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                    LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                 },
                  new FileEntity()
                 {
                     FileExportId=ExportFesContants.サービス情報_V2,
                     FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_SERVICE_V2_サービス情報_V2)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_SERVICE_V2_サービス情報_V2 + FILE_EXTENSION,
-                    FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                    LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                 }
             }
@@ -315,14 +323,14 @@ namespace Festival.DBTab.ExportTsv
                 {
                     FileExportId=ExportFesContants.ジャンル情報,
                     FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_ジャンル情報)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_ジャンル情報 + FILE_EXTENSION,
-                    FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                    LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                 },
                  new FileEntity()
                 {
                     FileExportId=ExportFesContants.ジャンル情報_V2,
                     FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_V2_ジャンル情報_V2)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_V2_ジャンル情報_V2 + FILE_EXTENSION,
-                    FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                    LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                 }
             }
@@ -338,7 +346,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.歌手名英数読み,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_SINGER_NAME_歌手名英数読み)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_SINGER_NAME_歌手名英数読み + FILE_EXTENSION,
-                        FileLocalPath = EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath = EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -354,7 +362,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.歌手ID変更履歴,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_SINGER_ID_CHANGE_HISTORY_歌手ID変更履歴)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_SINGER_ID_CHANGE_HISTORY_歌手ID変更履歴 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -370,7 +378,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.歌手ランキング,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_SINGER_RANKING_歌手ランキング)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_SINGER_RANKING_歌手ランキング + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -387,7 +395,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.更新日付,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_UPDATE_DATE_更新日付)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_UPDATE_DATE_更新日付 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -404,14 +412,14 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.個別映像DISC収録情報,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_INVIDUAL_VIDEO_DIS_RECORDING_個別映像DISC収録情報)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_INVIDUAL_VIDEO_DIS_RECORDING_個別映像DISC収録情報 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     },
                      new FileEntity()
                     {
                         FileExportId=ExportFesContants.個別映像DISC収録情報_V2,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_INVIDUAL_VIDEO_DIS_RECORDING_V2_個別映像DISC収録情報_V2)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_INVIDUAL_VIDEO_DIS_RECORDING_V2_個別映像DISC収録情報_V2 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -427,7 +435,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.個別映像ディスク追加削除情報,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_INDIVIDUAL_VIDEO_DISC_ADDITIONAL_DELETION_個別映像ディスク追加削除情報)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_INDIVIDUAL_VIDEO_DISC_ADDITIONAL_DELETION_個別映像ディスク追加削除情報 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -443,7 +451,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.チャプター追加削除曲,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_ADD_REMOVE_CHAPTER_SONG_チャプター追加削除曲)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_ADD_REMOVE_CHAPTER_SONG_チャプター追加削除曲 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -459,7 +467,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.おすすめプログラム名,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_RECOMMENDED_PROGRAM_おすすめプログラム名)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_RECOMMENDED_PROGRAM_おすすめプログラム名 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -476,14 +484,14 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.タイアップ情報,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_TIEUP_タイアップ情報)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_TIEUP_タイアップ情報 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     },
                      new FileEntity()
                     {
                         FileExportId=ExportFesContants.タイアップ情報_V2,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_TIEUP_V2_タイアップ情報_V2)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_TIEUP_V2_タイアップ情報_V2 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -500,28 +508,28 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.ジャンルリスト,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_LIST_ジャンルリスト)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_LIST_ジャンルリスト + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     },
                      new FileEntity()
                     {
                         FileExportId=ExportFesContants.ジャンルリスト大,
                         FileNameLocal =string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_LARGE_LIST_ジャンルリスト大)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_LARGE_LIST_ジャンルリスト大 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     },
                        new FileEntity()
                     {
                         FileExportId=ExportFesContants.ジャンルリスト中,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_IN_LIST_ジャンルリスト中)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_IN_LIST_ジャンルリスト中 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     },
                        new FileEntity()
                     {
                         FileExportId=ExportFesContants.ジャンル説明文,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_DESCRIPTION_ジャンル説明文)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_GENRE_DESCRIPTION_ジャンル説明文 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                  }
@@ -538,7 +546,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.おすすめ曲,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_RECOMMEND_SONG_おすすめ曲)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_RECOMMEND_SONG_おすすめ曲 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -555,14 +563,14 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.DISC版収録曲,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_DISC_VERSION_SONG_DISC版収録曲)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_DISC_VERSION_SONG_DISC版収録曲 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     },
                      new FileEntity()
                     {
                         FileExportId=ExportFesContants.DISC版収録曲_V2,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_DISC_VERSION_SONG_V2_DISC版収録曲_V2)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_DISC_VERSION_SONG_V2_DISC版収録曲_V2 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -579,14 +587,14 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.タイアップランキング,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_TIEUP_RANKING_タイアップランキング)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_TIEUP_RANKING_タイアップランキング + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     },
                      new FileEntity()
                     {
                         FileExportId=ExportFesContants.タイアップランキング_V2,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_TIEUP_RANKING_V2_タイアップランキング_V2)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_TIEUP_RANKING_V2_タイアップランキング_V2 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -602,7 +610,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.追加曲,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_ADDITION_SONG_追加曲)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_ADDITION_SONG_追加曲 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -619,7 +627,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.パッケージID情報,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_PACKAGE_ID_INFO_パッケージID情報)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_PACKAGE_ID_INFO_パッケージID情報 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -638,7 +646,7 @@ namespace Festival.DBTab.ExportTsv
                     {
                         FileExportId=ExportFesContants.ランキング集計期間,
                         FileNameLocal = string.IsNullOrEmpty(Properties.Settings.Default.FILE_NAME_FES_EXPORT_RANKING_AGGREGATION_PERIOD_ランキング集計期間)?string.Empty: Properties.Settings.Default.FILE_NAME_FES_EXPORT_RANKING_AGGREGATION_PERIOD_ランキング集計期間 + FILE_EXTENSION,
-                        FileLocalPath=EXPORT_LOCAL_FOLDER_WORK,
+                        LocalFolderPath=EXPORT_LOCAL_FOLDER_WORK,
                         UploadTime = DateTime.MinValue
                     }
                 }
@@ -1095,7 +1103,7 @@ namespace Festival.DBTab.ExportTsv
                 existItem.DateTimeExport = dateTime;
                 ExportDISCVersionSong(existItem);
             }
-           
+
             //13.コンテンツランキング用  1 Files
             if (chkContentRanking.Checked)
             {
@@ -1559,12 +1567,11 @@ namespace Festival.DBTab.ExportTsv
 
                 foreach (FileEntity file in copyList)
                 {
-
                     if (string.IsNullOrEmpty(file.FileServerPath) || file.UploadTime != DateTime.MinValue || file.IgNorUpload)
                         continue;
-                    if (Directory.Exists(Path.GetDirectoryName(file.FileServerPath)) && File.Exists(file.FileLocalPath))
+                    if (Directory.Exists(Path.GetDirectoryName(file.FileServerPath)) && File.Exists(file.LocalFolderPath))
                     {
-                        File.Copy(file.FileLocalPath, file.FileServerPath, true);
+                        File.Copy(file.LocalFolderPath, file.FileServerPath, true);
 
                         file.UploadTime = DateTime.Now;
                     }
@@ -1608,7 +1615,7 @@ namespace Festival.DBTab.ExportTsv
                 FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                 {
                     DataExport = exportTable,
-                    FilePath = fileV1.FileLocalPath,
+                    FilePath = fileV1.LocalFolderPath,
                     IsHeader = false,
                     FunctionName = ExportFesContants.パッケージID情報,
                     LogPathFile = logFesTsvExportPath
@@ -1689,7 +1696,7 @@ namespace Festival.DBTab.ExportTsv
                 FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                 {
                     DataExport = exportTable,
-                    FilePath = fileV1.FileLocalPath,
+                    FilePath = fileV1.LocalFolderPath,
                     IsHeader = false,
                     FunctionName = ExportFesContants.おすすめ曲,
                     LogPathFile = logFesTsvExportPath
@@ -1740,7 +1747,7 @@ namespace Festival.DBTab.ExportTsv
                 FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                 {
                     DataExport = exportTable,
-                    FilePath = fileV1.FileLocalPath,
+                    FilePath = fileV1.LocalFolderPath,
                     IsHeader = false,
                     FunctionName = ExportFesContants.おすすめプログラム名,
                     LogPathFile = logFesTsvExportPath
@@ -1786,7 +1793,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.チャプター追加削除曲,
                         LogPathFile = logFesTsvExportPath
@@ -1878,7 +1885,7 @@ namespace Festival.DBTab.ExportTsv
                 FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                 {
                     DataExport = exportTable,
-                    FilePath = fileV1.FileLocalPath,
+                    FilePath = fileV1.LocalFolderPath,
                     IsHeader = false,
                     FunctionName = ExportFesContants.個別映像ディスク追加削除情報,
                     LogPathFile = logFesTsvExportPath
@@ -1970,7 +1977,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = exportInfo.ExportModuleText,
                         LogPathFile = logFesTsvExportPath
@@ -1989,7 +1996,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV2.FileLocalPath,
+                        FilePath = fileV2.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.個別映像DISC収録情報_V2,
                         LogPathFile = logFesTsvExportPath
@@ -2036,7 +2043,7 @@ namespace Festival.DBTab.ExportTsv
                 FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                 {
                     DataExport = exportTable,
-                    FilePath = fileV1.FileLocalPath,
+                    FilePath = fileV1.LocalFolderPath,
                     FunctionName = ExportFesContants.歌手ランキング,
                     LogPathFile = logFesTsvExportPath
                 };
@@ -2093,7 +2100,7 @@ namespace Festival.DBTab.ExportTsv
                 FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                 {
                     DataExport = exportTable,
-                    FilePath = fileV1.FileLocalPath,
+                    FilePath = fileV1.LocalFolderPath,
                     FunctionName = ExportFesContants.歌手ID変更履歴,
                     LogPathFile = logFesTsvExportPath
                 };
@@ -2172,7 +2179,7 @@ namespace Festival.DBTab.ExportTsv
             catch (Exception ex)
             {
                 exportInfo.SetStatusFileUpdateTake(ExportFesContants.歌手ID変更履歴, false);
-               
+
                 ErrorEntity error = new ErrorEntity()
                 {
                     LogTime = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"),
@@ -2272,7 +2279,7 @@ namespace Festival.DBTab.ExportTsv
                 FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                 {
                     DataExport = exportTable,
-                    FilePath = fileV1.FileLocalPath,
+                    FilePath = fileV1.LocalFolderPath,
 
                     FunctionName = ExportFesContants.おすすめプログラムリスト,
                     LogPathFile = logFesTsvExportPath
@@ -2324,7 +2331,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         FunctionName = ExportFesContants.健康王国おすすめ曲,
                         LogPathFile = logFesTsvExportPath
                     };
@@ -2370,7 +2377,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
 
                         FunctionName = ExportFesContants.ディスク追加削除曲,
                         LogPathFile = logFesTsvExportPath
@@ -2463,7 +2470,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
 
                         FunctionName = ExportFesContants.個別映像割付情報,
                         LogPathFile = logFesTsvExportPath
@@ -2473,7 +2480,7 @@ namespace Festival.DBTab.ExportTsv
 
                     // 背景映像コード整合性チェック
                     string strImageAllotmentCheckPath = Properties.Settings.Default.FES_EXPORT_背景映像コードチェックファイルパス_V1;
-                    if(!string.IsNullOrEmpty(strImageAllotmentCheckPath))
+                    if (!string.IsNullOrEmpty(strImageAllotmentCheckPath))
                     {
                         exportTable = fesExportBusiness.SelectFesVideoAllocationWarning();
 
@@ -2516,7 +2523,7 @@ namespace Festival.DBTab.ExportTsv
 
                             LogWriter.Write(strImageAllotmentCheckPath_AddDelete, logContent.ToString());
                         }
-                    }                   
+                    }
                 }
 
                 exportTable = null;
@@ -2561,7 +2568,7 @@ namespace Festival.DBTab.ExportTsv
                 FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                 {
                     DataExport = exportTable,
-                    FilePath = fileV1.FileLocalPath,
+                    FilePath = fileV1.LocalFolderPath,
 
                     FunctionName = ExportFesContants.コンテンツランキング用,
                     LogPathFile = logFesTsvExportPath
@@ -2634,7 +2641,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
 
                         FunctionName = ExportFesContants.ランキング集計期間,
                         LogPathFile = logFesTsvExportPath
@@ -2681,7 +2688,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
 
                         FunctionName = ExportFesContants.コンテンツ,
                         LogPathFile = logFesTsvExportPath
@@ -2696,7 +2703,7 @@ namespace Festival.DBTab.ExportTsv
                         exportInfo.SetStatusContentWarningFlag(ExportFesContants.コンテンツ, true);
                         StringBuilder logContent = new StringBuilder();
 
-                        logContent.AppendLine(string.Format("{0} TSVの下記のデジドコNoは、歌手IDが空です。({1}) \n デジドコNo", exportInfo.GetFileInfo(ExportFesContants.コンテンツ).FileLocalPath, DateTime.Now));
+                        logContent.AppendLine(string.Format("{0} TSVの下記のデジドコNoは、歌手IDが空です。({1}) \n デジドコNo", exportInfo.GetFileInfo(ExportFesContants.コンテンツ).LocalFolderPath, DateTime.Now));
 
                         foreach (DataRow row in exportTable.Rows)
                         {
@@ -2719,10 +2726,12 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo2 = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV2.FileLocalPath,
+                        FilePath = fileV2.LocalFolderPath,
 
                         FunctionName = ExportFesContants.コンテンツ_V2,
-                        LogPathFile = logFesTsvExportPath
+                        LogPathFile = logFesTsvExportPath,
+                        IsWriteLog = true,
+                        LogPathFile1 = string.IsNullOrWhiteSpace(Properties.Settings.Default.FES_EXPORT_LOG_PATH_SERVER_FILE_CONTENT_EMPTY) ? string.Empty : string.Format("{0}/{1}", EXPORT_LOCAL_FOLDER_WORK, Path.GetFileName(Properties.Settings.Default.FES_EXPORT_LOG_PATH_SERVER_FILE_CONTENT_EMPTY))
                     };
 
                     TsvConvert.ExportToTSV(fileInfo2);
@@ -2735,7 +2744,7 @@ namespace Festival.DBTab.ExportTsv
 
                         StringBuilder logContent = new StringBuilder();
 
-                        logContent.AppendLine(string.Format("{0} TSVの下記のデジドコNoは、歌手IDが空です。（{1} ）デジドコNo", exportInfo.GetFileInfo(ExportFesContants.コンテンツ_V2).FileLocalPath, DateTime.Now));
+                        logContent.AppendLine(string.Format("{0} TSVの下記のデジドコNoは、歌手IDが空です。（{1} ）デジドコNo", exportInfo.GetFileInfo(ExportFesContants.コンテンツ_V2).LocalFolderPath, DateTime.Now));
 
                         foreach (DataRow row in exportTable.Rows)
                         {
@@ -2746,7 +2755,6 @@ namespace Festival.DBTab.ExportTsv
                         LogWriter.Write(exportInfo.LogModulePathFile, logContent.ToString());
                     }
                 }
-
 
                 exportTable = null;
 
@@ -2789,7 +2797,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
 
                         FunctionName = ExportFesContants.歌手,
                         LogPathFile = logFesTsvExportPath
@@ -2837,7 +2845,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
 
                         FunctionName = ExportFesContants.楽曲名英数読み,
                         LogPathFile = logFesTsvExportPath
@@ -2856,7 +2864,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV2.FileLocalPath,
+                        FilePath = fileV2.LocalFolderPath,
 
                         FunctionName = ExportFesContants.楽曲名英数読み_V2,
                         LogPathFile = logFesTsvExportPath
@@ -2904,7 +2912,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
 
                         FunctionName = ExportFesContants.歌い出し,
                         LogPathFile = logFesTsvExportPath
@@ -2977,7 +2985,7 @@ namespace Festival.DBTab.ExportTsv
                 FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                 {
                     DataExport = exportTable,
-                    FilePath = fileV1.FileLocalPath,
+                    FilePath = fileV1.LocalFolderPath,
 
                     FunctionName = ExportFesContants.年代別ランキング,
                     LogPathFile = logFesTsvExportPath
@@ -3024,7 +3032,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.収集リスト,
                         LogPathFile = logFesTsvExportPath
@@ -3072,7 +3080,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.サービス情報,
                         LogPathFile = logFesTsvExportPath
@@ -3094,7 +3102,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV2.FileLocalPath,
+                        FilePath = fileV2.LocalFolderPath,
 
                         FunctionName = ExportFesContants.サービス情報_V2,
                         LogPathFile = logFesTsvExportPath
@@ -3140,7 +3148,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
 
                         FunctionName = ExportFesContants.ジャンル情報,
                         LogPathFile = logFesTsvExportPath
@@ -3158,7 +3166,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV2.FileLocalPath,
+                        FilePath = fileV2.LocalFolderPath,
 
                         FunctionName = ExportFesContants.ジャンル情報_V2,
                         LogPathFile = logFesTsvExportPath
@@ -3206,7 +3214,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.歌手名英数読み,
                         LogPathFile = logFesTsvExportPath
@@ -3254,7 +3262,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.更新日付,
                         LogPathFile = logFesTsvExportPath
@@ -3309,7 +3317,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.タイアップ情報,
                         LogPathFile = logFesTsvExportPath
@@ -3326,7 +3334,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV2.FileLocalPath,
+                        FilePath = fileV2.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.タイアップ情報_V2,
                         LogPathFile = logFesTsvExportPath
@@ -3391,7 +3399,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.ジャンルリスト,
                         LogPathFile = logFesTsvExportPath
@@ -3408,7 +3416,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV2.FileLocalPath,
+                        FilePath = fileV2.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.ジャンルリスト大,
                         LogPathFile = logFesTsvExportPath
@@ -3425,7 +3433,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV3.FileLocalPath,
+                        FilePath = fileV3.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.ジャンルリスト中,
                         LogPathFile = logFesTsvExportPath
@@ -3442,7 +3450,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV4.FileLocalPath,
+                        FilePath = fileV4.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.ジャンル説明文,
                         LogPathFile = logFesTsvExportPath
@@ -3490,7 +3498,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.DISC版収録曲,
                         LogPathFile = logFesTsvExportPath
@@ -3530,7 +3538,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo2 = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV2.FileLocalPath,
+                        FilePath = fileV2.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.DISC版収録曲_V2,
                         LogPathFile = logFesTsvExportPath
@@ -3605,7 +3613,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.タイアップランキング,
                         LogPathFile = logFesTsvExportPath
@@ -3622,7 +3630,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo2 = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV2.FileLocalPath,
+                        FilePath = fileV2.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.タイアップランキング_V2,
                         LogPathFile = logFesTsvExportPath
@@ -3680,7 +3688,7 @@ namespace Festival.DBTab.ExportTsv
                     FileExportTsvEntity fileInfo = new FileExportTsvEntity()
                     {
                         DataExport = exportTable,
-                        FilePath = fileV1.FileLocalPath,
+                        FilePath = fileV1.LocalFolderPath,
                         IsHeader = false,
                         FunctionName = ExportFesContants.追加曲,
                         LogPathFile = logFesTsvExportPath

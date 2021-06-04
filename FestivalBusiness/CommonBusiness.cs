@@ -1,18 +1,24 @@
 ﻿using Festival.Common;
 using FestivalBusiness.Interface;
 using FestivalCommon;
+using FestivalUtilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
+using Microsoft.SqlServer.Management.Smo;
+using Microsoft.SqlServer.Management.Common;
+using System.Text.RegularExpressions;
+using System.IO;
+using System.Text;
 
 namespace FestivalBusiness
 {
     public class CommonBusiness : BusinessBase, ICommonBusiness
     {
-        public void UpdateColumntable(string tableName, ColumnsCollection columns,bool isUpdate = false)
+        public void UpdateColumntable(string tableName, ColumnsCollection columns, bool isUpdate = false)
         {
             try
             {
@@ -30,6 +36,9 @@ namespace FestivalBusiness
             try
             {
                 SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, CommonSqlQuery.GetDropTableFesWorkQuery());
+
+                //Drop table Wrk_VideoCodeLock_{0}
+                SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, VideoCodeLockQuery.GetDropTableWorkQuery());
             }
             catch (SqlException ex)
             {
@@ -42,6 +51,8 @@ namespace FestivalBusiness
             try
             {
                 SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, CommonSqlQuery.GetCreateTableFesWorkQuery());
+
+                CreateInitTables();
             }
             catch (Exception ex)
             {
@@ -97,6 +108,18 @@ namespace FestivalBusiness
             }
         }
 
+        public DataTable GetDataComboxSingerId()
+        {
+            try
+            {
+                return CommonComboxData();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         /// <summary>
         /// Save data in wiicommon 
         /// </summary>
@@ -130,6 +153,47 @@ namespace FestivalBusiness
             }
 
             connection.Close();
+        }
+
+        public void RunSqlQuery()
+        {
+            try
+            {
+                if (!File.Exists(Constants.SQL_QUERY_FILE_PATH))
+                {
+                    return;
+                }
+
+                if (CheckSqlHasFinished())
+                {
+                    File.Delete(Constants.SQL_QUERY_FILE_PATH);
+                    return;
+                }
+
+                string sql_query = File.ReadAllText(Constants.SQL_QUERY_FILE_PATH, Encoding.GetEncoding("shift-jis")).ToString();
+
+                IEnumerable<string> commandStrings = Regex.Split(sql_query, @"^\s*GO\s*$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+
+                connection.Open();
+                foreach (string commandString in commandStrings)
+                {
+                    if (!string.IsNullOrWhiteSpace(commandString.Trim()))
+                    {
+                        using (var command = new SqlCommand(commandString, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+                connection.Close();
+
+                //Delete sql file                
+                File.Delete(Constants.SQL_QUERY_FILE_PATH);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public string GetCurrentVersion()
@@ -207,10 +271,6 @@ namespace FestivalBusiness
             }
         }
 
-        public void TruncateTableTmp(object fES_VIDEO_ASSIGMENT_WORK_TABLE_NAME)
-        {
-            throw new NotImplementedException();
-        }
 
         private bool CheckTableExist(string tableName)
         {
@@ -348,11 +408,6 @@ namespace FestivalBusiness
             {
                 throw ex;
             }
-        }
-
-        public void InsertWorkTableTmp()
-        {
-
         }
 
         /// <summary>
@@ -574,5 +629,111 @@ namespace FestivalBusiness
             return dt;
         }
 
+        public void CreateInitTables()
+        {
+            try
+            {
+                //Create VideoCodeLockTMP
+                SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, VideoCodeLockQuery.GetCreateTmpQuery());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void InsertFestaVideoLock(IList<string> videoCodes)
+        {
+            try
+            {
+                //Truncate video table
+                SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, CommonSqlQuery.GetTruncateFestaVideoLockTableQuery());
+
+                connection = new SqlConnection(GetConnection.GetWiiSqlConnectionString());
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                sqlTransac = connection.BeginTransaction();
+
+                foreach (string video in videoCodes)
+                {
+                    try
+                    {
+                        Parameters par = new Parameters();
+                        SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, CommonSqlQuery.GetInsertFestaVideoLockTableQuery(video, ref par), par);
+                    }
+                    catch (Exception ex)
+                    {
+                        sqlTransac.Rollback();
+                        connection.Close();
+                        throw ex;
+                    }
+                }
+
+                sqlTransac.Commit();
+            }
+            catch (Exception ex)
+            {
+                sqlTransac.Rollback();
+                connection.Close();
+                throw ex;
+            }
+
+            connection.Close();
+        }
+
+        public IList<string> GetFestaVideoLock()
+        {
+            try
+            {
+                IList<string> videoLock = new List<string>();
+                DataTable tb = SqlHelpers.ExecuteDataset(connectionString, CommandType.Text, CommonSqlQuery.GetSelectFestaVideoLockTableQuery()).Tables[0];
+                if (tb.Rows.Count > 0)
+                    videoLock = tb.AsEnumerable().Select(p => p.Field<int>(0).ToString()).ToList<string>();
+                return videoLock;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void CreateNewColumns()
+        {
+            try
+            {
+                try
+                {
+                    //Fescontent tmp column
+                    SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, FesContentQuery.GetCreateNewColumnTableTmpQuery());
+                    // Column table Fes映像コード管理 tmp
+                    SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, FesVideoAssigmentQuery.GetCreateNewColumnsTableTmpQuery());
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool CheckSqlHasFinished()
+        {
+            try
+            {
+                //Number sql used in this version
+                int sqlNumber = 10;
+                DataSet dtSet = SqlHelpers.ExecuteDataset(connectionString, CommandType.Text, CommonSqlQuery.GetCheckInitCondition());
+
+                return dtSet.Tables.Count == sqlNumber;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

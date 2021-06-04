@@ -1316,7 +1316,7 @@ namespace FestivalBusiness
         {
             try
             {
-                string query = string.Format("exec usp_SelectFesContentsAll_AddPlayTime");
+                string query = string.Format("exec usp_SelectFesContentsAll_AddPlayTime_21");
                 return SqlHelpers.ExecuteDataset(connectionString, CommandType.Text, query).Tables[0];
             }
             catch (Exception ex)
@@ -1344,7 +1344,7 @@ namespace FestivalBusiness
         {
             try
             {
-                string query = string.Format("exec usp_CreateFesContentsTable_AddPlayTime '{0}'", dateTime);
+                string query = string.Format("exec usp_CreateFesContentsTable_AddPlayTime_21 '{0}'", dateTime);//usp_CreateFesContentsTable_AddPlayTime
                 SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, query);
             }
             catch (Exception ex)

@@ -12,7 +12,7 @@ namespace Festival.Base
 {
     public partial class FormBase : DevComponents.DotNetBar.Metro.MetroForm
     {
-        public string logExceptionPath = Application.StartupPath + "\\error_log.txt";
+        public string logExceptionPath = Application.StartupPath + "\\exception_log.txt";
         public string logFesTsvExportPath = Properties.Settings.Default.FEST_TSV_LOG_PATH_ログファイル;
         public const string MODULE_FES_TSV_EXPORT = "MODULE_FES_TSV_EXPORT";
         public static string EXPORT_LOCAL_FOLDER_WORK = Application.StartupPath + "\\" + Properties.Settings.Default.FES_EXPORT_LOCAL_FOLDER_WORK_作業フォルダ;

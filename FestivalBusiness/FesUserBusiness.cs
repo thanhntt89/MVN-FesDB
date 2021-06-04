@@ -47,7 +47,9 @@ namespace FestivalBusiness
         {
             try
             {
-                return SqlHelpers.ExecuteDataset(connectionString, CommandType.Text, FesUserQuery.GetDataByIdQuery(userId)).Tables[0];
+                Parameters parameters = new Parameters();
+
+                return SqlHelpers.ExecuteDataset(connectionString, CommandType.Text, FesUserQuery.GetDataByIdQuery(userId, ref parameters), parameters).Tables[0];
             }
             catch (Exception ex)
             {
@@ -73,6 +75,7 @@ namespace FestivalBusiness
                 sqlTransac = connection.BeginTransaction();
                 string sqlExecuteString = string.Empty;
                 string userId = string.Empty;
+                Parameters paramters;
 
                 foreach (DataRow row in dtSave.Rows)
                 {
@@ -82,16 +85,18 @@ namespace FestivalBusiness
 
                     userId = row["Old利用者ID"] == null ? string.Empty : row["Old利用者ID"].ToString();
 
+                    paramters = new Parameters();
+
                     if (string.IsNullOrWhiteSpace(userId))
                     {
-                        sqlExecuteString = FesUserQuery.GetInsertQuery(dataUpdte);
+                        sqlExecuteString = FesUserQuery.GetInsertUserQuery(dataUpdte, ref paramters);
                     }
                     else
                     {
-                        sqlExecuteString = FesUserQuery.GetUpdateQuery(dataUpdte);
+                        sqlExecuteString = FesUserQuery.GetUpdateUserQuery(dataUpdte, ref paramters);
                     }
 
-                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, sqlExecuteString);
+                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, sqlExecuteString, paramters);
                     updateCount++;
                 }
 

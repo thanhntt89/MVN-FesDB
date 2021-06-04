@@ -11,6 +11,7 @@ using Festival.DiscVideoTab.FesSongAddDelete;
 using Festival.DiscVideoTab.FesChapterAddDelete;
 using Festival.DiscVideoTab.PackageIDInfo;
 using Festival.DiscVideoTab.FesDiskCapacity;
+using Festival.DiscVideoTab.FesVideoLock;
 
 namespace Festival.DiscVideoTab
 {
@@ -55,7 +56,7 @@ namespace Festival.DiscVideoTab
             }
             else if (keyData == Keys.D)
             {
-                btnInvidualVideoDISCrecordInfoV1_Click(null, null);
+                btnBackgroundVideo_Click(null, null);
             }
             else if (keyData == Keys.F)
             {
@@ -227,10 +228,12 @@ namespace Festival.DiscVideoTab
             diskCapacityManagement.ShowDialog();
         }
 
-        private void btnInvidualVideoDISCrecordInfoV1_Click(object sender, EventArgs e)
+        private void btnBackgroundVideo_Click(object sender, EventArgs e)
         {
-
+            if (!btnBackgroundVideo.Enabled)
+                return;
+            VideoMaintenanceMain videoMaintenanceMain = new VideoMaintenanceMain();
+            videoMaintenanceMain.ShowDialog();
         }
-       
     }
 }

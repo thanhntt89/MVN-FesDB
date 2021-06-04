@@ -228,6 +228,11 @@ namespace Festival.Base
             return rows;
         }
 
+        internal static DataTable GetDataByColumnId(DataTable dataTableSource, string columnIdPropertyName, object value)
+        {
+            return dataTableSource.AsEnumerable().Where(ud => ud.Field<object>(columnIdPropertyName).ToString().Equals(value.ToString())).CopyToDataTable();
+        }
+
         internal static DataTable GetDataSave(DataTable dataSource, string columnChoiseName, string colUpdateName, string deltedColumnName, string columnKeyName)
         {
             if (dataSource == null || dataSource.Rows.Count == 0)
@@ -506,7 +511,7 @@ namespace Festival.Base
             DataTable dataSource = bindingSource_main.DataSource as DataTable;
             if (dataSource == null)
                 return;
-            if (value == "")
+            if (value == DBNull.Value)
                 value = null;
 
             dataSource.AsEnumerable().Where(r => r.Field<bool>(0)).Select(b => b[colUpdateValueName] = value == null ? DBNull.Value : value).ToList();
@@ -697,7 +702,7 @@ namespace Festival.Base
 
         public static DataTable GetDataUpdate(DataTable dataSource, string colUpdateName)
         {
-            if (dataSource == null || dataSource.Rows.Count == 0)
+            if (dataSource == null || dataSource.Rows.Count == 0 || string.IsNullOrEmpty(colUpdateName))
                 return null;
             var query = dataSource.AsEnumerable().Where(ud => ud.Field<object>(colUpdateName) != null).Count();
 
@@ -1237,6 +1242,31 @@ namespace Festival.Base
             {
 
             }
+        }
+
+        internal static void ResetVideoLockColumn(DataTable dataSource, string columnVideoCodeDataPropertyName, string columnOldVideoCodeDataPropertyName, string columnVideoLockTypeDataPropertyName, string columnOldVideoLockTypeDataPropertyName, string colUpdateDataPropertyName, ref int currentColumnIndex, ref int currentRowsIndex)
+        {
+            if (dataSource == null || string.IsNullOrEmpty(columnVideoCodeDataPropertyName) || string.IsNullOrEmpty(columnVideoLockTypeDataPropertyName))
+                return;
+
+            int columnIndex = currentColumnIndex;
+            int rowIndex = currentRowsIndex;
+
+            //Reset column update
+            var updateData = dataSource.AsEnumerable().Where(row => row.Field<object>(colUpdateDataPropertyName) != null).ToList();
+
+            if (updateData.Count == 0)
+                return;
+
+            foreach (var row in updateData)
+            {
+                row[columnOldVideoCodeDataPropertyName] = row[columnVideoCodeDataPropertyName];
+                row[columnOldVideoLockTypeDataPropertyName] = row[columnVideoLockTypeDataPropertyName];
+            }
+
+            dataSource.AcceptChanges();
+            currentColumnIndex = columnIndex;
+            currentRowsIndex = rowIndex;
         }
     }
 }

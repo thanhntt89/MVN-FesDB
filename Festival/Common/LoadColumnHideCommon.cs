@@ -32,10 +32,9 @@ namespace Festival.Common
 
             foreach (DataGridViewColumn col in query)
             {
-                //var hideColumn = GetHideColumns.Where(r => r.Equals(col.DataPropertyName));
-
-                //if (hideColumn.Count() > 0)
-                //    continue;
+                var hideColumn = GetHideColumns.Where(r => r.Equals(col.DataPropertyName));
+                if (hideColumn.Count() > 0)
+                    continue;
 
                 CheckBox chkColumn = new CheckBox();
                 if (count > 0)

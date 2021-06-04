@@ -294,7 +294,9 @@ namespace FestivalBusiness
         {
             try
             {
-                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesChapterAddDeleQuery.GetUpdateChapterManagementQuery(tbChapterUpdate));
+                Parameters parmaters = new Parameters();
+
+                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesChapterAddDeleQuery.GetUpdateChapterManagementQuery(tbChapterUpdate, ref parmaters), parmaters);
             }
             catch (Exception ex)
             {
@@ -306,7 +308,9 @@ namespace FestivalBusiness
         {
             try
             {
-                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesChapterAddDeleQuery.GetInsertChapterManagementQuery(tbChapterUpdate));
+                Parameters parmaters = new Parameters();
+
+                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesChapterAddDeleQuery.GetInsertChapterManagementQuery(tbChapterUpdate, ref parmaters), parmaters);
             }
             catch (Exception ex)
             {

@@ -26,6 +26,7 @@ namespace FestivalBusiness
                 sqlTransac = connection.BeginTransaction();
                 string sqlExecuteString = string.Empty;
                 string oldId = string.Empty;
+                Parameters parmeters;
 
                 foreach (DataRow row in dtSource.Rows)
                 {
@@ -35,16 +36,18 @@ namespace FestivalBusiness
 
                     oldId = row["Old権限グループ"] == null ? string.Empty : row["Old権限グループ"].ToString();
 
+                    parmeters = new Parameters();
+
                     if (string.IsNullOrWhiteSpace(oldId))
                     {
-                        sqlExecuteString = FesAuthGroupQuery.GetInsertQuery(dataUpdte);
+                        sqlExecuteString = FesAuthGroupQuery.GetInsertQuery(dataUpdte, ref parmeters);
                     }
                     else
                     {
-                        sqlExecuteString = FesAuthGroupQuery.GetUpdateQuery(dataUpdte);
+                        sqlExecuteString = FesAuthGroupQuery.GetUpdateQuery(dataUpdte, ref parmeters);
                     }
 
-                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, sqlExecuteString);
+                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, sqlExecuteString, parmeters);
                     countUpdate++;
                 }
 

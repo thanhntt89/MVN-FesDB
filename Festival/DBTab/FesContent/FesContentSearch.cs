@@ -22,6 +22,7 @@ namespace Festival.DBTab.FesContent
 
         // List parameter
         public List<string> SlqParameters { get; set; }
+        private IList<string> festaVideo = null;
 
         public FesContentSearch(LayOutEntity layOutEntity)
         {
@@ -47,6 +48,7 @@ namespace Festival.DBTab.FesContent
         private void InitCombox()
         {
             LoadComboxFesUpDate();
+            LoadComboxSingerId();
             LoadComboxFinishedDate();
             LoadComboxFesServicePublicDate();
             LoadComboxFesCancelFlag();
@@ -67,6 +69,30 @@ namespace Festival.DBTab.FesContent
                 cboFesUpDate.DataSource = dataSource;
                 cboFesUpDate.ValueMember = dataSource.Columns[0].ColumnName;
                 cboFesUpDate.DisplayMember = dataSource.Columns[1].ColumnName;
+            }
+            catch (Exception ex)
+            {
+                ErrorEntity error = new ErrorEntity()
+                {
+                    LogTime = DateTime.Now.ToString(Constants.LOG_DATE_TIME_FORMAT),
+                    ErrorMessage = ex.Message,
+                    ModuleName = this.GetClassName() + " " + MethodBase.GetCurrentMethod().Name,
+                    FilePath = Constants.LOG_FILE_PATH_ERROR
+                };
+
+                LogException(error);
+            }
+        }
+
+        private void LoadComboxSingerId()
+        {
+            try
+            {
+                DataTable dataSource = commonBusiness.GetDataComboxSingerId();
+
+                cboSingerId.DataSource = dataSource;
+                cboSingerId.ValueMember = dataSource.Columns[0].ColumnName;
+                cboSingerId.DisplayMember = dataSource.Columns[1].ColumnName;
             }
             catch (Exception ex)
             {
@@ -331,6 +357,9 @@ namespace Festival.DBTab.FesContent
         {
             try
             {
+                // Insert festavideo              
+                festivalContentBusiness.InsertFestaVideoLock(festaVideo);
+
                 // Execute query
                 festivalContentBusiness.ExecuteSearch(SlqParameters);
                 IsActive = true;
@@ -394,6 +423,8 @@ namespace Festival.DBTab.FesContent
                 GetParameterTextBox("[歌手名]", txtSingerName);
                 //8.歌手名カナ
                 GetParameterTextBox("[歌手名検索用カナ]", txtSingerNameKana);
+                //8.1 歌手ID補正
+                GetParameterTextBoxWithCombox("[歌手ID補正]", cboSingerId, txtSingerIdFrom, txtSingerIdTo);
                 //9.Fes_アップ予定日
                 GetParameterComboxWithDateTime("[アップ予定日]", cboFesUpDate, dtFesUpDateFrom, dtFesUpDateTo, "yyyyMMdd");
                 //10.Orch_制作完了日
@@ -437,6 +468,11 @@ namespace Festival.DBTab.FesContent
                 //29.登録済み条件
                 GetParameterFromCombox(null, cboRegisteredConditions);
             }));
+        }
+
+        private void GetParameterTextBoxWithCombox(string columnCondition, ComboBoxEx combCheck, TextBoxX txtFrom, TextBoxX txtTo)
+        {
+            GetParameterUtils.GetParameterComboxWithTextBox(SlqParameters, columnCondition, combCheck, txtFrom, txtTo);
         }
 
         private void GetParameterComboxWithDateTime(string columnCondition, ComboBoxEx combCheck, MaskedTextBoxAdv dtFrom, MaskedTextBoxAdv dtTo, string format = "")
@@ -515,6 +551,10 @@ namespace Festival.DBTab.FesContent
             {
                 return false;
             }
+
+            //Get Festavideo
+            festaVideo = Utils.GetDataFromFileToList(Properties.Settings.Default.FES_PEREMIUM_CONTENT_VIDEO_LOCKED_PATH, ',');
+
             return true;
         }
 
@@ -670,16 +710,16 @@ namespace Festival.DBTab.FesContent
             if (pannelMain.Width > screenSize.Width)
             {
                 this.Width = screenSize.Width;
-                this.AutoScroll = true;
+                //this.AutoScroll = true;
             }
             if (pannelMain.Height > screenSize.Height)
             {
                 this.Height = screenSize.Height;
-                this.AutoScroll = true;
+               // this.AutoScroll = true;
             }
 
             lblShortCutDateTime.Location = new System.Drawing.Point(pannelMain.Location.X, pannelMain.Location.Y + pannelMain.Height + 5);
-            panelButton.Location = new System.Drawing.Point(pannelMain.Width - panelButton.Width + 15, pannelMain.Height + panelButton.Height + 15);
+            panelButton.Location = new System.Drawing.Point(this.Width - panelButton.Width - 25, pannelMain.Height + panelButton.Height + 5);
         }
 
         private void LoadData()
@@ -781,6 +821,10 @@ namespace Festival.DBTab.FesContent
             txtMelodyNameStopKana.TabIndex = (int)ControlTabIndex.txtMelodyNameStopKana;
             txtSingerName.TabIndex = (int)ControlTabIndex.txtSingerName;
             txtSingerNameKana.TabIndex = (int)ControlTabIndex.txtSingerNameKana;
+            cboSingerId.TabIndex = (int)ControlTabIndex.cboSingerId;
+            txtSingerIdFrom.TabIndex = (int)ControlTabIndex.txtSingerIdFrom;
+            txtSingerIdTo.TabIndex = (int)ControlTabIndex.txtSingerIdTo;
+
             cboFesUpDate.TabIndex = (int)ControlTabIndex.cboFesUpDate;
             dtFesUpDateFrom.TabIndex = (int)ControlTabIndex.dtFesUpDateFrom;
             dtFesUpDateTo.TabIndex = (int)ControlTabIndex.dtFesUpDateTo;
@@ -840,6 +884,9 @@ namespace Festival.DBTab.FesContent
             txtMelodyNameStopKana,
             txtSingerName,
             txtSingerNameKana,
+            cboSingerId,
+            txtSingerIdFrom,
+            txtSingerIdTo,
             cboFesUpDate,
             dtFesUpDateFrom,
             dtFesUpDateTo,
@@ -938,5 +985,9 @@ namespace Festival.DBTab.FesContent
             }
         }
 
+        private void cboSingerId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetParameterUtils.ActiveInputText(cboSingerId, txtSingerIdFrom, txtSingerIdTo);           
+        }
     }
 }

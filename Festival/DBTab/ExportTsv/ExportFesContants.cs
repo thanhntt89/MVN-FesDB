@@ -4,6 +4,7 @@
     {
         public static string コンテンツ = "コンテンツ";
         public static string コンテンツ_V2 = "コンテンツ_V2";
+        public static string TSV出力演奏時間Null補正対象 = "TSV出力演奏時間Null補正対象";
         public static string サービス情報 = "サービス情報";
         public static string サービス情報_V2 = "サービス情報_V2";
         public static string タイアップ情報 = "タイアップ情報";

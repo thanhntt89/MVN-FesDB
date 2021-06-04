@@ -36,9 +36,10 @@ namespace FestivalBusiness
                 dataUpdte.Columns.Add("プロジェクトID");
                 dataUpdte.Columns.Add("機能名");
                 dataUpdte.Columns.Add("OldプロジェクトID");
-                               
+
                 string sqlExecuteString = string.Empty;
                 string oldId = string.Empty;
+                Parameters parameter;
 
                 foreach (DataRow row in dtSource.Rows)
                 {
@@ -48,20 +49,21 @@ namespace FestivalBusiness
 
                     oldId = row["OldプロジェクトID"] == null ? string.Empty : row["OldプロジェクトID"].ToString();
 
+                    parameter = new Parameters();
+
                     if (string.IsNullOrWhiteSpace(oldId))
                     {
-                        sqlExecuteString = FesProjectQuery.GetInsertQuery(dataUpdte);
+                        sqlExecuteString = FesProjectQuery.GetInsertProjectQuery(dataUpdte, ref parameter);
                     }
                     else
                     {
-                        sqlExecuteString = FesProjectQuery.GetUpdateQuery(dataUpdte);
+                        sqlExecuteString = FesProjectQuery.GetUpdateProjectQuery(dataUpdte, ref parameter);
                     }
 
-                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, sqlExecuteString);
+                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, sqlExecuteString, parameter);
                     countUpdate++;
                 }
-
-
+                
                 sqlTransac.Commit();
                 connection.Close();
             }
@@ -97,6 +99,4 @@ namespace FestivalBusiness
             }
         }
     }
-
-
 }

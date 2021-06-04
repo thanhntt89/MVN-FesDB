@@ -59,6 +59,21 @@ namespace Zuby.ADGV
 
         #endregion
 
+        public int CountSeletedColumn
+        {
+            get
+            {
+                List<DataGridViewColumn> listOfColumns = new List<DataGridViewColumn>();
+                foreach (DataGridViewCell cell in this.SelectedCells)
+                {
+                    DataGridViewColumn col = this.Columns[cell.ColumnIndex] as DataGridViewColumn;
+                    if (!listOfColumns.Contains(col))
+                        listOfColumns.Add(col);
+                }
+                return listOfColumns.Count;
+            }
+        }
+
 
         #region translations
 

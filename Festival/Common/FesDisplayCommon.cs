@@ -79,15 +79,15 @@ namespace Festival.Common
 
             if (!btnSearchCondition.Visible)
             {
-                btnRowSelectUnselect.Location = new System.Drawing.Point(2, 3);
-                btnAllOn.Location = new System.Drawing.Point(124, 3);
-                btnAllOff.Location = new System.Drawing.Point(219, 3);
-                btnAllInPut.Location = new System.Drawing.Point(314, 3);
+                btnRowSelectUnselect.Location = new Point(2, 3);
+                btnAllOn.Location = new Point(124, 3);
+                btnAllOff.Location = new Point(219, 3);
+                btnAllInPut.Location = new Point(314, 3);
             }
 
             if (!btnImportData.Visible && btnAddNew.Visible)
             {
-                btnAddNew.Location = new System.Drawing.Point(3, 36);
+                btnAddNew.Location = new Point(3, 36);
             }
         }
 
@@ -737,7 +737,7 @@ namespace Festival.Common
                 MessageBox.Show(GetResources.GetResourceMesssage(Constants.MSGI010), GetResources.GetResourceMesssage(Constants.INFO_TITLE_MESSAGE), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
+            
             bool isActive = false;
             object valueUpdate = null;
 
@@ -880,11 +880,11 @@ namespace Festival.Common
             else if (keyData == (Keys.Alt | Keys.D0))
             {
                 btnAllOff_Click(null, null);
-            }           
+            }
             else if (keyData == Keys.Space || keyData == Keys.F2)
             {
                 EnableEditDataByShortCutKey();
-            }    
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -968,6 +968,6 @@ namespace Festival.Common
                 this.panelMain.Size = new Size(this.Size.Width - 2 * panelMain.Margin.Left, this.Size.Height - 5 * txtEditCell.Height);
             }
         }
-        
+
     }
 }

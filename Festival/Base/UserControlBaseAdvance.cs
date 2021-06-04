@@ -10,6 +10,8 @@ using static Festival.Common.FestivalEvents;
 using FestivalUtilities;
 using Zuby.ADGV;
 using System.Linq;
+using Festival.Base.DataGridViewColumnCustom;
+
 namespace Festival.Base
 {
     public partial class UserControlBaseAdvance : UserControl, IFesCommonFunction
@@ -28,11 +30,20 @@ namespace Festival.Base
         public ColumnsCollection HankakuEiSuColumns = new ColumnsCollection();
 
         public List<string> DisableBulkInsertColumns = new List<string>();
+        public List<string> DataColumn = new List<string>();
+
 
         public MenuMainCollection MainMenuEditModeCollection { get; set; }
 
         public List<int> noUpdateRecordList = new List<int>();
-        
+
+        //FesContents and VideoAssiment
+        public ColumnDisplayDataCollection VideoLockTypesColumns;
+        public DataTable tbVideoLockStatus;
+
+        public List<DataRow> videoCodeChangeList;
+
+
         /// <summary>
         /// Datasource display column text
         /// </summary>
@@ -44,7 +55,7 @@ namespace Festival.Base
         {
             get;
         }
-      
+
         public bool CancelClose { get; set; }
 
 
@@ -52,8 +63,11 @@ namespace Festival.Base
         {
             InitializeComponent();
             MainMenuEditModeCollection = new MenuMainCollection();
+            VideoLockTypesColumns = new ColumnDisplayDataCollection();
+            tbVideoLockStatus = new DataTable();
+            tbVideoLockStatus.Columns.Add("映像ロック対象");
         }
-        
+
         public WaitingForm waiting = null;
         public BackgroundWorker bgwProcess = null;
 
@@ -84,10 +98,24 @@ namespace Festival.Base
         public string ColumnChoiseDataPropertyName { get; set; }
         public string ColumnChoiseName { get; set; }
 
+        //VideoLock column
+        public string ColumnVideoCodeDataPropertyName { get; set; }
+        public string ColumnOldVideoCodeDataPropertyName { get; set; }
+        public string ColumnVideoContentTypeDataPropertyName { get; set; }
+        public string ColumnVideoLockTypeDataPropertyName { get; set; }
+        public string ColumnOldVideoLockTypeDataPropertyName { get; set; }
+        public string ColumnVideoLockTypeTextDataPropertyName { get; set; }
+
         // current row index selected
         public int CurrentRowsIndex;
         public int DeleteCount = 0;
         public int SaveCount = 0;
+        public int VideoCodeInFestaLockCount = 0;
+        public int VideoCodeInTableLockLockedCount = 0;
+        //Video code has status not change and video code change
+        public int VideoCodeStausNotChangeAndVideoCodeChangeCount = 0;
+        //Blank -> not empty | not empty -> Blank
+        public int VideoCodeChangeCount = 0;
 
         // Current display status: Default value must is False
         public bool? IsDisplayItemSeleted;
@@ -99,8 +127,9 @@ namespace Festival.Base
         public EditCellHandler EditCellEvent;
         public EditCellHandler UpdateCellEvent;
         public EditCellHandler CellEndEditEvent;
-        public EditCellHandler RowLeaveEvent;       
+        public EditCellHandler RowLeaveEvent;
         public EditCellHandler ValidatingRowEvent;
+       
 
         public GetTextHandler DisplayTitleEvent;
         public CommonEventHandler UnFilterEvent;
@@ -180,7 +209,6 @@ namespace Festival.Base
         {
             var button = this.Controls.Cast<Button>().Where(b => b.Tag.Equals(tagId)).FirstOrDefault();
 
-            //var button = buttons.Where(r => r.Tag.Equals(tagId)).FirstOrDefault();
             if (button != null && !button.Enabled)
             {
                 button.Enabled = true;

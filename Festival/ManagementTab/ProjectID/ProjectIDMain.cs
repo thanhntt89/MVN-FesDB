@@ -41,24 +41,7 @@ namespace Festival.ManagementTab.ProjectID
             //dataGridViewFilter.CellEndEditEvent += CellEndEditEvent;
             dataGridViewFilter.InitData();
         }
-
-        private void CellEndEditEvent(DataGridViewCell cell)
-        {
-            if (cell == null || !cell.OwningColumn.Name.Equals(colプロジェクトID.Name) || cell.OwningRow.Index == cell.DataGridView.Rows.Count - 1)
-                return;
-            string currentId = cell.Value.ToString();
-            string oldId = cell.OwningRow.Cells[colOldプロジェクトID.Name].Value.ToString();
-
-            // If update
-            if (!currentId.Equals(oldId))
-            {
-                if (!CheckExistId(currentId))
-                {
-                    cell.Value = oldId;
-                    cell.OwningRow.Cells[colUpdateDate.Name].Value = DBNull.Value;
-                }
-            }
-        }
+             
 
         private void CellClick(DataGridViewCell cell)
         {
@@ -67,11 +50,12 @@ namespace Festival.ManagementTab.ProjectID
 
             string userId = cell.OwningRow.Cells[colプロジェクトID.Name].Value.ToString();
             string message = colプロジェクトID.HeaderText + ": " + userId;
-            if (cell.OwningRow.Cells[colOldプロジェクトID.Name].Value == null)
+            if (cell.OwningRow.Cells[colOldプロジェクトID.Name].Value == DBNull.Value)
             {
                 cell.DataGridView.Rows.Remove(cell.OwningRow);
                 return;
             }
+
             DialogResult rst = MessageBox.Show(string.Format(GetResources.GetResourceMesssage(Constants.MSGA004), message), GetResources.GetResourceMesssage(Constants.ALERT_TITLE_MESSAGE), MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (rst != DialogResult.Yes)
                 return;

@@ -64,7 +64,6 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             this.col削除 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.col更新日時 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colデジドココンテンツID = new Festival.Base.DataGridViewNumericColumn();
-           
             ((System.ComponentModel.ISupportInitialize)(this.advSongWithDisc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -640,7 +639,6 @@ namespace Festival.DiscVideoTab.FesSongWithDisc
             this.SCREEN_TITLE = "DISC搭載曲管理V";
             this.Size = new System.Drawing.Size(970, 547);
             this.Load += new System.EventHandler(this.DisVideoSearchMain_Load);
-            
             ((System.ComponentModel.ISupportInitialize)(this.advSongWithDisc)).EndInit();
             this.ResumeLayout(false);
 

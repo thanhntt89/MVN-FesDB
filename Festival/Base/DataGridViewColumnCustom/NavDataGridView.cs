@@ -214,8 +214,15 @@ namespace Festival.Base
 
                 rowIndex = rowIndex > totalRows - 1 ? totalRows - 1 : rowIndex;
                 txtNumber.Text = (rowIndex + 1) + "/" + totalRows;
-                if (DataGridViewSource.CurrentCell != null)
-                    DataGridViewSource.CurrentCell = DataGridViewSource[DataGridViewSource.CurrentCell.ColumnIndex, rowIndex];
+                try
+                {
+                    if (DataGridViewSource.CurrentCell != null)
+                        DataGridViewSource.CurrentCell = DataGridViewSource[DataGridViewSource.CurrentCell.ColumnIndex, rowIndex];
+                }
+                catch
+                {
+
+                }               
             }));
         }
 

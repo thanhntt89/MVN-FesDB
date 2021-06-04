@@ -145,25 +145,7 @@ namespace FestivalBusiness
             string query = string.Format("INSERT INTO Wii.dbo.[Fes映像DISC追加削除管理] (ID,通番,追加削除区分,背景ファイル名,FesDISCID,データサイズ,有償情報フラグ,備考,登録日,未出力フラグ,削除フラグ,最終更新日時,最終更新者,最終更新PC名) VALUES({0})", values);
             return query;
         }
-
-        internal static string GetVideoCheckQuery(string id, string fesId, string fileName)
-        {
-            string query = string.Format("select [背景ファイル名] from  Wii.dbo.[Fes映像DISC追加削除管理] where [追加削除区分] = 0 and [削除フラグ] = 0 and [背景ファイル名] = '{0}' and [FesDISCID] <> '{1}' and [ID] <> '{2}'", fileName, fesId, id);
-            return query;
-        }
-
-        internal static string GetFesVideoSourceByIdQuery(string id)
-        {
-            string query = string.Format("select [ID],[通番],[追加削除区分],[背景ファイル名],[FesDISCID],[データサイズ],[有償情報フラグ],[備考],[登録日],[未出力フラグ],[削除フラグ]  from Wii.dbo.[v_Fes映像DISC追加削除管理] where [追加削除区分] = 0 and [削除フラグ] = 0 and [背景ファイル名] = '{0}'", id);
-            return query;
-        }
-
-        internal static string GetColumnsAddNewVideoWorkTableQuery()
-        {
-            string query = string.Format("select [ID],[通番],[追加削除区分],[背景ファイル名],[FesDISCID],[データサイズ],[有償情報フラグ],[備考],[登録日] ,[未出力フラグ],[削除フラグ],[選択],[削除],[更新日時] from WiiTmp.dbo.[tbl_Wrk_Fes映像DISC追加削除管理_{0}]", Environment.MachineName.Replace("-", ""));
-            return query;
-        }
-
+        
         internal static string GetUpdateRegisterTableQuery(DataTable tbRegister)
         {
             DataRow row = tbRegister.Rows[0];
@@ -190,6 +172,25 @@ namespace FestivalBusiness
             string query = string.Format("UPDATE Wii.dbo.[Fes映像DISC追加削除管理] SET {0} WHERE ID = '{1}' ", values, id);
             return query;
         }
+
+        internal static string GetVideoCheckQuery(string id, string fesId, string fileName)
+        {
+            string query = string.Format("select [背景ファイル名] from  Wii.dbo.[Fes映像DISC追加削除管理] where [追加削除区分] = 0 and [削除フラグ] = 0 and [背景ファイル名] = '{0}' and [FesDISCID] <> '{1}' and [ID] <> '{2}'", fileName, fesId, id);
+            return query;
+        }
+
+        internal static string GetFesVideoSourceByIdQuery(string id)
+        {
+            string query = string.Format("select [ID],[通番],[追加削除区分],[背景ファイル名],[FesDISCID],[データサイズ],[有償情報フラグ],[備考],[登録日],[未出力フラグ],[削除フラグ]  from Wii.dbo.[v_Fes映像DISC追加削除管理] where [追加削除区分] = 0 and [削除フラグ] = 0 and [背景ファイル名] = '{0}'", id);
+            return query;
+        }
+
+        internal static string GetColumnsAddNewVideoWorkTableQuery()
+        {
+            string query = string.Format("select [ID],[通番],[追加削除区分],[背景ファイル名],[FesDISCID],[データサイズ],[有償情報フラグ],[備考],[登録日] ,[未出力フラグ],[削除フラグ],[選択],[削除],[更新日時] from WiiTmp.dbo.[tbl_Wrk_Fes映像DISC追加削除管理_{0}]", Environment.MachineName.Replace("-", ""));
+            return query;
+        }
+
 
         internal static string GetInsertNewRowVideoManagementWorkTableQuery(DataTable dtAddNewVideoWorkTable)
         {

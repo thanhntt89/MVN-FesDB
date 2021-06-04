@@ -1,4 +1,5 @@
 ﻿using FestivalBusiness;
+using FestivalUtilities;
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -13,7 +14,7 @@ namespace Festival
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        {           
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (!SingleInstance.AlreadyRunning())

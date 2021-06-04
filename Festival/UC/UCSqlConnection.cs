@@ -1,7 +1,12 @@
 ﻿using FestivalBusiness;
+using FestivalCommon;
+using FestivalUtilities;
 using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows.Forms;
+using System.IO;
+using FestivalBusiness.Interface;
 
 namespace Festival.UC
 {
@@ -13,13 +18,12 @@ namespace Festival.UC
         public event SqlConnected sqlConnectedEvent;
         private string dataBaseName = string.Empty;
         private bool isConnected = false;
-
+        private ICommonBusiness iCommonBusiness = new CommonBusiness();
 
         public UCSqlConnection()
         {
             InitializeComponent();
         }
-
 
         public void ProgeressCheckDatabase()
         {
@@ -74,9 +78,10 @@ namespace Festival.UC
             GetConnection.CheckConnectionString(Properties.Settings.Default.CONNECT_Server, Properties.Settings.Default.CONNECT_UserID, Properties.Settings.Default.CONNECT_Password, Properties.Settings.Default.CONNECT_DBName, Properties.Settings.Default.CONNECT_DDETimeout, Properties.Settings.Default.CONNECT_CommandTimeout);
 
             GetConnection.CheckConnectionStringTmp(Properties.Settings.Default.CONNECT_Server, Properties.Settings.Default.CONNECT_UserID, Properties.Settings.Default.CONNECT_Password, Properties.Settings.Default.CONNECT_TMPDBName, Properties.Settings.Default.CONNECT_DDETimeout, Properties.Settings.Default.CONNECT_CommandTimeout);
-
+            
             isConnected = true;
         }
+        
 
         private void UCCheckLogin_SizeChanged(object sender, EventArgs e)
         {

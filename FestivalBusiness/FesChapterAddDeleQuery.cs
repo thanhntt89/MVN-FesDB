@@ -123,6 +123,55 @@ namespace FestivalBusiness
             string query = string.Format("update  Wii.dbo.[Fesチャプター追加削除管理]  set  削除フラグ = 0  where ID =  (select max(ID) from Wii.dbo.[Fesチャプター追加削除管理] where ID <> '{0}' and デジドココンテンツID = '{1}') and [追加削除区分] = 1  and [削除フラグ] = 1 ", id, contentId);
             return query;
         }
+        
+        internal static string GetInsertChapterManagementQuery(DataTable dataUpdte, ref Parameters parmeters)
+        {
+            DataRow row = dataUpdte.Rows[0];
+            string columnValue = string.Empty;
+            string values = string.Empty;
+            string columns = string.Empty;
+
+            foreach (DataColumn col in dataUpdte.Columns)
+            {
+                columns += string.Format("[{0}],", col.ColumnName);
+                values += string.Format("@{0},", col.ColumnName);
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Remove(values.Length - 1, 1);
+            columns = columns.Remove(columns.Length - 1, 1);
+
+            string query = string.Format("INSERT INTO Wii.dbo.[Fesチャプター追加削除管理] ({0}) VALUES({1})", columns, values);
+            return query;
+        }
+
+        internal static string GetUpdateChapterManagementQuery(DataTable dtUpdate, ref Parameters parmeters)
+        {
+            DataRow row = dtUpdate.Rows[0];
+            string values = string.Empty;
+
+            foreach (DataColumn col in dtUpdate.Columns)
+            {
+                if (!col.ColumnName.Equals("ID"))
+                    values += string.Format("{0}=@{0}, ", col.ColumnName);
+
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Trim();
+            values = values.Remove(values.Length - 1, 1);
+
+            string query = string.Format("UPDATE Wii.dbo.[Fesチャプター追加削除管理] SET {0} WHERE ID = @ID", values);
+            return query;
+        }
 
         internal static string GetInsertChapterManagementQuery(DataTable tbChapterUpdate)
         {
@@ -152,6 +201,34 @@ namespace FestivalBusiness
             string query = string.Format("INSERT INTO  Wii.dbo.[Fesチャプター追加削除管理]({1}) VALUES({2})", Environment.MachineName.Replace("-", ""), columns, values);
             return query;
         }
+
+        internal static string GetUpdateChapterManagementQuery(DataTable tbChapterUpdate)
+        {
+            DataRow row = tbChapterUpdate.Rows[0];
+            string id = string.Empty;
+            string columnValue = string.Empty;
+            string values = string.Empty;
+            foreach (DataColumn col in tbChapterUpdate.Columns)
+            {
+                if (col.ColumnName.Equals("ID"))
+                {
+                    id = row[col].ToString();
+                    continue;
+                }
+
+                if (row[col] == null || string.IsNullOrWhiteSpace(row[col].ToString()))
+                    columnValue = "NULL";
+                else
+                    columnValue = "N'" + row[col].ToString().Replace("'", "''") + "'";
+                if (col.ColumnName.Equals("最終更新日時"))
+                    columnValue = "GetDate()";
+                values += col.ColumnName + " = " + columnValue + ",";
+            }
+            values = values.Remove(values.Length - 1, 1);
+            string query = string.Format("UPDATE Wii.dbo.[Fesチャプター追加削除管理] SET {0} WHERE ID = {1} ", values, id);
+            return query;
+        }
+
 
         internal static string GetUpdateChapterWorkTableQuery(string id)
         {
@@ -195,31 +272,5 @@ namespace FestivalBusiness
             return query;
         }
 
-        internal static string GetUpdateChapterManagementQuery(DataTable tbChapterUpdate)
-        {
-            DataRow row = tbChapterUpdate.Rows[0];
-            string id = string.Empty;
-            string columnValue = string.Empty;
-            string values = string.Empty;
-            foreach (DataColumn col in tbChapterUpdate.Columns)
-            {
-                if (col.ColumnName.Equals("ID"))
-                {
-                    id = row[col].ToString();
-                    continue;
-                }
-
-                if (row[col] == null || string.IsNullOrWhiteSpace(row[col].ToString()))
-                    columnValue = "NULL";
-                else
-                    columnValue = "N'" + row[col].ToString().Replace("'", "''") + "'";
-                if (col.ColumnName.Equals("最終更新日時"))
-                    columnValue = "GetDate()";
-                values += col.ColumnName + " = " + columnValue + ",";
-            }
-            values = values.Remove(values.Length - 1, 1);
-            string query = string.Format("UPDATE Wii.dbo.[Fesチャプター追加削除管理] SET {0} WHERE ID = {1} ", values, id);
-            return query;
-        }
     }
 }

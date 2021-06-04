@@ -18,7 +18,7 @@ namespace FestivalUtilities
                 string fileContent = File.ReadAllText(filePathOut, Encoding.UTF8);
                 File.WriteAllText(filePathOut, fileContent, Encoding.GetEncoding("shift_jis"));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -237,6 +237,39 @@ namespace FestivalUtilities
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public static void WriteFile(string filePath, string content, string header = null)
+        {
+            DirectoryInfo dir = new DirectoryInfo(Path.GetDirectoryName(filePath));
+            if (!dir.Exists)
+            {
+                dir.Create();
+            }
+            string firstLine = string.Empty;
+
+            if (File.Exists(filePath))
+            {
+                using (var readerForFileStream = new StreamReader(filePath))
+                {
+                    firstLine = readerForFileStream.ReadLine();
+
+                    if (firstLine != null && firstLine.Equals(header))
+                    {
+                        header = null;
+                    }
+                    readerForFileStream.Close();
+                }
+            }
+
+            using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.Read))
+            using (StreamWriter writer = new StreamWriter(file))
+            {
+                if (header != null)
+                    writer.WriteLine(header);
+                writer.Write(content);
+                writer.Close();
             }
         }
     }

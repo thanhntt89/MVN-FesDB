@@ -8,11 +8,46 @@ using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.VisualBasic;
+using System.Windows.Forms;
 
 namespace FestivalUtilities
 {
     public class Utils
     {
+        /// <summary>
+        /// Get data from file to list
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="type">charaters type ex: , ; : /</param>
+        /// <returns></returns>
+        public static IList<string> GetDataFromFileToList(string filePath, char type)
+        {
+            List<string> data = new List<string>();
+
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    var tmp = File.ReadAllText(filePath).Split(type).ToList();
+                    tmp = (from item in tmp select item).Distinct().ToList();
+
+                    foreach (string item in tmp)
+                    {
+                        if (!string.IsNullOrWhiteSpace(item) && IsNumeric(item))
+                        {
+                            data.Add(item);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+            return data;
+        }
+
         public static bool IsHankakuEiSu(string values)
         {
             if (string.IsNullOrEmpty(values))
@@ -487,40 +522,85 @@ namespace FestivalUtilities
             {
                 if (!Directory.Exists(folderPath))
                     return;
-                // Delete files
-                string[] listFile = Directory.GetFiles(folderPath);
-                bool exist = false;
+               
+                List<string> listFile = Directory.GetFiles(folderPath).ToList();
 
-                foreach (var file in listFile)
+                List<string> listDelete = new List<string>();
+
+                //Delete file              
+                if (ignor != null)
                 {
-                    if (ignor != null)
+                    foreach (string file in listFile)
                     {
-                        foreach (var item in ignor)
-                        {
-                            if (file.Contains(item))
-                                exist = true;
-                        }
-                        if (exist) continue;
+                        string fileName = Path.GetFileName(file);
+                        if (ignor.Contains(fileName))
+                            continue;
+                        listDelete.Add(file);
                     }
+                }
+                else
+                    listDelete = listFile;
 
+                foreach (var file in listDelete)
+                {     
                     File.Delete(file);
                 }
 
                 // Get sub directory
-                string[] subDirectory = Directory.GetDirectories(folderPath);
+                //string[] subDirectory = Directory.GetDirectories(folderPath);
                 // Loop
-                foreach (var folder in subDirectory)
+                foreach (var folder in Directory.GetDirectories(folderPath))
                 {
                     DeleteAllFileInFolder(folder);
                 }
 
-                //Delete Folder
-                Directory.Delete(folderPath);
+                if (CheckFolderEmpty(folderPath))
+                    //Delete Folder
+                    Directory.Delete(folderPath, true);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        public static bool CheckFolderEmpty(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+            {
+                throw new ArgumentNullException("path");
+            }
+
+            var folder = new DirectoryInfo(path);
+            if (folder.Exists)
+            {
+                return folder.GetFileSystemInfos().Length == 0;
+            }
+
+            throw new DirectoryNotFoundException();
+        }
+
+        private static bool IsFileLocked(string filePath)
+        {
+            try
+            {
+                FileInfo file = new FileInfo(filePath);
+                using (FileStream stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None))
+                {
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+
+            //file is not locked
+            return false;
         }
 
         /// <summary>

@@ -171,9 +171,15 @@
             this.dataGridViewFilter.ColumnDeletedName = null;
             this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
             this.dataGridViewFilter.ColumnKeyName = null;
+            this.dataGridViewFilter.ColumnOldVideoCodeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnOldVideoLockTypeDataPropertyName = null;
             this.dataGridViewFilter.ColumnUpdateName = null;
             this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
             this.dataGridViewFilter.ColumnUpdateTimeName = null;
+            this.dataGridViewFilter.ColumnVideoCodeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnVideoContentTypeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnVideoLockTypeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnVideoLockTypeTextDataPropertyName = null;
             this.dataGridViewFilter.ColUpdatedIndex = 0;
             this.dataGridViewFilter.DataGridViewSource = null;
             this.dataGridViewFilter.DataSourceDisplay = null;

@@ -131,11 +131,6 @@ namespace Festival.DBTab
             OpenWiiByEditMode(CurrentLayout);
         }
 
-        private void TabDatabase_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSingerIDChangeManage_Click(object sender, EventArgs e)
         {
             if (!btnSingerIDChangeManage.Enabled) return;

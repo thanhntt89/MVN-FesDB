@@ -1510,5 +1510,53 @@ namespace Festival.Properties {
                 this["FES_DISK_MANAGEMENT_ファイルサイズの単位"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\js-server\\S-drv\\制作\\発納\\festa映像割付\\背景映像メンテリスト取込.tsv")]
+        public string FES_IMPORT_VIDEO_CODE_LOCK_PATH_背景映像コード {
+            get {
+                return ((string)(this["FES_IMPORT_VIDEO_CODE_LOCK_PATH_背景映像コード"]));
+            }
+            set {
+                this["FES_IMPORT_VIDEO_CODE_LOCK_PATH_背景映像コード"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\eb-server\\x-drv\\Maprj\\festa\\app\\config\\FesPremiumContentsKbn.txt")]
+        public string FES_PEREMIUM_CONTENT_VIDEO_LOCKED_PATH {
+            get {
+                return ((string)(this["FES_PEREMIUM_CONTENT_VIDEO_LOCKED_PATH"]));
+            }
+            set {
+                this["FES_PEREMIUM_CONTENT_VIDEO_LOCKED_PATH"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\js-server\\S-drv\\制作\\発納\\festa映像割付\\更新履歴\\背景映像コード更新履歴.tsv")]
+        public string FES_VIDEO_LOCK_HISTORIES_FILE_PATH {
+            get {
+                return ((string)(this["FES_VIDEO_LOCK_HISTORIES_FILE_PATH"]));
+            }
+            set {
+                this["FES_VIDEO_LOCK_HISTORIES_FILE_PATH"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\eb-server\\x-drv\\K-tai\\digidoco\\upload\\tsv\\festival\\TSV出力演奏時間Null補正対象.txt")]
+        public string FES_EXPORT_LOG_PATH_SERVER_FILE_CONTENT_EMPTY {
+            get {
+                return ((string)(this["FES_EXPORT_LOG_PATH_SERVER_FILE_CONTENT_EMPTY"]));
+            }
+            set {
+                this["FES_EXPORT_LOG_PATH_SERVER_FILE_CONTENT_EMPTY"] = value;
+            }
+        }
     }
 }

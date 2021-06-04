@@ -33,12 +33,11 @@
             this.btnVideoAddDelete = new System.Windows.Forms.Button();
             this.btnPackageIDInfo = new System.Windows.Forms.Button();
             this.btnInvidualVideoDISCrecordInfoV2 = new System.Windows.Forms.Button();
-            this.btnInvidualVideoDISCrecordInfoV1 = new System.Windows.Forms.Button();
+            this.btnBackgroundVideo = new System.Windows.Forms.Button();
             this.btnFesSongWithDiscV2 = new System.Windows.Forms.Button();
             this.btnFesSongWithDiscV1 = new System.Windows.Forms.Button();
             this.btnFesVideoAssigment = new System.Windows.Forms.Button();
             this.btnFesChapterAddDelete = new System.Windows.Forms.Button();
-           
             this.SuspendLayout();
             // 
             // btnCheckDiskCapacity
@@ -96,18 +95,17 @@
             this.btnInvidualVideoDISCrecordInfoV2.UseVisualStyleBackColor = true;
             this.btnInvidualVideoDISCrecordInfoV2.Click += new System.EventHandler(this.btnInvidualVideoDISCrecordInfoV2_Click);
             // 
-            // btnInvidualVideoDISCrecordInfoV1
+            // btnBackgroundVideo
             // 
-            this.btnInvidualVideoDISCrecordInfoV1.Enabled = false;
-            this.btnInvidualVideoDISCrecordInfoV1.Location = new System.Drawing.Point(312, 149);
-            this.btnInvidualVideoDISCrecordInfoV1.Name = "btnInvidualVideoDISCrecordInfoV1";
-            this.btnInvidualVideoDISCrecordInfoV1.Size = new System.Drawing.Size(270, 30);
-            this.btnInvidualVideoDISCrecordInfoV1.TabIndex = 12;
-            this.btnInvidualVideoDISCrecordInfoV1.Tag = "212";
-            this.btnInvidualVideoDISCrecordInfoV1.Text = "個別映像DISC収録情報V1(D)";
-            this.btnInvidualVideoDISCrecordInfoV1.UseVisualStyleBackColor = true;
-            this.btnInvidualVideoDISCrecordInfoV1.Visible = false;
-            this.btnInvidualVideoDISCrecordInfoV1.Click += new System.EventHandler(this.btnInvidualVideoDISCrecordInfoV1_Click);
+            this.btnBackgroundVideo.Enabled = false;
+            this.btnBackgroundVideo.Location = new System.Drawing.Point(3, 147);
+            this.btnBackgroundVideo.Name = "btnBackgroundVideo";
+            this.btnBackgroundVideo.Size = new System.Drawing.Size(270, 30);
+            this.btnBackgroundVideo.TabIndex = 12;
+            this.btnBackgroundVideo.Tag = "220";
+            this.btnBackgroundVideo.Text = "背景映像メンテ(D)";
+            this.btnBackgroundVideo.UseVisualStyleBackColor = true;
+            this.btnBackgroundVideo.Click += new System.EventHandler(this.btnBackgroundVideo_Click);
             // 
             // btnFesSongWithDiscV2
             // 
@@ -123,7 +121,7 @@
             // btnFesSongWithDiscV1
             // 
             this.btnFesSongWithDiscV1.Enabled = false;
-            this.btnFesSongWithDiscV1.Location = new System.Drawing.Point(3, 147);
+            this.btnFesSongWithDiscV1.Location = new System.Drawing.Point(312, 149);
             this.btnFesSongWithDiscV1.Name = "btnFesSongWithDiscV1";
             this.btnFesSongWithDiscV1.Size = new System.Drawing.Size(270, 30);
             this.btnFesSongWithDiscV1.TabIndex = 10;
@@ -165,13 +163,12 @@
             this.Controls.Add(this.btnVideoAddDelete);
             this.Controls.Add(this.btnPackageIDInfo);
             this.Controls.Add(this.btnInvidualVideoDISCrecordInfoV2);
-            this.Controls.Add(this.btnInvidualVideoDISCrecordInfoV1);
+            this.Controls.Add(this.btnBackgroundVideo);
             this.Controls.Add(this.btnFesSongWithDiscV2);
             this.Controls.Add(this.btnFesSongWithDiscV1);
             this.Controls.Add(this.btnFesVideoAssigment);
             this.Name = "TabDis";
             this.Size = new System.Drawing.Size(803, 425);
-            
             this.ResumeLayout(false);
 
         }
@@ -183,7 +180,7 @@
         private System.Windows.Forms.Button btnVideoAddDelete;
         private System.Windows.Forms.Button btnPackageIDInfo;
         private System.Windows.Forms.Button btnInvidualVideoDISCrecordInfoV2;
-        private System.Windows.Forms.Button btnInvidualVideoDISCrecordInfoV1;
+        private System.Windows.Forms.Button btnBackgroundVideo;
         private System.Windows.Forms.Button btnFesSongWithDiscV2;
         private System.Windows.Forms.Button btnFesSongWithDiscV1;
         private System.Windows.Forms.Button btnFesVideoAssigment;

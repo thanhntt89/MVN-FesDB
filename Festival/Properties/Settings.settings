@@ -374,5 +374,17 @@
     <Setting Name="FES_DISK_MANAGEMENT_ファイルサイズの単位" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1048576</Value>
     </Setting>
+    <Setting Name="FES_IMPORT_VIDEO_CODE_LOCK_PATH_背景映像コード" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\js-server\S-drv\制作\発納\festa映像割付\背景映像メンテリスト取込.tsv</Value>
+    </Setting>
+    <Setting Name="FES_PEREMIUM_CONTENT_VIDEO_LOCKED_PATH" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\eb-server\x-drv\Maprj\festa\app\config\FesPremiumContentsKbn.txt</Value>
+    </Setting>
+    <Setting Name="FES_VIDEO_LOCK_HISTORIES_FILE_PATH" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\js-server\S-drv\制作\発納\festa映像割付\更新履歴\背景映像コード更新履歴.tsv</Value>
+    </Setting>
+    <Setting Name="FES_EXPORT_LOG_PATH_SERVER_FILE_CONTENT_EMPTY" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\eb-server\x-drv\K-tai\digidoco\upload\tsv\festival\TSV出力演奏時間Null補正対象.txt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

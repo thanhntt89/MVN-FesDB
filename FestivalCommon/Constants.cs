@@ -38,6 +38,19 @@ namespace FestivalCommon
             }
         }
 
+        public static string FESTIVAL_INSTALLER_FILE_PATH = string.Format("{0}/FestivalServices.InstallState", Application.StartupPath);
+
+        //Sql file path
+        public static string SQL_QUERY_FILE_PATH = string.Format("{0}/Sql_Script_Update_202105.sql", Application.StartupPath);
+        public static string SQL_QUERY_NEW_FILE_PATH = string.Format("{0}/Sql_Script_Update_202105_done_{1}.sql", Application.StartupPath, DateTime.Now.ToString("yyyyMMddHHmmss"));
+
+        //VideoLockTypes
+        public static string VIDEO_LOCK_TYPE_FESTA = "プレミアムコンテンツ曲";
+        public static string VIDEO_LOCK_TYPE_INDIVIDUAL = "映像ロック曲";
+        public static string VIDEO_LOCK_TYPE_NO_CHANGE = "背景映像変更NG曲";
+
+        public static string EXTENTION_CONFIG = ".xml";
+
         // Log datetime format
         public static string LOG_DATE_TIME_FORMAT = "yyyy/MM/dd HH:mm:ss";
         public static string DATE_TIME_FORMAT_SQL111 = "yyyyMMdd";
@@ -66,7 +79,7 @@ namespace FestivalCommon
         public static string FES_SONG_WITH_DISC_TABLE_DBTMP = string.Format("##FesSongWithDiscTableTmp{0}", Environment.MachineName.Replace("-", "_"));
 
 
-
+        public static string CONDITION_VALUE_NOT_CHANGE = "変更禁止";
         public static string CONDITION_VALUE_NULL = "NULL";
         public static string CONDITION_VALUE_NOT_NULL = "NOT NULL";
         public static string CONDITION_VALUE_BLANK = string.Empty;

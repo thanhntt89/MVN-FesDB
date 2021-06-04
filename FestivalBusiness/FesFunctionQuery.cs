@@ -13,11 +13,61 @@ namespace FestivalBusiness
         public static string GetDataByIdQuery(string projectId, string functionId)
         {
             string query = string.Format("select [プロジェクトID] , [機能ID], [機能名], [タイムスタンプ] FROM [Wii].[dbo].[Fes機能ID] where [プロジェクトID] = '{0}' AND [機能ID] = '{1}' ", projectId, functionId);
-
-
             return query;
         }
+        
+        internal static string GetInsertFunctionQuery(DataTable dataUpdte, ref Parameters parmeters)
+        {
+            DataRow row = dataUpdte.Rows[0];
+            string columnValue = string.Empty;
+            string values = string.Empty;
+            string columns = string.Empty;
 
+            foreach (DataColumn col in dataUpdte.Columns)
+            {
+                if (col.ColumnName.Contains("Old"))
+                    continue;
+
+                columns += string.Format("[{0}],", col.ColumnName);
+                values += string.Format("@{0},", col.ColumnName);
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Remove(values.Length - 1, 1);
+            columns = columns.Remove(columns.Length - 1, 1);
+
+            string query = string.Format("INSERT INTO [Wii].[dbo].[Fes機能ID] ({0}) VALUES({1})", columns, values);
+            return query;
+        }
+        
+        internal static string GetUpdateFunctionQuery(DataTable dtUpdate, ref Parameters parmeters)
+        {
+            DataRow row = dtUpdate.Rows[0];
+            string values = string.Empty;
+
+            foreach (DataColumn col in dtUpdate.Columns)
+            {
+                if (!col.ColumnName.Contains("Old"))
+                    values += string.Format("{0}=@{0}, ", col.ColumnName);
+
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Trim();
+            values = values.Remove(values.Length - 1, 1);
+
+            string query = string.Format("UPDATE [Wii].[dbo].[Fes機能ID] SET {0} WHERE プロジェクトID = @OldプロジェクトID AND 機能ID= @Old機能ID", values);
+            return query;
+        }
+        
         internal static string GetInsertQuery(DataTable dataUpdte)
         {
             DataRow row = dataUpdte.Rows[0];
@@ -41,7 +91,7 @@ namespace FestivalBusiness
             values = values.Remove(values.Length - 1, 1);
             columns = columns.Remove(columns.Length - 1, 1);
 
-            string query = string.Format("INSERT INTO [Wii].[dbo].[Fes機能ID]  ({0}) VALUES({1})", columns, values);
+            string query = string.Format("INSERT INTO [Wii].[dbo].[Fes機能ID] ({0}) VALUES({1})", columns, values);
             return query;
         }
 

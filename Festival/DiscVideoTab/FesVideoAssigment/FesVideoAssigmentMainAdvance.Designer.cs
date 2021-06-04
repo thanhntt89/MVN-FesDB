@@ -31,10 +31,11 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
         private void InitializeComponent()
         {
             Festival.Base.MenuMainCollection menuMainCollection1 = new Festival.Base.MenuMainCollection();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewFilter = new Festival.Base.DataGridViewFilter();
             this.advFesVideoAssigment = new Zuby.ADGV.AdvancedDataGridView();
             this.col選択 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
@@ -45,7 +46,12 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.col楽曲名検索用カナ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col曲名よみがな補正 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col歌手名検索用カナ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colコンテンツ種類ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col背景映像コード = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOld背景映像コード = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col個別映像ロック = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
+            this.colOld個別映像ロック = new Festival.Base.DataGridViewNumericColumn();
+            this.col映像ロック対象 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colアップ予定日 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colサービス発表日 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.col取消フラグ = new DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn();
@@ -54,7 +60,7 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.col削除 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.col更新日時 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colデジドココンテンツID = new Festival.Base.DataGridViewNumericColumn();
-           
+            ((System.ComponentModel.ISupportInitialize)(this.tbVideoLockStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.advFesVideoAssigment)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,9 +80,15 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.dataGridViewFilter.ColumnDeletedName = null;
             this.dataGridViewFilter.ColumnKeyDataPropertyName = null;
             this.dataGridViewFilter.ColumnKeyName = null;
+            this.dataGridViewFilter.ColumnOldVideoCodeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnOldVideoLockTypeDataPropertyName = null;
             this.dataGridViewFilter.ColumnUpdateName = null;
             this.dataGridViewFilter.ColumnUpdateTimeDataPropertyName = null;
             this.dataGridViewFilter.ColumnUpdateTimeName = null;
+            this.dataGridViewFilter.ColumnVideoCodeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnVideoContentTypeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnVideoLockTypeDataPropertyName = null;
+            this.dataGridViewFilter.ColumnVideoLockTypeTextDataPropertyName = null;
             this.dataGridViewFilter.ColUpdatedIndex = 0;
             this.dataGridViewFilter.DataGridViewSource = null;
             this.dataGridViewFilter.DataSourceDisplay = null;
@@ -108,7 +120,12 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.col楽曲名検索用カナ,
             this.col曲名よみがな補正,
             this.col歌手名検索用カナ,
+            this.colコンテンツ種類ID,
             this.col背景映像コード,
+            this.colOld背景映像コード,
+            this.col個別映像ロック,
+            this.colOld個別映像ロック,
+            this.col映像ロック対象,
             this.colアップ予定日,
             this.colサービス発表日,
             this.col取消フラグ,
@@ -117,16 +134,17 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.col削除,
             this.col更新日時,
             this.colデジドココンテンツID});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.advFesVideoAssigment.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.advFesVideoAssigment.DefaultCellStyle = dataGridViewCellStyle5;
             this.advFesVideoAssigment.FilterAndSortEnabled = true;
             this.advFesVideoAssigment.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.advFesVideoAssigment.IsLoadConfig = false;
             this.advFesVideoAssigment.Location = new System.Drawing.Point(3, 3);
             this.advFesVideoAssigment.Name = "advFesVideoAssigment";
             this.advFesVideoAssigment.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -224,6 +242,16 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.col歌手名検索用カナ.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.col歌手名検索用カナ.Width = 120;
             // 
+            // colコンテンツ種類ID
+            // 
+            this.colコンテンツ種類ID.DataPropertyName = "コンテンツ種類ID";
+            this.colコンテンツ種類ID.HeaderText = "コンテンツ種類";
+            this.colコンテンツ種類ID.MinimumWidth = 22;
+            this.colコンテンツ種類ID.Name = "colコンテンツ種類ID";
+            this.colコンテンツ種類ID.ReadOnly = true;
+            this.colコンテンツ種類ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.colコンテンツ種類ID.Visible = false;
+            // 
             // col背景映像コード
             // 
             this.col背景映像コード.DataPropertyName = "背景映像コード";
@@ -235,6 +263,56 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.col背景映像コード.Name = "col背景映像コード";
             this.col背景映像コード.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             this.col背景映像コード.Width = 150;
+            // 
+            // colOld背景映像コード
+            // 
+            this.colOld背景映像コード.DataPropertyName = "Old背景映像コード";
+            this.colOld背景映像コード.HeaderText = "Old背景映像コード";
+            this.colOld背景映像コード.MinimumWidth = 22;
+            this.colOld背景映像コード.Name = "colOld背景映像コード";
+            this.colOld背景映像コード.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.colOld背景映像コード.Visible = false;
+            // 
+            // col個別映像ロック
+            // 
+            this.col個別映像ロック.DataPropertyName = "個別映像ロック";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Yellow;
+            this.col個別映像ロック.DefaultCellStyle = dataGridViewCellStyle2;
+            this.col個別映像ロック.DropDownHeight = 106;
+            this.col個別映像ロック.DropDownWidth = 121;
+            this.col個別映像ロック.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.col個別映像ロック.HeaderText = "個別映像ロック";
+            this.col個別映像ロック.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.col個別映像ロック.IntegralHeight = false;
+            this.col個別映像ロック.ItemHeight = 15;
+            this.col個別映像ロック.MinimumWidth = 22;
+            this.col個別映像ロック.Name = "col個別映像ロック";
+            this.col個別映像ロック.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col個別映像ロック.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.col個別映像ロック.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // colOld個別映像ロック
+            // 
+            this.colOld個別映像ロック.DataPropertyName = "Old個別映像ロック";
+            this.colOld個別映像ロック.HeaderText = "Old個別映像ロック";
+            this.colOld個別映像ロック.MaxInputLength = 32767;
+            this.colOld個別映像ロック.MaxValueInput = ((long)(9223372036854775807));
+            this.colOld個別映像ロック.MinimumWidth = 22;
+            this.colOld個別映像ロック.MinInputLength = 0;
+            this.colOld個別映像ロック.Name = "colOld個別映像ロック";
+            this.colOld個別映像ロック.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colOld個別映像ロック.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.colOld個別映像ロック.Visible = false;
+            // 
+            // col映像ロック対象
+            // 
+            this.col映像ロック対象.DataPropertyName = "映像ロック対象";
+            this.col映像ロック対象.HeaderText = "映像ロック対象";
+            this.col映像ロック対象.MinimumWidth = 22;
+            this.col映像ロック対象.Name = "col映像ロック対象";
+            this.col映像ロック対象.ReadOnly = true;
+            this.col映像ロック対象.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col映像ロック対象.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
             // 
             // colアップ予定日
             // 
@@ -342,8 +420,8 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             // col備考
             // 
             this.col備考.DataPropertyName = "備考";
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Yellow;
-            this.col備考.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Yellow;
+            this.col備考.DefaultCellStyle = dataGridViewCellStyle3;
             this.col備考.HeaderText = "備考";
             this.col備考.MaxInputLength = 255;
             this.col備考.MinimumWidth = 22;
@@ -356,8 +434,8 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.col削除.CheckState = System.Windows.Forms.CheckState.Indeterminate;
             this.col削除.CheckValue = "N";
             this.col削除.DataPropertyName = "削除";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Yellow;
-            this.col削除.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Yellow;
+            this.col削除.DefaultCellStyle = dataGridViewCellStyle4;
             this.col削除.HeaderText = "削除";
             this.col削除.MinimumWidth = 22;
             this.col削除.Name = "col削除";
@@ -427,7 +505,7 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             this.SCREEN_TITLE = "個別映像割付";
             this.Size = new System.Drawing.Size(800, 400);
             this.Load += new System.EventHandler(this.FesVideoAssigmentMainAdvance_Load);
-            
+            ((System.ComponentModel.ISupportInitialize)(this.tbVideoLockStatus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advFesVideoAssigment)).EndInit();
             this.ResumeLayout(false);
 
@@ -445,7 +523,12 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
         private System.Windows.Forms.DataGridViewTextBoxColumn col楽曲名検索用カナ;
         private System.Windows.Forms.DataGridViewTextBoxColumn col曲名よみがな補正;
         private System.Windows.Forms.DataGridViewTextBoxColumn col歌手名検索用カナ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colコンテンツ種類ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn col背景映像コード;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOld背景映像コード;
+        private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn col個別映像ロック;
+        private Base.DataGridViewNumericColumn colOld個別映像ロック;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col映像ロック対象;
         private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn colアップ予定日;
         private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn colサービス発表日;
         private DevComponents.DotNetBar.Controls.DataGridViewComboBoxExColumn col取消フラグ;

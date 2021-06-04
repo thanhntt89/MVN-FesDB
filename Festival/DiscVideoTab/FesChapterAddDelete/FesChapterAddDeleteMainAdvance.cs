@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using Zuby.ADGV;
 using System.Linq;
 using Festival.Base.DataGridViewColumnCustom;
+using System.Globalization;
 
 namespace Festival.DiscVideoTab.FesChapterAddDelete
 {
@@ -598,15 +599,13 @@ namespace Festival.DiscVideoTab.FesChapterAddDelete
 
                         oCell = dataGridView[iCol + i, iRow];
 
-                        if (oCell.ReadOnly)
+
+                        if (!CheckValidCell(oCell, data))
                         {
                             return;
                         }
 
-                        if (oCell.ValueType == null)
-                        {
-                            return;
-                        }
+                        //Check valid type
 
                         UpdateCell(oCell, sCells[i]);
                     }
@@ -631,6 +630,65 @@ namespace Festival.DiscVideoTab.FesChapterAddDelete
                     MessageBox.Show(string.Format(GetResources.GetResourceMesssage(Constants.MSGE038), error.LogTime, error.ModuleName, error.ErrorMessage, error.FilePath), GetResources.GetResourceMesssage(Constants.ERROR_TITLE_MESSAGE), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }));
             }
+        }
+
+        private bool CheckValidCell(DataGridViewCell cell, object data)
+        {
+            if (cell == null || cell.ReadOnly)
+                return false;
+
+            int MaxLength = 0;
+            int MinLength = 0;
+            if (data == null || data == DBNull.Value || string.IsNullOrWhiteSpace(data.ToString()))
+                return true;
+
+            if (cell.GetType().Equals(typeof(DataGridViewNumericCell)))
+            {
+                MaxLength = ((DataGridViewNumericColumn)cell.OwningColumn).MaxInputLength;
+                MinLength = ((DataGridViewNumericColumn)cell.OwningColumn).MinInputLength;
+
+                if (data.ToString().Length > MaxLength || data.ToString().Length < MinLength)
+                    return false;
+
+                return Utils.IsNumeric(data.ToString());
+            }
+            if (cell.GetType().Equals(typeof(DataGridViewTextBoxCell)))
+            {
+                MaxLength = ((DataGridViewTextBoxColumn)cell.OwningColumn).MaxInputLength;
+                if (data.ToString().Length > MaxLength || data.ToString().Length < MinLength)
+                {
+                    return false;
+                }
+            }
+            if (cell.GetType().Equals(typeof(DataGridViewDateTimeInputCell)))
+            {
+                DateTime dateValue = DateTime.MinValue;
+                string[] formats = {"M/d/yyyy h:mm:ss tt", "M/d/yyyy h:mm tt",
+                   "MM/dd/yyyy hh:mm:ss", "M/d/yyyy h:mm:ss","yyyy/MM/dd","yyyyMMdd","yyyy/MM/dd HH:mm:ss",
+                   "M/d/yyyy hh:mm tt", "M/d/yyyy hh tt",
+                   "M/d/yyyy h:mm", "M/d/yyyy h:mm",
+                   "MM/dd/yyyy hh:mm", "M/dd/yyyy hh:mm"};
+
+                DateTime.TryParseExact(data.ToString(), formats, null,
+                               DateTimeStyles.AllowWhiteSpaces |
+                               DateTimeStyles.AdjustToUniversal,
+                               out dateValue);
+
+                return dateValue != DateTime.MinValue;
+            }
+            if (cell.GetType().Equals(typeof(DataGridViewComboBoxExCell)))
+            {
+                var cbo = (DataGridViewComboBoxExColumn)cell.OwningColumn;
+                DataTable dtSource = cbo.DataSource as DataTable;
+                var exist = dtSource.AsEnumerable().Where(r => r.Field<object>(0) != null && r.Field<object>(0).ToString().Equals(data.ToString())).FirstOrDefault();
+                if (exist == null)
+                {
+                    MessageBox.Show(string.Format("存在する{0}を指定してください。", cell.OwningColumn.HeaderText), GetResources.GetResourceMesssage(Constants.ALERT_TITLE_MESSAGE), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         public override void AddNewRow()

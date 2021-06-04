@@ -12,15 +12,15 @@ namespace Festival.Base
     {
         private static string folderPath = Constants.SETTING_DATAGRIDVIEW_USER_ROOT_PATH;
         private static string filePath = string.Empty;
-        
+
         /// <summary>
         /// Loads columns information from the specified XML file
         /// </summary>
         /// <param name="dgv">DataGridView control instance</param>
         /// <param name="fileName">XML configuration file</param>
         public static void LoadConfiguration(this AdvancedDataGridView dgv)
-        {           
-            filePath = string.Format("{0}\\{1}.dat", folderPath, dgv.Name);
+        {
+            filePath = string.Format("{0}\\{1}{2}", folderPath, dgv.Name, Constants.EXTENTION_CONFIG);
 
             dgv.IsLoadConfig = false;
 
@@ -39,17 +39,18 @@ namespace Festival.Base
 
                 foreach (var column in columns)
                 {
-                    dgv.Columns[column.Name].DisplayIndex = column.DisplayIndex;
+                    //dgv.Columns[column.Name].DisplayIndex = column.DisplayIndex;
+                    //dgv.Columns[column.Name].HeaderText = column.HeaderText;
                     dgv.Columns[column.Name].Width = column.Width;
-                    dgv.Columns[column.Name].Visible = column.Visible;
-                    dgv.Columns[column.Name].Frozen = column.Frozen;
+                    //dgv.Columns[column.Name].Visible = column.Name.Contains("Old") ? false : column.Visible;
+                    //dgv.Columns[column.Name].Frozen = column.Frozen;
                 }
 
                 dgv.IsLoadConfig = true;
             }
-            catch 
+            catch
             {
-               
+
             }
         }
 
@@ -59,8 +60,8 @@ namespace Festival.Base
         /// <param name="dgv">DataGridView control instance</param>
         /// <param name="fileName">XML configuration file</param>
         public static void SaveConfiguration(this AdvancedDataGridView dgv)
-        {           
-            filePath = string.Format("{0}\\{1}.dat", folderPath, dgv.Name);
+        {
+            filePath = string.Format("{0}\\{1}{2}", folderPath, dgv.Name, Constants.EXTENTION_CONFIG);
 
             if (!Directory.Exists(folderPath))
             {
@@ -71,14 +72,16 @@ namespace Festival.Base
 
             foreach (DataGridViewColumn col in dgv.Columns)
             {
-                columns.Add(new ColumnInfo()
-                {
-                    Name = col.Name,
-                    DisplayIndex = col.DisplayIndex,
-                    Width = col.Width,
-                    Visible = col.Visible,
-                    Frozen = col.Frozen
-                });
+                if (col.Visible)
+                    columns.Add(new ColumnInfo()
+                    {
+                        Name = col.Name,
+                        //HeaderText = col.HeaderText,
+                        //DisplayIndex = col.DisplayIndex,
+                        Width = col.Width,
+                       // Visible = col.Visible,
+                        //Frozen = col.Frozen
+                    });
             }
 
             using (var streamWriter = new StreamWriter(filePath))
@@ -93,9 +96,11 @@ namespace Festival.Base
     public sealed class ColumnInfo
     {
         public string Name { get; set; }
-        public int DisplayIndex { get; set; }
+       // public string HeaderText { get; set; }
+        //public int DisplayIndex { get; set; }
         public int Width { get; set; }
-        public bool Visible { get; set; }
-        public bool Frozen { get; set; }
+        //public bool Visible { get; set; }
+        // public bool Frozen { get; set; }
+        // public object AutoSizeMode { get; set; }
     }
 }

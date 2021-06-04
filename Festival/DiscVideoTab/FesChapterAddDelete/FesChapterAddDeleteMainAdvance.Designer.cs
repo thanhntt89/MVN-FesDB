@@ -62,7 +62,6 @@ namespace Festival.DiscVideoTab.FesChapterAddDelete
             this.col削除 = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
             this.col更新日時 = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.colID = new Festival.Base.DataGridViewNumericColumn();
-           
             ((System.ComponentModel.ISupportInitialize)(this.advFesChapterAddDelete)).BeginInit();
             this.SuspendLayout();
             // 
@@ -526,7 +525,6 @@ namespace Festival.DiscVideoTab.FesChapterAddDelete
             this.SCREEN_TITLE = "個別映像DISC追加削除管理";
             this.Size = new System.Drawing.Size(800, 400);
             this.Load += new System.EventHandler(this.FesVideoAssigmentMainAdvance_Load);
-            
             ((System.ComponentModel.ISupportInitialize)(this.advFesChapterAddDelete)).EndInit();
             this.ResumeLayout(false);
 

@@ -25,12 +25,10 @@ namespace FestivalUtilities
                 using (FileStream file = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.Read))
                 using (StreamWriter sw = new StreamWriter(file, Encoding.GetEncoding("shift_jis")))
                 {
-
                     sw.NewLine = "\r\n";
 
                     foreach (DataRow row in dataTable.Rows)
                     {
-
                         string dataLine = string.Empty;
                         int columnIndex = 0;
 
@@ -90,6 +88,9 @@ namespace FestivalUtilities
                     File.Create(fileExport.FilePath).Close();
                 }
 
+                StringBuilder logContents = new StringBuilder();
+                StringBuilder exportContents = new StringBuilder();
+
                 using (FileStream file = new FileStream(fileExport.FilePath, FileMode.Append, FileAccess.Write, FileShare.Read))
                 using (StreamWriter writer = new StreamWriter(file, Encoding.GetEncoding("shift_jis")))
                 {
@@ -114,13 +115,14 @@ namespace FestivalUtilities
                         if (!string.IsNullOrEmpty(header))
                         {
                             writer.WriteLine(header);
+                            // exportContents.AppendLine(header);
                         }
                     }
 
                     bool flag = false;
-                   
+
                     foreach (DataRow row in fileExport.DataExport.Rows)
-                    {  
+                    {
                         columnIndex = 0;
                         result = string.Empty;
 
@@ -131,6 +133,17 @@ namespace FestivalUtilities
                         {
                             columName = column.ColumnName;
                             value = row.IsNull(column.ColumnName) ? null : row.Field<object>(column.ColumnName).ToString();
+
+                            //Exception column
+                            if (columName.Equals("演奏時間NULL"))
+                            {
+                                //LogContents
+                                if (value != null && value.ToString().Equals("270") && fileExport.IsWriteLog)
+                                    logContents.AppendLine(row.Field<object>("選曲番号").ToString());
+
+                                continue;
+                            }
+
 
                             if (columnIndex > 0)
                             {
@@ -156,12 +169,12 @@ namespace FestivalUtilities
                                     {
                                         result += value;
                                     }
-                                    else 
+                                    else
                                     {
                                         if (flag)
                                         {
                                             strVatoBa = Utils.ConvertVatoBa(value);
-                                            strVatoBa  = Utils.ConverNoise(strVatoBa);
+                                            strVatoBa = Utils.ConverNoise(strVatoBa);
                                             strVatoBa = Utils.ConvertYouonHatsuon(strVatoBa);
                                             strVatoBa = Utils.DelelteTyouon(strVatoBa);
 
@@ -236,7 +249,7 @@ namespace FestivalUtilities
                                             result += Utils.ToHiragana(strVatoBa);
                                         }
                                     }
-                                    break;                              
+                                    break;
                                 case "タイアップソート用カナ":
                                 case "歌手名ソート用カナ":
                                     if (string.IsNullOrEmpty(value))
@@ -261,7 +274,6 @@ namespace FestivalUtilities
                                         {
                                             result += Utils.ConvertDate(value);
                                         }
-
                                     }
                                     break;
                                 case "Lowキー":
@@ -308,7 +320,6 @@ namespace FestivalUtilities
                                             if (string.IsNullOrEmpty(value))
                                             {
                                                 //MsgBox("コンテンツTSV" + Constants.vbCrLf + rowIndex + 1 + "行目 " + "選曲番号:「" + withBlock.Fields.Item(0).Value + "」 の歌手IDが空です。", Constants.vbOKOnly, Constants.vbExclamation);
-
                                             }
                                             else
                                             {
@@ -325,13 +336,11 @@ namespace FestivalUtilities
                                             {
                                                 result += value;
                                             }
-
                                         }
                                         else
                                         {
                                             result += value;
                                         }
-
                                     }
                                     break;
                                 default:
@@ -339,7 +348,6 @@ namespace FestivalUtilities
                                         result += value;
                                     }
                                     break;
-
                             }
 
                             columnIndex++;
@@ -347,13 +355,19 @@ namespace FestivalUtilities
                         }
                         #endregion
 
+                        //exportContents.AppendLine(result);
                         writer.WriteLine(result);
 
                         rowIndex++;
                     }
 
+                    // writer.WriteLine(exportContents.ToString());
+
                     // End write file
                     writer.Close();
+
+                    if (fileExport.IsWriteLog)
+                        LogWriter.Write(fileExport.LogPathFile1, logContents.ToString());
                 }
 
                 // Write log success
@@ -399,5 +413,7 @@ namespace FestivalUtilities
         public string FunctionName { get; set; }
         public int TotalRecord { get { return DataExport.Rows.Count; } }
         public string LogPathFile { get; set; }
+        public string LogPathFile1 { get; set; }
+        public bool IsWriteLog { get; set; }
     }
 }

@@ -13,7 +13,25 @@ namespace FestivalBusiness
     {
         private CommonBusiness commonBusiness = new CommonBusiness();
         private FesVideoAssigmentBusiness fesVideoAssigmentBusiness = new FesVideoAssigmentBusiness();
-        
+        private VideoCodeLockBusiness videoCodeLockBusiness = new VideoCodeLockBusiness();
+
+        public IList<string> GetFestaVideoLock()
+        {          
+            return commonBusiness.GetFestaVideoLock();
+        }
+
+        public DataTable GetVideoCodeLockedAll()
+        {
+            try
+            {
+                return videoCodeLockBusiness.GetVideoCodeLocked();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable GetDataExportContentList(List<string> getDisplayedIdList)
         {
             try
@@ -65,8 +83,11 @@ namespace FestivalBusiness
             try
             {
                 // Valid_data
-                //Removed display column コンテンツ種類
+                //Removed display column コンテンツ種類 映像ロック対象 Old背景映像コード    
                 updateDataWorkFesContentTable.Columns.Remove("コンテンツ種類");
+                updateDataWorkFesContentTable.Columns.Remove("Old個別映像ロック");
+                updateDataWorkFesContentTable.Columns.Remove("Old背景映像コード");
+                updateDataWorkFesContentTable.Columns.Remove("映像ロック対象");
 
                 SaveWorkTableTmp(updateDataWorkFesContentTable);
 
@@ -108,7 +129,7 @@ namespace FestivalBusiness
                     contentId = row[0].ToString();
 
                     //FesVideoCode
-                    dtFesVideoCode = fesVideoAssigmentBusiness.GetFesVideoCodeManagementById(contentId);                  
+                    dtFesVideoCode = fesVideoAssigmentBusiness.GetFesVideoCodeManagementById(contentId);
                     isAddNewVideoCode = false;
 
                     if (dtFesVideoCode.Rows.Count == 0)
@@ -121,7 +142,7 @@ namespace FestivalBusiness
 
                     isAddNew = false;
                     isUpdate = true;
-                   
+
                     dtFesServiceTable = GetDataFesServiceTable(contentId);
                     // Insert new
                     if (dtFesServiceTable.Rows.Count == 0)
@@ -191,11 +212,11 @@ namespace FestivalBusiness
                         {
                             updateRow[col.ColumnName] = row[col.ColumnName];
 
-                            //FesVideoCode colum
-                            if (columnName.Equals("備考"))
-                            {
-                                dtFesVideoCode.Rows[0]["備考"] = row["備考"];
-                            }
+                            //FesVideoCode colum 備考
+                            //if (columnName.Equals("備考"))
+                            //{
+                            //    //dtFesVideoCode.Rows[0]["備考"] = row["備考"];
+                            //}
                         }
                     }
 
@@ -293,7 +314,9 @@ namespace FestivalBusiness
         {
             try
             {
-                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesContentQuery.GetUpdateFesContentQuery(dtFesServiceTable));
+                Parameters paramters = new Parameters();
+
+                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesContentQuery.GetUpdateFesContentsQuery(dtFesServiceTable, ref paramters), paramters);
             }
             catch (Exception ex)
             {
@@ -323,6 +346,30 @@ namespace FestivalBusiness
             try
             {
                 SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, query);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void InsertFestaVideoLock(IList<string> festaVideo)
+        {
+            try
+            {
+                commonBusiness.InsertFestaVideoLock(festaVideo);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetIndividualVideoLockFlag()
+        {
+            try
+            {
+                return videoCodeLockBusiness.GetDataCombox();
             }
             catch (Exception ex)
             {

@@ -38,27 +38,8 @@ namespace Festival.ManagementTab.User
             dataGridViewFilter.ColumnUpdateTimeDataPropertyName = colUpdateDate.DataPropertyName;
             dataGridViewFilter.ColumnUpdateTimeName = colUpdateDate.Name;
             dataGridViewFilter.CellClickedEvent += CellClick;
-            //dataGridViewFilter.CellEndEditEvent += CellEndEditEvent;
             LoadDataFunctionColumn();
             dataGridViewFilter.InitData();
-        }
-
-        private void CellEndEditEvent(DataGridViewCell cell)
-        {
-            if (cell == null || !cell.OwningColumn.Name.Equals(col利用者ID.Name) || cell.OwningRow.Index == cell.DataGridView.Rows.Count - 1)
-                return;
-            string currentId = cell.Value.ToString();
-            string oldId = cell.OwningRow.Cells[colOld利用者ID.Name].Value.ToString();
-
-            // If update
-            if (!currentId.Equals(oldId))
-            {
-                if (!CheckExist(col利用者ID.HeaderText, currentId))
-                {
-                    cell.Value = oldId;
-                    cell.OwningRow.Cells[colUpdateDate.Name].Value = DBNull.Value;
-                }
-            }
         }
 
         private void CellClick(DataGridViewCell cell)

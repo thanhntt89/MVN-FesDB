@@ -39,6 +39,8 @@ namespace FestivalBusiness
                 string query = string.Empty;
                 string functionId = string.Empty;
 
+                Parameters parameters;
+
                 foreach (DataRow row in dtSave.Rows)
                 {
                     dtInsert.Rows.Clear();
@@ -46,17 +48,19 @@ namespace FestivalBusiness
                     query = string.Empty;
                     functionId = row["OldプロジェクトID"] == null ? string.Empty : row["OldプロジェクトID"].ToString();
 
+                    parameters = new Parameters();
+
                     if (string.IsNullOrWhiteSpace(functionId))
                     {
-                        query = FesFunctionQuery.GetInsertQuery(dtInsert);
+                        query = FesFunctionQuery.GetInsertFunctionQuery(dtInsert,ref parameters);
                     }
                     else
                     {
-                        query = FesFunctionQuery.GetUpdateQuery(dtInsert);
+                        query = FesFunctionQuery.GetUpdateFunctionQuery(dtInsert, ref parameters);
 
                     }
 
-                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, query);
+                    SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, query, parameters);
                     updateCount++;
                 }
 

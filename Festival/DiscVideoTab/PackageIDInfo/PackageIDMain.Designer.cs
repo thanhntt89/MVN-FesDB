@@ -107,7 +107,7 @@
             this.advPackage.Location = new System.Drawing.Point(36, 63);
             this.advPackage.Name = "advPackage";
             this.advPackage.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.advPackage.Size = new System.Drawing.Size(432, 219);
+            this.advPackage.Size = new System.Drawing.Size(721, 219);
             this.advPackage.TabIndex = 0;
             this.advPackage.Visible = false;
             // 
@@ -197,8 +197,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 461);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.advPackage);
             this.Controls.Add(this.dataGridViewFilter);
+            this.Controls.Add(this.advPackage);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

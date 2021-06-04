@@ -10,6 +10,45 @@ namespace FestivalBusiness
     public class FesVideoAssigmentBusiness : BusinessBase
     {
         private CommonBusiness commonBusiness = new CommonBusiness();
+
+        private VideoCodeLockBusiness videoCodeLockBusiness = new VideoCodeLockBusiness();
+
+        public void InsertFestaVideoLock(IList<string> videoCodes)
+        {
+            try
+            {
+                commonBusiness.InsertFestaVideoLock(videoCodes);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetVideoCodeLockedByVideoCode(string videoCode)
+        {
+            try
+            {
+                return videoCodeLockBusiness.GetVideoCodeLockById(videoCode);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetVideoCodeLocked()
+        {
+            try
+            {
+                return videoCodeLockBusiness.GetVideoCodeLocked();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable LoadFesVideoAssigmentWorkTable()
         {
             try
@@ -49,6 +88,11 @@ namespace FestivalBusiness
         {
             try
             {
+                //Removed colum   Old背景映像コード,     Old個別映像ロック, 映像ロック対象
+                //dtUpdate.Columns.Remove("Old個別映像ロック");
+                //dtUpdate.Columns.Remove("Old背景映像コード");
+                dtUpdate.Columns.Remove("映像ロック対象");
+
                 SaveVideoAssigmentWorkTmp(dtUpdate);
 
                 bool isUpdate = false;
@@ -135,18 +179,30 @@ namespace FestivalBusiness
             }
         }
 
+        public DataTable GetIndividualVideoLockFlag()
+        {
+            try
+            {
+                return videoCodeLockBusiness.GetDataCombox();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
         public void SaveFromFesContents(SqlTransaction sqlTransac, DataTable dtFesVideo)
         {
             try
-            {        
+            {
                 DataRow row = dtFesVideo.Rows[0];
 
                 bool isUpdate = false;
                 DataTable dtRegist = new DataTable();
                 DataRow updateRow = null;
                 string contentId = string.Empty;
-                                
+
                 contentId = row["デジドココンテンツID"].ToString();
                 dtRegist = GetFesVideoCodeManagementById(contentId);
 
@@ -169,10 +225,6 @@ namespace FestivalBusiness
                         continue;
                     updateRow[col.ColumnName] = row[col];
                 }
-
-                //updateRow["最終更新日時"] = DateTime.Now;
-                //updateRow["最終更新者"] = Environment.UserName;
-                //updateRow["最終更新PC名"] = Environment.MachineName.Replace("-", "");
 
                 if (isUpdate)
                 {
@@ -201,7 +253,7 @@ namespace FestivalBusiness
             }
         }
 
-       public void DeleteFromFesContents(SqlTransaction sqlTransac)
+        public void DeleteFromFesContents(SqlTransaction sqlTransac)
         {
             try
             {
@@ -231,8 +283,9 @@ namespace FestivalBusiness
         public void UpdateFesViedeosManagment(SqlTransaction sqlTransac, DataTable dtRegist)
         {
             try
-            {
-                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesVideoAssigmentQuery.GetUpdateFesVideoManagementQuery(dtRegist));
+            {               
+                Parameters param = new Parameters();
+                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesVideoAssigmentQuery.GetUpdateFesVideoQuery(dtRegist, ref param), param);
             }
             catch (Exception ex)
             {
@@ -244,7 +297,8 @@ namespace FestivalBusiness
         {
             try
             {
-                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesVideoAssigmentQuery.GetUpdateFesVideoManagementWorkQuery(contentId));
+                Parameters param = new Parameters();
+                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesVideoAssigmentQuery.GetUpdateFesVideoManagementWorkQuery(contentId, ref param), param);
             }
             catch (Exception ex)
             {
@@ -256,7 +310,10 @@ namespace FestivalBusiness
         {
             try
             {
-                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesVideoAssigmentQuery.GetInsertFesVideoManagementQuery(dtRegist));
+                Parameters param = new Parameters();
+
+                SqlHelpers.ExecuteNonQuery(sqlTransac, CommandType.Text, FesVideoAssigmentQuery.GetInsertFesVideoQuery(dtRegist, ref param), param);
+
             }
             catch (Exception ex)
             {
@@ -268,7 +325,8 @@ namespace FestivalBusiness
         {
             try
             {
-                return SqlHelpers.ExecuteDataset(connectionString, CommandType.Text, FesVideoAssigmentQuery.GetFesVideoCodeManagementByIdQuery(contentId)).Tables[0];
+                Parameters param = new Parameters();
+                return SqlHelpers.ExecuteDataset(connectionString, CommandType.Text, FesVideoAssigmentQuery.GetFesVideoCodeManagementByIdQuery(contentId, ref param), param).Tables[0];
             }
             catch (Exception ex)
             {
@@ -341,6 +399,53 @@ namespace FestivalBusiness
             try
             {
                 return SqlHelpers.ExecuteDataset(connectionString, CommandType.Text, FesVideoAssigmentQuery.GetExportFesVideoAssigmentExportQuery(dataFilter)).Tables[0];
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
+        public void UpdateColumn(List<string> keys, string columKey, string columUpdateName, object updateValue)
+        {
+            try
+            {
+                Parameters paramters = new Parameters();
+                //Truncate table tmp
+                SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, FesVideoAssigmentQuery.GetUpdateColumnNameQuery(keys, columKey, columUpdateName, updateValue, ref paramters), paramters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void UpdateField(string keyId, string filedName, object values, bool isUpdateDate)
+        {
+            try
+            {
+                Parameters paramters = new Parameters();
+                //Truncate table tmp
+                SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, FesVideoAssigmentQuery.GetUpdateFieldQuery(keyId, filedName, values, ref paramters, isUpdateDate), paramters);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+        }
+
+        public IList<string> GetFestaVideoLock()
+        {
+            return commonBusiness.GetFestaVideoLock();
+        }
+
+        public DataTable GetVideoCodeLockedAll()
+        {
+            try
+            {
+                //Truncate table tmp
+                return videoCodeLockBusiness.GetVideoCodeLocked();
             }
             catch (Exception ex)
             {

@@ -19,6 +19,7 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
 
         // List parameter
         public List<string> SlqParameters { get; set; }
+        private IList<string> festaVideo = null;
 
         public FesVideoAssigmentSearch(LayOutEntity layOutEntity)
         {
@@ -129,6 +130,9 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
                 // Truncate work table
                 videosAssigmentBusines.TruncateVideoAssigmentWorkTmp();
 
+                // Insert festavideo              
+                videosAssigmentBusines.InsertFestaVideoLock(festaVideo);
+
                 // Search
                 videosAssigmentBusines.ExecuteSearch(SlqParameters);
 
@@ -179,7 +183,7 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             if (!CheckCompareNumberInput(Constants.MSGE006, txtKaraokeNoFrom, txtKaraokeNoTo))
             {
                 return false;
-            }          
+            }
             if (!CheckDateTimeInput(lblFes_アップ予定日.Text, Constants.MSGE016, null, dtUpdateDateFrom, dtUpdateDateTo))
             {
                 return false;
@@ -188,6 +192,9 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
             {
                 return false;
             }
+
+            //Get Festavideo
+            festaVideo = Utils.GetDataFromFileToList(Properties.Settings.Default.FES_PEREMIUM_CONTENT_VIDEO_LOCKED_PATH, ',');
 
             return true;
         }
@@ -217,9 +224,9 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
                 //8.背景映像コード
                 GetParameterTextBoxText("[背景映像コード]", txtVideoCodeFrom, txtVideoCodeTo);
                 //9. Fes_アップ予定日
-                GetParameterComboxWithDateTime("[アップ予定日]", null, dtUpdateDateFrom, dtUpdateDateTo,"yyyyMMdd");
+                GetParameterComboxWithDateTime("[アップ予定日]", null, dtUpdateDateFrom, dtUpdateDateTo, "yyyyMMdd");
                 //10. Fes_サービス発表日
-                GetParameterComboxWithDateTime("[サービス発表日]", null, dtServiceDateFrom, dtServiceDateTo,"yyyyMMdd");
+                GetParameterComboxWithDateTime("[サービス発表日]", null, dtServiceDateFrom, dtServiceDateTo, "yyyyMMdd");
                 //11. 登録済み条件
                 GetParameterFromCombox(null, cboRegisteredCondition);
             }));
@@ -290,7 +297,7 @@ namespace Festival.DiscVideoTab.FesVideoAssigment
 
         private void GetParameterTextBoxText(string columnName, TextBoxX textNumberFrom, TextBoxX textNumberTo)
         {
-            GetParameterUtils.GetParameterTextBoxText(SlqParameters, columnName, textNumberFrom, textNumberTo);         
+            GetParameterUtils.GetParameterTextBoxText(SlqParameters, columnName, textNumberFrom, textNumberTo);
         }
 
         private void LoadControlIndex()

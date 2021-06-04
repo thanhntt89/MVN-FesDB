@@ -16,6 +16,59 @@ namespace FestivalBusiness
             return query;
         }
 
+
+        internal static string GetInsertAuthorityQuery(DataTable dataUpdte, ref Parameters parmeters)
+        {
+            DataRow row = dataUpdte.Rows[0];
+            string columnValue = string.Empty;
+            string values = string.Empty;
+            string columns = string.Empty;
+
+            foreach (DataColumn col in dataUpdte.Columns)
+            {
+                if (col.ColumnName.Contains("Old"))
+                    continue;
+
+                columns += string.Format("[{0}],", col.ColumnName);
+                values += string.Format("@{0},", col.ColumnName);
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Remove(values.Length - 1, 1);
+            columns = columns.Remove(columns.Length - 1, 1);
+
+            string query = string.Format("INSERT INTO Wii.dbo.[Fes権限グループ機能割当] ({0}) VALUES({1})", columns, values);
+            return query;
+        }
+
+        internal static string GetUpdateAuthorityQuery(DataTable dtUpdate, ref Parameters parmeters)
+        {
+            DataRow row = dtUpdate.Rows[0];
+            string values = string.Empty;
+
+            foreach (DataColumn col in dtUpdate.Columns)
+            {
+                if (!col.ColumnName.Contains("Old"))
+                    values += string.Format("{0}=@{0}, ", col.ColumnName);
+
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Trim();
+            values = values.Remove(values.Length - 1, 1);
+
+            string query = string.Format("UPDATE Wii.dbo.[Fes権限グループ機能割当] SET {0} WHERE 権限グループ = @Old権限グループ AND プロジェクトID = @OldプロジェクトID AND 機能ID = @Old機能ID", values);
+            return query;
+        }
+
         internal static string GetInsertAuthorityQuery(DataTable dataUpdte)
         {
             DataRow row = dataUpdte.Rows[0];

@@ -12,7 +12,7 @@ namespace FestivalBusiness
         {
             try
             {
-                SqlHelpers.ExecuteNonQuery(connectionString, System.Data.CommandType.Text, FesSongWithDiscImportQuery.GetTruncateFesDiscAllocationTableQuery());
+                SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, FesSongWithDiscImportQuery.GetTruncateFesDiscAllocationTableQuery());
             }
             catch (Exception ex)
             {
@@ -24,7 +24,7 @@ namespace FestivalBusiness
         {
             try
             {
-                SqlHelpers.ExecuteNonQuery(connectionString, System.Data.CommandType.Text, FesSongWithDiscImportQuery.GetBulkInsertFesDiscAllocationTableQuery(serverFile));
+                SqlHelpers.ExecuteNonQuery(connectionString, CommandType.Text, FesSongWithDiscImportQuery.GetBulkInsertFesDiscAllocationTableQuery(serverFile));
             }
             catch (Exception ex)
             {

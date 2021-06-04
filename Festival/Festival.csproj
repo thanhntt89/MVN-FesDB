@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +50,21 @@
   <PropertyGroup>
     <ApplicationIcon>FS48x48.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Keyboard, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar.Schedule, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
@@ -45,6 +75,7 @@
     </Reference>
     <Reference Include="DevComponents.Instrumentation, Version=14.1.0.0, Culture=neutral, PublicKeyToken=f90dc37c26666a67" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -377,6 +408,18 @@
     <Compile Include="DiscVideoTab\FesVideoAddDelete\FesVideoAddDeleteMainAdvance.Designer.cs">
       <DependentUpon>FesVideoAddDeleteMainAdvance.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiscVideoTab\FesVideoLock\ImportVideoCodeLock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoLock\ImportVideoCodeLock.Designer.cs">
+      <DependentUpon>ImportVideoCodeLock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoLock\VideoMaintenanceMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DiscVideoTab\FesVideoLock\VideoMaintenanceMain.Designer.cs">
+      <DependentUpon>VideoMaintenanceMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="DiscVideoTab\PackageIDInfo\PackageIDMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -394,12 +437,6 @@
     </Compile>
     <Compile Include="DBTab\RecommendSong\RecommendSongMainAdvance.Designer.cs">
       <DependentUpon>RecommendSongMainAdvance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InstallerFestival.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="InstallerFestival.Designer.cs">
-      <DependentUpon>InstallerFestival.cs</DependentUpon>
     </Compile>
     <Compile Include="ManagementTab\AuthGroup\AuthGroupMain.cs">
       <SubType>Form</SubType>
@@ -628,6 +665,12 @@
     <EmbeddedResource Include="DiscVideoTab\FesVideoAddDelete\FesVideoAddDeleteMainAdvance.resx">
       <DependentUpon>FesVideoAddDeleteMainAdvance.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoLock\ImportVideoCodeLock.resx">
+      <DependentUpon>ImportVideoCodeLock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DiscVideoTab\FesVideoLock\VideoMaintenanceMain.resx">
+      <DependentUpon>VideoMaintenanceMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DiscVideoTab\PackageIDInfo\PackageIDMain.resx">
       <DependentUpon>PackageIDMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -636,9 +679,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DBTab\RecommendSong\RecommendSongMainAdvance.resx">
       <DependentUpon>RecommendSongMainAdvance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InstallerFestival.resx">
-      <DependentUpon>InstallerFestival.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManagementTab\AuthGroup\AuthGroupMain.resx">
       <DependentUpon>AuthGroupMain.cs</DependentUpon>
@@ -691,6 +731,7 @@
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -758,7 +799,18 @@
     <Content Include="Fes32x.ico" />
     <Content Include="FS48x48.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

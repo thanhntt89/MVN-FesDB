@@ -16,6 +16,60 @@ namespace FestivalBusiness
             return sql;
         }
 
+
+        internal static string GetSavePackegeQuery(DataTable dataUpdte, ref Parameters parmeters)
+        {
+            DataRow row = dataUpdte.Rows[0];
+            string columnValue = string.Empty;
+            string values = string.Empty;
+            string columns = string.Empty;
+
+            foreach (DataColumn col in dataUpdte.Columns)
+            {
+                if (col.ColumnName.Equals("OldFesDISCID"))
+                    continue;
+
+                columns += string.Format("[{0}],", col.ColumnName);
+                values += string.Format("@{0},", col.ColumnName);
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Remove(values.Length - 1, 1);
+            columns = columns.Remove(columns.Length - 1, 1);
+
+            string query = string.Format("INSERT INTO Wii.dbo.[FesパッケージID情報] ({0}) VALUES({1})", columns, values);
+            return query;
+        }
+
+        internal static string GetUpdatePackegeQuery(DataTable dtUpdate, ref Parameters parmeters)
+        {
+            DataRow row = dtUpdate.Rows[0];
+            string values = string.Empty;
+
+            foreach (DataColumn col in dtUpdate.Columns)
+            {
+                if (!col.ColumnName.Equals("OldFesDISCID"))
+                    values += string.Format("{0}=@{0}, ", col.ColumnName);
+
+                parmeters.Add(new Parameter()
+                {
+                    Name = string.Format("@{0}", col.ColumnName),
+                    Values = row[col]
+                });
+            }
+
+            values = values.Trim();
+            values = values.Remove(values.Length - 1, 1);
+
+            string query = string.Format("UPDATE Wii.dbo.[FesパッケージID情報] SET {0} WHERE FesDISCID = @OldFesDISCID", values);
+            return query;
+        }
+
+
         internal static string GetSavePackegeQuery(DataTable dtPackege)
         {
             DataRow row = dtPackege.Rows[0];

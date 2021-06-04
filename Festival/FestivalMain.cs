@@ -22,7 +22,7 @@ namespace Festival
         public FestivalMain()
         {
             InitializeComponent();
-            InitUCControl();
+            InitUCControl();         
         }
 
         private void InitUCControl()
@@ -47,7 +47,6 @@ namespace Festival
 
         private void BgwProcess_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            // HideCheckConnect(true, "");
             if (bgwProcess != null)
             {
                 bgwProcess.DoWork -= BgwProcess_DoWork;
@@ -97,6 +96,53 @@ namespace Festival
             GetVersion();
             Authority();
             CreateTaleWork();
+            RunSqlQuery();
+            CreateNewColumns();
+        }
+
+        private void CreateNewColumns()
+        {
+            try
+            {
+                iCommonBusiness.CreateNewColumns();
+            }
+            catch (Exception ex)
+            {
+                ErrorEntity error = new ErrorEntity()
+                {
+                    LogTime = DateTime.Now.ToString(Constants.LOG_DATE_TIME_FORMAT),
+                    ErrorMessage = ex.Message,
+                    ModuleName = this.GetClassName() + " " + MethodBase.GetCurrentMethod().Name,
+                    FilePath = Constants.LOG_FILE_PATH_ERROR
+                };
+
+                this.LogException(error);
+            }
+        }
+
+        private void RunSqlQuery()
+        {
+            try
+            {
+                iCommonBusiness.RunSqlQuery();
+            }
+            catch (Exception ex)
+            {
+                ErrorEntity error = new ErrorEntity()
+                {
+                    LogTime = DateTime.Now.ToString(Constants.LOG_DATE_TIME_FORMAT),
+                    ErrorMessage = ex.Message,
+                    ModuleName = this.GetType().Name + " " + MethodBase.GetCurrentMethod().Name,
+                    FilePath = Constants.LOG_FILE_PATH_ERROR
+                };
+
+                this.LogException(error);
+
+                Invoke(new Action(() =>
+                {
+                    MessageBox.Show(string.Format(GetResources.GetResourceMesssage(Constants.MSGE038), error.LogTime, error.ModuleName, error.ErrorMessage, error.FilePath), GetResources.GetResourceMesssage(Constants.ERROR_TITLE_MESSAGE), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }));
+            }
         }
 
         private void CreateTaleWork()
@@ -244,6 +290,7 @@ namespace Festival
         private void FestivalMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             DropTableFesWork();
-        }
+        }        
+
     }
 }

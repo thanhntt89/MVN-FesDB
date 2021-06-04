@@ -31,9 +31,8 @@ namespace Festival.Base
         private void InitializeComponent()
         {
             this.dtgAdvMain = new Zuby.ADGV.AdvancedDataGridView();
-            this.navDataGridView = new Festival.Base.NavDataGridView();
             this.mnSearchToolBar = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
-           
+            this.navDataGridView = new Festival.Base.NavDataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dtgAdvMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,26 +44,16 @@ namespace Festival.Base
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgAdvMain.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dtgAdvMain.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            this.dtgAdvMain.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dtgAdvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgAdvMain.FilterAndSortEnabled = true;
+            this.dtgAdvMain.IsLoadConfig = false;
             this.dtgAdvMain.Location = new System.Drawing.Point(0, 0);
             this.dtgAdvMain.Name = "dtgAdvMain";
             this.dtgAdvMain.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dtgAdvMain.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dtgAdvMain.Size = new System.Drawing.Size(939, 440);
             this.dtgAdvMain.TabIndex = 0;
-            // 
-            // navDataGridView
-            // 
-            this.navDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.navDataGridView.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.navDataGridView.DataGridViewSource = this.dtgAdvMain;
-            this.navDataGridView.Location = new System.Drawing.Point(0, 440);
-            this.navDataGridView.Name = "navDataGridView";
-            this.navDataGridView.Size = new System.Drawing.Size(936, 21);
-            this.navDataGridView.TabIndex = 1;
             // 
             // mnSearchToolBar
             // 
@@ -82,18 +71,28 @@ namespace Festival.Base
             this.mnSearchToolBar.Text = "advancedDataGridViewSearchToolBar";
             this.mnSearchToolBar.Search += new Zuby.ADGV.AdvancedDataGridViewSearchToolBarSearchEventHandler(this.advancedDataGridViewSearchToolBar_Search);
             // 
+            // navDataGridView
+            // 
+            this.navDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.navDataGridView.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.navDataGridView.DataGridViewSource = this.dtgAdvMain;
+            this.navDataGridView.Location = new System.Drawing.Point(0, 440);
+            this.navDataGridView.Name = "navDataGridView";
+            this.navDataGridView.Size = new System.Drawing.Size(936, 21);
+            this.navDataGridView.TabIndex = 1;
+            // 
             // DataGridViewFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Controls.Add(this.dtgAdvMain);
             this.Controls.Add(this.mnSearchToolBar);
             this.Controls.Add(this.navDataGridView);
-            this.Controls.Add(this.dtgAdvMain);
             this.Name = "DataGridViewFilter";
             this.Size = new System.Drawing.Size(939, 492);
             this.Load += new System.EventHandler(this.DataGridViewFilter_Load);
-            
             ((System.ComponentModel.ISupportInitialize)(this.dtgAdvMain)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
